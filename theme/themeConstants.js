@@ -4,6 +4,7 @@ const themeConstants = {
     main: '#009D95',
     dark: '#007065',
   },
+  fg: { main: '#212121', dark: '#757575' },
   background: {
     default: '#f3f2ef',
     paper: '#ffffff',
