@@ -30,26 +30,8 @@ export default function BottomBar() {
           { name: 'Approved Online Courses', link: '/approved-online-courses' },
         ],
       },
-      {
-        name: 'Academics',
-      },
-      {
-        name: 'Academics',
-      },
-      {
-        name: 'Academics',
-      },
-      {
-        name: 'Academics',
-      },
-      {
-        name: 'Academics',
-      },
-      {
-        name: 'Academics',
-      },
     ],
-    []
+    [],
   );
 
   return (
