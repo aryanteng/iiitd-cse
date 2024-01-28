@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { StyledEngineProvider } from '@mui/material';
 import CustomThemeProvider from '@/theme/provider';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -19,7 +20,8 @@ export default function RootLayout({ children }) {
         <StyledEngineProvider injectFirst>
           <CustomThemeProvider>
             <Header />
-            {children}
+            <main className="flex-grow">{children}</main>
+            <Footer />
           </CustomThemeProvider>
         </StyledEngineProvider>
       </body>
