@@ -3,7 +3,7 @@ import './globals.css';
 import PropTypes from 'prop-types';
 import { StyledEngineProvider } from '@mui/material';
 import CustomThemeProvider from '@/theme/provider';
-import Header from '@/components/layout/Header';
+import Header from '@/components/layout/header';
 import Footer from '@/components/layout/Footer';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
