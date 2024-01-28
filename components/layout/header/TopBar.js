@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 export default function TopBar() {
   const linkStyle = useMemo(
     () => 'body-xsmall hover:text-primary-main hover:cursor-pointer',
-    []
+    [],
   );
 
   const links = useMemo(
@@ -35,7 +35,7 @@ export default function TopBar() {
         link: '/contact',
       },
     ],
-    []
+    [],
   );
   return (
     <div className="flex justify-between items-center px-5 py-1">
@@ -43,7 +43,7 @@ export default function TopBar() {
         <img
           src="/images/iiitd-cse-logo.png"
           alt="Logo"
-          className="w-0 md:w-32 lg:w-44"
+          className="w-20 md:w-32 lg:w-36"
         />
       </a>
       <div className="flex gap-4">
