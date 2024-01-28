@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import PropTypes from 'prop-types';
 
 export default function MissionAndVision({ name, description, isReverse }) {
   return (
@@ -21,3 +22,13 @@ export default function MissionAndVision({ name, description, isReverse }) {
     </div>
   );
 }
+
+MissionAndVision.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  isReverse: PropTypes.bool,
+};
+
+MissionAndVision.defaultProps = {
+  isReverse: false,
+};
