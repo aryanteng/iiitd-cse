@@ -4,8 +4,10 @@ export default function Banner() {
   return (
     <div className="banner-layout flex flex-col md:flex-row md:items-center gap-5 sm:gap-12">
       <div className="flex flex-col gap-2">
-        <div className="body-3xlarge text-primary-dark font-semibold">
-          Department of Computer Science and Engineering
+        <div className="body-3xlarge font-semibold">
+          Department of <span className="text-primary-main">C</span>omputer{' '}
+          <span className="text-primary-main">S</span>cience and{' '}
+          <span className="text-primary-main">E</span>ngineering
         </div>
         <img
           src="/images/iiitd-logo.png"
