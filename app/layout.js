@@ -3,6 +3,7 @@ import './globals.css';
 import PropTypes from 'prop-types';
 import { StyledEngineProvider } from '@mui/material';
 import CustomThemeProvider from '@/theme/provider';
+import Header from '@/components/layout/Header';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -16,7 +17,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning={true} className={montserrat.className}>
         <StyledEngineProvider injectFirst>
-          <CustomThemeProvider>{children}</CustomThemeProvider>
+          <CustomThemeProvider>
+            <Header />
+            {children}
+          </CustomThemeProvider>
         </StyledEngineProvider>
       </body>
     </html>
