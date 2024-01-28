@@ -43,7 +43,7 @@ export default function BottomBar() {
           },
           {
             name: 'Publications',
-            link: '/pubs2',
+            link: '/publications',
           },
           {
             name: 'Projects',
@@ -60,7 +60,7 @@ export default function BottomBar() {
           },
           {
             name: 'Teaching Fellows',
-            link: '/people/tf',
+            link: '/people/teaching-fellows',
           },
           {
             name: 'Staff',
@@ -68,7 +68,7 @@ export default function BottomBar() {
           },
           {
             name: 'B.Tech. Students',
-            link: '/people/btech2',
+            link: '/people/btech',
           },
           {
             name: 'M.Tech. Students',
