@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 export default function Banner() {
   return (
     <div className="banner-layout flex flex-col md:flex-row md:items-center gap-5 sm:gap-12">
