@@ -14,7 +14,7 @@ export default function Banner() {
         />
       </div>
       <img
-        src="/images/qs-ranking.png"
+        src="/images/landing/qs-ranking.png"
         alt="Ranking"
         className="flex self-center w-full md:w-1/2 relative"
       />
