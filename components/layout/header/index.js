@@ -1,11 +1,11 @@
-'use client';
-
+import BottomBar from './BottomBar';
 import TopBar from './TopBar';
 
 export default function Header() {
   return (
-    <div>
+    <>
       <TopBar />
-    </div>
+      <BottomBar />
+    </>
   );
 }

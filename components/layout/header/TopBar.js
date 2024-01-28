@@ -1,12 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
 
 import { useMemo } from 'react';
 
 export default function TopBar() {
   const linkStyle = useMemo(
-    () =>
-      'body-xsmall hover:text-primary-main hover:underline hover:cursor-pointer',
+    () => 'body-xsmall hover:text-primary-main hover:cursor-pointer',
     []
   );
 
