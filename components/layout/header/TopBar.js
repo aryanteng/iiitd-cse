@@ -39,11 +39,13 @@ export default function TopBar() {
   );
   return (
     <div className="flex justify-between items-center px-5 py-1">
-      <img
-        src="/images/iiitd-cse-logo.png"
-        alt="Logo"
-        className="w-0 md:w-32 lg:w-44"
-      />
+      <a href="/">
+        <img
+          src="/images/iiitd-cse-logo.png"
+          alt="Logo"
+          className="w-0 md:w-32 lg:w-44"
+        />
+      </a>
       <div className="flex gap-4">
         {links.map((link, index) => (
           <div key={link.name} className="flex gap-4 items-center">
