@@ -18,14 +18,8 @@ export default function BasicMenu({ name, menuItems }) {
     setAnchorEl(null);
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      handleClick(event);
-    }
-  };
-
   return (
-    <div>
+    <>
       <button
         type="button"
         className="body-small font-medium hover:text-primary-main"
@@ -44,7 +38,7 @@ export default function BasicMenu({ name, menuItems }) {
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}>
-        {menuItems.map((item) => (
+        {menuItems?.map((item) => (
           <MenuItem
             className="body-xsmall hover:text-primary-main hover:cursor-pointer"
             key={item.link}>
@@ -54,7 +48,7 @@ export default function BasicMenu({ name, menuItems }) {
           </MenuItem>
         ))}
       </Menu>
-    </div>
+    </>
   );
 }
 

@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <StyledEngineProvider injectFirst>
           <CustomThemeProvider>
             <Header />
-            <main className="flex-grow">{children}</main>
+            <main className="min-h-screen">{children}</main>
             <Footer />
           </CustomThemeProvider>
         </StyledEngineProvider>
