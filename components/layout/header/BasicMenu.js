@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Link from 'next/link';
 
 export default function BasicMenu({ name, menuItems }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -39,13 +40,25 @@ export default function BasicMenu({ name, menuItems }) {
           'aria-labelledby': 'basic-button',
         }}>
         {menuItems?.map((item) => (
-          <MenuItem
-            className="body-xsmall hover:text-primary-main hover:cursor-pointer"
-            key={item.link}>
-            <a href={item.link} target="_blank" rel="noopener noreferrer">
-              {item.name}
-            </a>
-          </MenuItem>
+          <>
+            {item.link.includes('https') ? (
+              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                <MenuItem
+                  className="body-xsmall hover:text-primary-main hover:cursor-pointer"
+                  key={item.link}>
+                  {item.name}
+                </MenuItem>
+              </a>
+            ) : (
+              <Link href={item.link}>
+                <MenuItem
+                  className="body-xsmall hover:text-primary-main hover:cursor-pointer"
+                  key={item.link}>
+                  {item.name}
+                </MenuItem>
+              </Link>
+            )}
+          </>
         ))}
       </Menu>
     </>
@@ -58,6 +71,6 @@ BasicMenu.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
-    })
+    }),
   ).isRequired,
 };

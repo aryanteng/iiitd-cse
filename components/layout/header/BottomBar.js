@@ -30,6 +30,90 @@ export default function BottomBar() {
           { name: 'Approved Online Courses', link: '/approved-online-courses' },
         ],
       },
+      {
+        name: 'Research',
+        menuItems: [
+          {
+            name: 'Labs',
+            link: '/research/labs',
+          },
+          {
+            name: 'Themes',
+            link: '/research/themes',
+          },
+          {
+            name: 'Publications',
+            link: '/pubs2',
+          },
+          {
+            name: 'Projects',
+            link: '/research/projects',
+          },
+        ],
+      },
+      {
+        name: 'People',
+        menuItems: [
+          {
+            name: 'Faculty',
+            link: '/people/faculty',
+          },
+          {
+            name: 'Teaching Fellows',
+            link: '/people/tf',
+          },
+          {
+            name: 'Staff',
+            link: '/people/staff',
+          },
+          {
+            name: 'B.Tech. Students',
+            link: '/people/btech2',
+          },
+          {
+            name: 'M.Tech. Students',
+            link: '/people/mtech',
+          },
+          {
+            name: 'Ph.D. Students',
+            link: '/people/phd',
+          },
+        ],
+      },
+      {
+        name: 'News & Events',
+        menuItems: [
+          {
+            name: 'Placements',
+            link: '/placements',
+          },
+          {
+            name: 'Media Coverage',
+            link: '/news-and-events/media-coverage',
+          },
+          {
+            name: 'Events',
+            link: '/news-and-events/events',
+          },
+        ],
+      },
+      {
+        name: 'Admissions',
+        menuItems: [
+          {
+            name: 'B.Tech. Admissions',
+            link: 'https://www.iiitd.ac.in/admission/btech/2021',
+          },
+          {
+            name: 'M.Tech. Admissions',
+            link: 'https://www.iiitd.ac.in/admission/mtech/2021',
+          },
+          {
+            name: 'Ph.D. Admissions',
+            link: 'https://www.iiitd.ac.in/admission/phd/2021',
+          },
+        ],
+      },
     ],
     [],
   );
