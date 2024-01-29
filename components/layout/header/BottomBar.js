@@ -119,7 +119,7 @@ export default function BottomBar() {
   );
 
   return (
-    <div className="flex gap-12 justify-center border-y-2 py-1.5">
+    <div className="hidden md:flex gap-12 justify-center border-y-2 py-1.5">
       {links.map((link) => (
         <BasicMenu
           key={link.name}

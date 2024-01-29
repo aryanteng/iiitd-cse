@@ -1,6 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+'use client';
 
-import { useMemo } from 'react';
+import { Menu } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
+import { useCallback, useMemo, useState } from 'react';
+import CustomDrawer from './CustomDrawer';
 
 export default function TopBar() {
   const linkStyle = useMemo(
@@ -37,16 +41,23 @@ export default function TopBar() {
     ],
     [],
   );
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleDrawerToggle = useCallback(() => {
+    setIsDrawerOpen((prev) => !prev);
+  }, []);
+
   return (
-    <div className="flex justify-between items-center px-5 py-1">
+    <div className="flex justify-between items-center px-5 py-1 border-b-2 md:border-none">
       <a href="/">
         <img
           src="/images/iiitd-cse-logo.png"
           alt="Logo"
-          className="w-20 md:w-32 lg:w-36"
+          className="w-28 md:w-32 lg:w-36"
         />
       </a>
-      <div className="flex gap-4">
+      <div className="hidden md:flex gap-4">
         {links.map((link, index) => (
           <div key={link.name} className="flex gap-4 items-center">
             <a key={link.name} href={link.link} className={linkStyle}>
@@ -58,6 +69,19 @@ export default function TopBar() {
           </div>
         ))}
       </div>
+      <IconButton
+        className="md:hidden p-1"
+        color="inherit"
+        aria-label="open drawer"
+        edge="start"
+        onClick={handleDrawerToggle}>
+        <Menu className="text-2xl text-primary-dark" />
+      </IconButton>
+      <CustomDrawer
+        open={isDrawerOpen}
+        anchor={'right'}
+        toggleDrawer={handleDrawerToggle}
+      />
     </div>
   );
 }
