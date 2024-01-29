@@ -1,39 +1,71 @@
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import useBottomBarLinks from './links/BottomBarLinks';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { Collapse } from '@mui/material';
+import Link from 'next/link';
+import { Fragment, useState } from 'react';
 
 export default function CustomDrawer({ open, anchor, toggleDrawer }) {
   const links = useBottomBarLinks();
+  const [openStates, setOpenStates] = useState({});
+
+  const handleClick = (name) => {
+    setOpenStates({ ...openStates, [name]: !openStates[name] });
+  };
   return (
     <Drawer anchor={anchor} open={open} onClose={toggleDrawer}>
       <Box sx={{ width: 250 }} role="presentation" onKeyDown={toggleDrawer}>
         <List>
-          {links.map((link, index) => (
-            <ListItem key={link.name} disablePadding>
-              <ListItemButton>
+          {links.map((link) => (
+            <ListItem
+              key={link.name}
+              disablePadding
+              className="w-full flex flex-col">
+              <ListItemButton
+                onClick={() => handleClick(link.name)}
+                className="w-full">
                 <ListItemText primary={link.name} />
+                {openStates[link.name] ? (
+                  <ExpandLess className="text-primary-dark" />
+                ) : (
+                  <ExpandMore className="text-primary-dark" />
+                )}
               </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
+              <Collapse
+                className="w-full"
+                in={openStates[link.name]}
+                timeout="auto"
+                unmountOnExit>
+                <List component="div" disablePadding>
+                  {link.menuItems.map((item, itemIndex) => (
+                    <Fragment key={itemIndex}>
+                      {item.link.includes('https') ? (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer">
+                          <ListItemButton
+                            onClick={() => handleClick(item.name)}>
+                            <ListItemText primary={item.name} />
+                          </ListItemButton>
+                        </a>
+                      ) : (
+                        <Link href={item.link}>
+                          <ListItemButton
+                            onClick={() => handleClick(item.name)}>
+                            <ListItemText primary={item.name} />
+                          </ListItemButton>
+                        </Link>
+                      )}
+                    </Fragment>
+                  ))}
+                </List>
+              </Collapse>
             </ListItem>
           ))}
         </List>
