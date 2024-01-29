@@ -6,7 +6,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import useBottomBarLinks from './links/BottomBarLinks';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { Collapse } from '@mui/material';
+import { Collapse, Divider } from '@mui/material';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 
@@ -65,6 +65,7 @@ export default function CustomDrawer({ open, anchor, toggleDrawer }) {
                     </Fragment>
                   ))}
                 </List>
+                <Divider />
               </Collapse>
             </ListItem>
           ))}
