@@ -13,12 +13,12 @@ export default function FacultyCard() {
       />
       <div className="flex flex-col gap-2 px-2 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-primary-dark font-semibold body-large">
+          <div className="text-primary-dark font-semibold body-normal">
             A V Subramanyam
           </div>
           <div className="flex gap-1">
-            <GoogleIcon className="text-primary-dark body-large" />
-            <LinkedInIcon className="text-primary-dark body-large" />
+            <GoogleIcon className="text-primary-dark body-normal" />
+            <LinkedInIcon className="text-primary-dark body-normal" />
           </div>
         </div>
         <div className="body-small font-semibold">
