@@ -40,7 +40,7 @@ export default function BasicMenu({ name, menuItems }) {
           'aria-labelledby': 'basic-button',
         }}>
         {menuItems?.map((item) => (
-          <>
+          <div key={item.link}>
             {item.link.includes('https') ? (
               <a href={item.link} target="_blank" rel="noopener noreferrer">
                 <MenuItem
@@ -58,7 +58,7 @@ export default function BasicMenu({ name, menuItems }) {
                 </MenuItem>
               </Link>
             )}
-          </>
+          </div>
         ))}
       </Menu>
     </>
