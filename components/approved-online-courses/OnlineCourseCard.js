@@ -31,6 +31,22 @@ function OnlineCourseCard({ title, description }) {
             things
           </h1>
         </div>
+        <div className="flex flex-col gap-2 px-2 py-2">
+          <div className="body-xsmall">{truncateDescription(description)}</div>
+          <div className="flex mt-[2%] items-center justify-between">
+            <div className="text-primary-dark mt-1 font-semibold body-normal">
+              <div className="flex">
+                <img
+                  src="images/people/faculty.png"
+                  className="rounded-full cursor-pointer h-[15%] w-[15%]"
+                />
+                <div className="mt-2 ml-2 cursor-pointer text-xs">
+                  A V Subramanyam
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       {/* Start Button at the bottom */}
     </div>
