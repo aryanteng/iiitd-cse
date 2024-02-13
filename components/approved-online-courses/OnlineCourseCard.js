@@ -45,6 +45,20 @@ function OnlineCourseCard({ title, description }) {
                 </div>
               </div>
             </div>
+            <div className="flex gap-1 flex-col mt-1 right-[15px]">
+              <div className="flex flex-row mr-5">
+                <HourGlass className="text-primary-dark body-normal" />
+                <span className="text-[8px] flex justify-center items-center ml-1 whitespace-nowrap">
+                  12 weeks
+                </span>
+              </div>
+              <div className="flex flex-row mr-5">
+                <ScholarHat className="text-primary-dark body-normal" />
+                <span className="text-[8px] flex justify-center items-center ml-1 whitespace-nowrap">
+                  17852
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
