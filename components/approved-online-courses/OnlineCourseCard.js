@@ -49,6 +49,9 @@ function OnlineCourseCard({ title, description }) {
         </div>
       </div>
       {/* Start Button at the bottom */}
+      <button className="mt-1 py-2 w-full text-center bg-primary-dark text-white font-semibold">
+        Start
+      </button>
     </div>
   );
 }
