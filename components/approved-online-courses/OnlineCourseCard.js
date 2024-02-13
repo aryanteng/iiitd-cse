@@ -22,6 +22,12 @@ function OnlineCourseCard({ title, description }) {
             alt="IOT"
           />
           {/* Overlay Button */}
+
+          <h1 className="absolute top-[30%] left-[4px] text-white py-1 px-3 font-bold text-3xl">
+            Internet of
+            <br />
+            things
+          </h1>
         </div>
       </div>
       {/* Start Button at the bottom */}
