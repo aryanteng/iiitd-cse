@@ -22,7 +22,9 @@ function OnlineCourseCard({ title, description }) {
             alt="IOT"
           />
           {/* Overlay Button */}
-
+          <button className="absolute cursor-default bottom-2 right-2 bg-primary-dark text-white py-1 px-3 font-semibold rounded-xl text-sm">
+            NPTEL
+          </button>
           <h1 className="absolute top-[30%] left-[4px] text-white py-1 px-3 font-bold text-3xl">
             Internet of
             <br />
