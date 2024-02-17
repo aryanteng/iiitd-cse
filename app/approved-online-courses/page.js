@@ -1,5 +1,6 @@
 'use client';
 import OnlineCourseCard from '@/components/approved-online-courses/OnlineCourseCard';
+import { Button } from '@mui/material';
 import React from 'react';
 
 export default function ApprovedOnlineCourses() {
@@ -58,23 +59,24 @@ export default function ApprovedOnlineCourses() {
 
   return (
     <div>
-      <h1 className="text-[25px] text-center mt-[50px] font-semibold">
+      <div className="body-2xlarge text-center p-4">
         Approved Online Courses
-      </h1>
+      </div>
 
       <div>
         {courses.map((term) => (
-          <div key={term.id}>
-            <button
+          <div className="padding-layout-2" key={term.id}>
+            <Button
+              variant="contained"
               onClick={() => {
                 toggleTerm(term.id);
               }}
-              className="ml-[4%] mt-[50px] mb-[10px] bg-primary-dark text-white py-1 px-3 font-semibold rounded-xl text-sm">
+              className="bg-primary-dark text-white font-semibold lg:mx-10 mx-5 rounded-xl text-sm">
               {term.term}
-            </button>
+            </Button>
 
             {!term.hidden && (
-              <div className="grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-11/12 max-w-screen-2xl">
+              <div className="padding-layout-2 grid grid-cols-2 mx-auto gap-2 sm:gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-11/12 max-w-screen-2xl">
                 {term?.courseList.map((course) => (
                   <OnlineCourseCard
                     key={course.id}
