@@ -1,10 +1,12 @@
+'use client';
 import OnlineCourseCard from '@/components/approved-online-courses/OnlineCourseCard';
+import React from 'react';
 
 export default function ApprovedOnlineCourses() {
-  // Example courses data
-  const courses = [
+  const [courses, setCourses] = React.useState([
     {
       id: 'w23',
+      hidden: false,
       term: 'winter 2023',
       courseList: [
         {
@@ -44,30 +46,44 @@ export default function ApprovedOnlineCourses() {
         },
       ],
     },
-  ];
+  ]);
+
+  const toggleTerm = (termId) => {
+    setCourses((prevCourses) =>
+      prevCourses.map((term) =>
+        term.id === termId ? { ...term, hidden: !term.hidden } : term,
+      ),
+    );
+  };
 
   return (
     <div>
-      <h1 className="text-[25px] ml-[40px] text-center mt-[50px] font-semibold">
+      <h1 className="text-[25px] text-center mt-[50px] font-semibold">
         Approved Online Courses
       </h1>
 
       <div>
         {courses.map((term) => (
-          <div>
-            <button className="ml-[4%] mt-[50px] bg-primary-dark text-white py-1 px-3 font-semibold rounded-xl text-sm">
+          <div key={term.id}>
+            <button
+              onClick={() => {
+                toggleTerm(term.id);
+              }}
+              className="ml-[4%] mt-[50px] mb-[10px] bg-primary-dark text-white py-1 px-3 font-semibold rounded-xl text-sm">
               {term.term}
             </button>
 
-            <div className="mt-4 grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-11/12 max-w-screen-2xl">
-              {term?.courseList.map((course) => (
-                <OnlineCourseCard
-                  key={course.id}
-                  title={course.title}
-                  description={course.description}
-                />
-              ))}
-            </div>
+            {!term.hidden && (
+              <div className="grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-11/12 max-w-screen-2xl">
+                {term?.courseList.map((course) => (
+                  <OnlineCourseCard
+                    key={course.id}
+                    title={course.title}
+                    description={course.description}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>

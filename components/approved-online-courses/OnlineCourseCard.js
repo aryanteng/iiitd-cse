@@ -2,7 +2,6 @@ import HourGlass from '@mui/icons-material/HourglassBottomTwoTone';
 import ScholarHat from '@mui/icons-material/School';
 
 function OnlineCourseCard({ title, description }) {
-  console.log(title, description);
   // Helper function to truncate description to 100 words
   const truncateDescription = (text) => {
     const words = text.split(' ');
