@@ -55,7 +55,10 @@ export default function ApprovedOnlineCourses() {
       <div>
         {courses.map((term) => (
           <div>
-            {term?.term}
+            <button className="ml-[4%] mt-[50px] bg-primary-dark text-white py-1 px-3 font-semibold rounded-xl text-sm">
+              {term.term}
+            </button>
+
             <div className="mt-4 grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-11/12 max-w-screen-2xl">
               {term?.courseList.map((course) => (
                 <OnlineCourseCard
