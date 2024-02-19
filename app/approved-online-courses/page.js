@@ -59,7 +59,7 @@ export default function ApprovedOnlineCourses() {
 
   return (
     <div>
-      <div className="body-2xlarge text-center p-4">
+      <div className="body-2xlarge font-semibold text-primary-dark text-center p-4">
         Approved Online Courses
       </div>
 
