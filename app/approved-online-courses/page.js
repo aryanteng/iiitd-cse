@@ -66,15 +66,16 @@ export default function ApprovedOnlineCourses() {
       <div>
         {courses.map((term) => (
           <div className="padding-layout-2" key={term.id}>
-            <Button
-              variant="contained"
-              onClick={() => {
-                toggleTerm(term.id);
-              }}
-              className="bg-primary-dark text-white font-semibold lg:mx-10 mx-5 rounded-xl text-sm">
-              {term.term}
-            </Button>
-
+            <div className="w-11/12 max-w-screen-2xl mx-auto">
+              <Button
+                variant="contained"
+                onClick={() => {
+                  toggleTerm(term.id);
+                }}
+                className="bg-primary-dark text-white font-semibold text-sm">
+                {term.term}
+              </Button>
+            </div>
             {!term.hidden && (
               <div className="padding-layout-2 grid grid-cols-2 mx-auto gap-2 sm:gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-11/12 max-w-screen-2xl">
                 {term?.courseList.map((course) => (
