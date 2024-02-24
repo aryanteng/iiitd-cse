@@ -20,6 +20,7 @@ module.exports = {
         paper: themeConstants.background.paper,
         primary: themeConstants.primary,
         secondary: themeConstants.secondary,
+        dropdownbg: themeConstants.background.dropdownbg,
         error: themeConstants.error,
         fg: themeConstants.fg.main,
         action: '#EE4444',
@@ -31,6 +32,9 @@ module.exports = {
         ..._screens,
         ...themeConstants.breakpoints,
         ha: { raw: '(hover: hover)' },
+      },
+      borderRadius: {
+        'custom-round': '20px',
       },
     },
   },
