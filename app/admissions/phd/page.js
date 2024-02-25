@@ -1,6 +1,7 @@
 'use client';
-import BulletPoints from '@/components/admissions/phd/bulletPoints';
-import Carousel from '@/components/admissions/phd/carousel';
+import BulletPoints from '@/components/admissions/phd/BulletPoints';
+import Carousel from '@/components/admissions/phd/Carousel';
+import ResearchCard from '@/components/admissions/phd/ResearchCard';
 import OnlineCourseCard from '@/components/approved-online-courses/OnlineCourseCard';
 import { Button } from '@mui/material';
 import { useState } from 'react';
@@ -45,6 +46,74 @@ export default function PhdAdmissions() {
       ],
     },
   ]);
+
+  const [researchAreas, setResearchAreas] = useState([
+    {
+      name: 'Compilers',
+      icon: '/images/admissions/phd/icons/Compiler.svg',
+    },
+    {
+      name: 'Computer Vision',
+      icon: '/images/admissions/phd/icons/ComputerVision.svg',
+    },
+    {
+      name: 'Deep Learning',
+      icon: '/images/admissions/phd/icons/DeepLearning.svg',
+    },
+    {
+      name: 'ML for Speech/audio applications',
+      icon: '/images/admissions/phd/icons/MLForSpeechAudioApplications.svg',
+    },
+    {
+      name: 'Computer Graphics',
+      icon: '/images/admissions/phd/icons/ComputerGraphics.svg',
+    },
+    {
+      name: 'Computational Geometry',
+      icon: '/images/admissions/phd/icons/ComputationalGeometry.svg',
+    },
+    {
+      name: 'AR/VR',
+      icon: '/images/admissions/phd/icons/ARVR.svg',
+    },
+    {
+      name: 'High-Performance Computing',
+      icon: '/images/admissions/phd/icons/HighPerformanceComputing.svg',
+    },
+    {
+      name: 'Machine Learning for Neuromarketing',
+      icon: '/images/admissions/phd/icons/MachineLearningForNEuromarketing.svg',
+    },
+    {
+      name: 'Mobile Systems',
+      icon: '/images/admissions/phd/icons/MobileSystems.svg',
+    },
+    {
+      name: 'Network Security',
+      icon: '/images/admissions/phd/icons/NetworkSecurity.svg',
+    },
+    {
+      name: 'NLP',
+      icon: '/images/admissions/phd/icons/NLP.svg',
+    },
+    {
+      name: 'Social Computing',
+      icon: '/images/admissions/phd/icons/SocialComputing.svg',
+    },
+    {
+      name: 'Graph mining',
+      icon: '/images/admissions/phd/icons/GraphMining.svg',
+    },
+    {
+      name: 'Wireless Networks',
+      icon: '/images/admissions/phd/icons/WirelessNetworks.svg',
+    },
+    {
+      name: 'Mobile Computing',
+      icon: '/images/admissions/phd/icons/MobileComputing.svg',
+    },
+  ]);
+
   return (
     <div>
       <div className="body-2xlarge font-semibold text-primary-dark text-center mt-4 italic p-4">
@@ -90,6 +159,18 @@ export default function PhdAdmissions() {
         {pointsDataFinancial.map((data, index) => (
           <BulletPoints key={index} data={data} />
         ))}
+      </div>
+      <div className="body-2xlarge font-semibold text-primary-dark text-center italic pb-10">
+        Research Areas
+      </div>
+      <div className="flex width-layout-1 flex-wrap pb-10 justify-center gap-6 md:gap-6 md:flex-row">
+        {researchAreas.map((area, index) => (
+          <ResearchCard
+            key={index}
+            icon={area.icon}
+            name={area.name}></ResearchCard>
+        ))}
+        iiitd-cse\public\images\admissions\phd\Research Area Icons\Compiler.svg
       </div>
     </div>
   );
