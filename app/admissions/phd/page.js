@@ -163,7 +163,7 @@ export default function PhdAdmissions() {
       <div className="body-2xlarge font-semibold text-primary-dark text-center italic pb-10">
         Research Areas
       </div>
-      <div className="flex flex-wrap pb-10 justify-center gap-6 md:gap-6 md:flex-row">
+      <div className="flex width-layout-1 flex-wrap pb-10 justify-center gap-6 md:gap-6 md:flex-row">
         {researchAreas.map((area, index) => (
           <ResearchCard
             key={index}
