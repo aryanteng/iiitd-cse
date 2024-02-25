@@ -1,4 +1,4 @@
-export default function ResearchCard({ key, icon, name }) {
+export default function ResearchCard({ icon, name }) {
   return (
     <div
       className="hover:transform hover:-translate-z-1 w-44 hover:scale-105 hover:shadow-xl 

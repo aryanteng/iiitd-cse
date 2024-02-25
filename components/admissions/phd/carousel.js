@@ -1,9 +1,7 @@
-export default function Carousel() {
+import { Carousel } from 'flowbite';
+export default function Carousell() {
   return (
-    <div
-      id="controls-carousel"
-      className="relative w-full"
-      data-carousel="static">
+    <div id="default-carousel" class="relative w-full" data-carousel="slide">
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         <div className="duration-700 ease-in-out" data-carousel-item>
           <img
