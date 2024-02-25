@@ -32,7 +32,7 @@ const PlacementsPage = () => {
       {
         label: 'Lowest',
         data: [9, 8], // Replace these numbers with your actual data
-        backgroundColor: themeConstants.primary.tertiary,
+        backgroundColor: '#A37198',
         borderColor: themeConstants.primary.light,
       },
       {
