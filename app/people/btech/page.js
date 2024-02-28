@@ -48,7 +48,7 @@ export default function BtechStudents() {
   return (
     <div className="page-layout-1">
       <h1 className="body-2xlarge font-semibold text-primary-dark text-center p-4">
-        B.Tech Students
+        B.Tech. Students
       </h1>
       <StyledTable list={rows} ref={tableRef} />
     </div>

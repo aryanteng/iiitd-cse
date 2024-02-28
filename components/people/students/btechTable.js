@@ -92,7 +92,7 @@ const StyledTable = React.forwardRef(function StyledTable(props, ref) {
           component={Paper}
           ref={ref}
           {...other}>
-          <Table stickyHeader>
+          <Table stickyHeader size="small">
             <TableHead>
               <TableRow>
                 <TableCell

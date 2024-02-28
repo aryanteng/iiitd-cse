@@ -92,28 +92,35 @@ const StyledTable = React.forwardRef(function StyledTable(props, ref) {
           component={Paper}
           ref={ref}
           {...other}>
-          <Table stickyHeader>
+          <Table stickyHeader size="small">
             <TableHead>
               <TableRow>
                 <TableCell
                   align="center"
-                  sx={{ backgroundColor: 'primary.light' }}>
+                  sx={{ backgroundColor: 'primary.light', width: 200 }}>
                   <span className="text-white body-small">Serial Number</span>
                 </TableCell>
                 <TableCell
                   align="center"
-                  sx={{ backgroundColor: 'primary.light' }}>
-                  <span className="text-white body-small">Roll Number</span>
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{ backgroundColor: 'primary.light' }}>
+                  sx={{ backgroundColor: 'primary.light', width: 200 }}>
                   <span className="text-white body-small">Name</span>
                 </TableCell>
                 <TableCell
                   align="center"
-                  sx={{ backgroundColor: 'primary.light' }}>
-                  <span className="text-white body-small">Joining Year</span>
+                  sx={{ backgroundColor: 'primary.light', width: 200 }}>
+                  <span className="text-white body-small">E-mail Address</span>
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ backgroundColor: 'primary.light', width: 400 }}>
+                  <span className="text-white body-small">
+                    Research Interests
+                  </span>
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ backgroundColor: 'primary.light', width: 300 }}>
+                  <span className="text-white body-small">Linkedin</span>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -122,17 +129,26 @@ const StyledTable = React.forwardRef(function StyledTable(props, ref) {
                 <TableRow
                   key={row.serialNumber}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell component="td" scope="row" align="center">
+                  <TableCell
+                    sx={{ width: 200 }}
+                    component="td"
+                    scope="row"
+                    align="center">
                     <span className="body-xsmall">{row.serialNumber}</span>
                   </TableCell>
-                  <TableCell align="center">
-                    <span className="body-xsmall">{row.rollNumber}</span>
-                  </TableCell>
-                  <TableCell align="center">
+                  <TableCell sx={{ width: 200 }} align="center">
                     <span className="body-xsmall">{row.name}</span>
                   </TableCell>
-                  <TableCell align="center">
-                    <span className="body-xsmall">{row.joiningYear}</span>
+                  <TableCell sx={{ width: 200 }} align="center">
+                    <span className="body-xsmall">{row.email}</span>
+                  </TableCell>
+                  <TableCell sx={{ width: 400 }} align="center">
+                    <span className="body-xsmall">{row.researchInterests}</span>
+                  </TableCell>
+                  <TableCell sx={{ width: 300 }} align="center">
+                    <a href={row.linkedin} className="link">
+                      {row.linkedin}
+                    </a>
                   </TableCell>
                 </TableRow>
               ))}
