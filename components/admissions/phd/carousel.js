@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { Carousel } from 'flowbite';
 
-export default function CustomCarousel() {
+export default function Carousel() {
   return (
     <div
       id="default-carousel"

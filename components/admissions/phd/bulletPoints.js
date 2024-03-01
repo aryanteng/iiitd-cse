@@ -1,13 +1,14 @@
 import AddBox from '@mui/icons-material/AddBox';
 import RemoveCircle from '@mui/icons-material/RemoveCircle';
 import { Button } from '@mui/material';
+import PropTypes from 'prop-types';
+
 export default function BulletPoints({ data }) {
   return (
     <div className="py-10">
       <div className="body-large font-semibold text-primary-dark text-left ">
         {data?.heading}
       </div>
-
       {/* if points have a heading description  */}
       {data?.desc && (
         <div
@@ -16,34 +17,29 @@ export default function BulletPoints({ data }) {
           {data?.desc}
         </div>
       )}
-
       {/* Normal points */}
       {data?.points.map((point) => (
-        <div className="py-2 flex flex-row gap-4">
+        <div className="py-2 flex flex-row gap-4" key={point}>
           <AddBox className="text-primary-dark"></AddBox>
           <div className="body-normal text-left">{point}</div>
         </div>
       ))}
-
       {/* points with subPoints */}
-      {data?.subPoints &&
-        data?.subPoints?.map((subpointPoint, index) => (
-          <div key={index} className="py-2 flex flex-col gap-4">
-            <div className="flex flex-row gap-4">
-              <AddBox className="text-primary-dark"></AddBox>
-              <div className="body-normal text-left">{subpointPoint.point}</div>
-            </div>
-            {subpointPoint?.subPoint?.map((subP, index) => (
-              <div className="flex ml-10 flex-row gap-4">
-                <RemoveCircle className="text-primary-dark h-5 w-5"></RemoveCircle>
-                <div className="body-small text-left">{subP}</div>
-              </div>
-            ))}
+      {data?.subPoints?.map((subpointPoint) => (
+        <div key={subpointPoint} className="py-2 flex flex-col gap-4">
+          <div className="flex flex-row gap-4">
+            <AddBox className="text-primary-dark"></AddBox>
+            <div className="body-normal text-left">{subpointPoint.point}</div>
           </div>
-        ))}
-
+          {subpointPoint?.subPoint?.map((subP) => (
+            <div className="flex ml-10 flex-row gap-4" key={subP}>
+              <RemoveCircle className="text-primary-dark h-5 w-5"></RemoveCircle>
+              <div className="body-small text-left">{subP}</div>
+            </div>
+          ))}
+        </div>
+      ))}
       {/* if points have a button */}
-
       {data?.button && (
         <Button
           variant="contained"
@@ -53,14 +49,33 @@ export default function BulletPoints({ data }) {
           {data?.button?.text}
         </Button>
       )}
-
       {/* if points have a closing remarks  */}
-      {data?.footer &&
-        data?.footer.map((f, index) => (
-          <div className="body-small p-4 width-layout-1 font-semibold text-primary-dark text-left ">
-            {f}
-          </div>
-        ))}
+      {data?.footer?.map((f) => (
+        <div
+          key={f}
+          className="body-small p-4 width-layout-1 font-semibold text-primary-dark text-left">
+          {f}
+        </div>
+      ))}
     </div>
   );
 }
+
+BulletPoints.propTypes = {
+  data: PropTypes.shape({
+    heading: PropTypes.string,
+    desc: PropTypes.string,
+    points: PropTypes.arrayOf(PropTypes.string),
+    subPoints: PropTypes.arrayOf(
+      PropTypes.shape({
+        point: PropTypes.string,
+        subPoint: PropTypes.arrayOf(PropTypes.string),
+      }),
+    ),
+    button: PropTypes.shape({
+      href: PropTypes.string,
+      text: PropTypes.string,
+    }),
+    footer: PropTypes.arrayOf(PropTypes.string),
+  }),
+};
