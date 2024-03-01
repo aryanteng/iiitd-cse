@@ -16,9 +16,7 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import { ThemeProvider, styled } from '@mui/material/styles';
 import * as React from 'react';
 import { theme } from '@/theme/theme.js';
-import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { TableVirtuoso } from 'react-virtuoso';
 
 //Removed pagination functionality. May use in the
 function TablePaginationActions(props) {
@@ -84,62 +82,82 @@ const StyledTable = React.forwardRef(function StyledTable(props, ref) {
   const { list, allowPagination, ...other } = props;
   return (
     <ThemeProvider theme={theme}>
-      <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-        <TableContainer
-          sx={{
-            maxHeight: '75vh',
-          }}
-          component={Paper}
-          ref={ref}
-          {...other}>
-          <Table stickyHeader size="small">
-            <TableHead>
-              <TableRow>
+      <TableContainer
+        sx={{
+          maxHeight: '70vh',
+          width: '95%',
+          margin: 'auto',
+        }}
+        component={Paper}
+        ref={ref}
+        {...other}>
+        <Table stickyHeader size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell
+                align="center"
+                sx={{
+                  backgroundColor: 'primary.light',
+                  width: 150,
+                  borderBottom: 'hidden',
+                }}>
+                <span className="text-white body-xsmall">Serial Number</span>
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  backgroundColor: 'primary.light',
+                  width: 150,
+                  borderBottom: 'hidden',
+                }}>
+                <span className="text-white body-xsmall">Roll Number</span>
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  backgroundColor: 'primary.light',
+                  width: 150,
+                  borderBottom: 'hidden',
+                }}>
+                <span className="text-white body-xsmall">Name</span>
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  backgroundColor: 'primary.light',
+                  width: 150,
+                  borderBottom: 'hidden',
+                }}>
+                <span className="text-white body-xsmall">Joining Year</span>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {list.map((row) => (
+              <TableRow
+                key={row.serialNumber}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell
+                  component="td"
+                  scope="row"
                   align="center"
-                  sx={{ backgroundColor: 'primary.light' }}>
-                  <span className="text-white body-small">Serial Number</span>
+                  sx={{ width: 150 }}>
+                  <span className="body-xsmall">{row.serialNumber}</span>
                 </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{ backgroundColor: 'primary.light' }}>
-                  <span className="text-white body-small">Roll Number</span>
+                <TableCell align="center" sx={{ width: 150 }}>
+                  <span className="body-xsmall">{row.rollNumber}</span>
                 </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{ backgroundColor: 'primary.light' }}>
-                  <span className="text-white body-small">Name</span>
+                <TableCell align="center" sx={{ width: 150 }}>
+                  <span className="body-xsmall">{row.name}</span>
                 </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{ backgroundColor: 'primary.light' }}>
-                  <span className="text-white body-small">Joining Year</span>
+                <TableCell align="center" sx={{ width: 150 }}>
+                  <span className="body-xsmall">{row.joiningYear}</span>
                 </TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {list.map((row) => (
-                <TableRow
-                  key={row.serialNumber}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell component="td" scope="row" align="center">
-                    <span className="body-xsmall">{row.serialNumber}</span>
-                  </TableCell>
-                  <TableCell align="center">
-                    <span className="body-xsmall">{row.rollNumber}</span>
-                  </TableCell>
-                  <TableCell align="center">
-                    <span className="body-xsmall">{row.name}</span>
-                  </TableCell>
-                  <TableCell align="center">
-                    <span className="body-xsmall">{row.joiningYear}</span>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </ThemeProvider>
   );
 });

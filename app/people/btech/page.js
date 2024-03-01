@@ -46,7 +46,7 @@ const rows = [
 export default function BtechStudents() {
   let tableRef = useRef(null);
   return (
-    <div className="page-layout-1">
+    <div className="page-layout-2">
       <h1 className="body-2xlarge font-semibold text-primary-dark text-center p-4">
         B.Tech. Students
       </h1>

@@ -16,11 +16,11 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import { ThemeProvider, styled } from '@mui/material/styles';
 import * as React from 'react';
 import { theme } from '@/theme/theme.js';
-import { Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { TableVirtuoso } from 'react-virtuoso';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { useState, useEffect } from 'react';
 
-//Removed pagination functionality. May use in the
+//Removed pagination functionality. May use in the future
 function TablePaginationActions(props) {
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
@@ -80,82 +80,131 @@ function TablePaginationActions(props) {
   );
 }
 
+function getWindowSize() {
+  const { innerWidth, innerHeight } = window;
+  return { innerWidth, innerHeight };
+}
+
 const StyledTable = React.forwardRef(function StyledTable(props, ref) {
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
   const { list, allowPagination, ...other } = props;
   return (
     <ThemeProvider theme={theme}>
-      <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-        <TableContainer
-          sx={{
-            maxHeight: '75vh',
-          }}
-          component={Paper}
-          ref={ref}
-          {...other}>
-          <Table stickyHeader size="small">
-            <TableHead>
-              <TableRow>
+      <TableContainer
+        sx={{
+          maxHeight: '70vh',
+          width: '95%',
+          margin: 'auto',
+        }}
+        component={Paper}
+        ref={ref}
+        {...other}>
+        <Table stickyHeader size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell
+                align="center"
+                sx={{
+                  backgroundColor: 'primary.light',
+                  width: 150,
+                  borderBottom: 'hidden',
+                }}>
+                <span className="text-white body-xsmall">Serial Number</span>
+              </TableCell>
+              <TableCell
+                align="center"
+                sx={{
+                  backgroundColor: 'primary.light',
+                  width: 150,
+                  borderBottom: 'hidden',
+                }}>
+                <span className="text-white body-xsmall">Name</span>
+              </TableCell>
+              {windowSize.innerWidth > 640 && (
                 <TableCell
                   align="center"
-                  sx={{ backgroundColor: 'primary.light', width: 200 }}>
-                  <span className="text-white body-small">Serial Number</span>
+                  sx={{
+                    backgroundColor: 'primary.light',
+                    width: 200,
+                    borderBottom: 'hidden',
+                  }}>
+                  <span className="text-white body-xsmall">E-mail Address</span>
                 </TableCell>
+              )}
+              {windowSize.innerWidth > 640 && (
                 <TableCell
                   align="center"
-                  sx={{ backgroundColor: 'primary.light', width: 200 }}>
-                  <span className="text-white body-small">Name</span>
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{ backgroundColor: 'primary.light', width: 200 }}>
-                  <span className="text-white body-small">E-mail Address</span>
-                </TableCell>
-                <TableCell
-                  align="center"
-                  sx={{ backgroundColor: 'primary.light', width: 400 }}>
-                  <span className="text-white body-small">
+                  sx={{
+                    backgroundColor: 'primary.light',
+                    width: 300,
+                    borderBottom: 'hidden',
+                  }}>
+                  <span className="text-white body-xsmall">
                     Research Interests
                   </span>
                 </TableCell>
+              )}
+              <TableCell
+                align="center"
+                sx={{
+                  backgroundColor: 'primary.light',
+                  width: windowSize.innerWidth > 640 ? 100 : 200,
+                  borderBottom: 'hidden',
+                }}>
+                <span className="text-white body-small">Linkedin</span>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {list.map((row) => (
+              <TableRow
+                key={row.serialNumber}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell
-                  align="center"
-                  sx={{ backgroundColor: 'primary.light', width: 300 }}>
-                  <span className="text-white body-small">Linkedin</span>
+                  sx={{ width: 200 }}
+                  component="td"
+                  scope="row"
+                  align="center">
+                  <span className="body-xsmall">{row.serialNumber}</span>
                 </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {list.map((row) => (
-                <TableRow
-                  key={row.serialNumber}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                  <TableCell
-                    sx={{ width: 200 }}
-                    component="td"
-                    scope="row"
-                    align="center">
-                    <span className="body-xsmall">{row.serialNumber}</span>
-                  </TableCell>
-                  <TableCell sx={{ width: 200 }} align="center">
-                    <span className="body-xsmall">{row.name}</span>
-                  </TableCell>
+                <TableCell sx={{ width: 200 }} align="center">
+                  <span className="body-xsmall">{row.name}</span>
+                </TableCell>
+                {windowSize.innerWidth > 640 && (
                   <TableCell sx={{ width: 200 }} align="center">
                     <span className="body-xsmall">{row.email}</span>
                   </TableCell>
-                  <TableCell sx={{ width: 400 }} align="center">
+                )}
+                {windowSize.innerWidth > 640 && (
+                  <TableCell sx={{ width: 200 }} align="center">
                     <span className="body-xsmall">{row.researchInterests}</span>
                   </TableCell>
-                  <TableCell sx={{ width: 300 }} align="center">
-                    <a href={row.linkedin} className="link">
-                      {row.linkedin}
-                    </a>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+                )}
+                <TableCell
+                  sx={{ width: windowSize.innerWidth > 640 ? 100 : 200 }}
+                  align="center">
+                  <a href={row.linkedin} className="link">
+                    <LinkedInIcon sx={{ fontSize: '1.5rem' }} />
+                  </a>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </ThemeProvider>
   );
 });
