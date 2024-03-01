@@ -1,33 +1,35 @@
+/* eslint-disable @next/next/no-img-element */
 import { Carousel } from 'flowbite';
-export default function Carousell() {
+
+export default function CustomCarousel() {
   return (
-    <div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <div
+      id="default-carousel"
+      className="relative w-full"
+      data-carousel="slide">
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         <div className="duration-700 ease-in-out" data-carousel-item>
           <img
             src="/images/admissions/phd/carousel1.jpg"
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="image 1"
+            alt="first carousel"
           />
         </div>
-
         <div className="duration-700 ease-in-out" data-carousel-item="active">
           <img
             src="/images/admissions/phd/carousel2.jpg"
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="image 2"
+            alt="second carousel"
           />
         </div>
-
         <div className="duration-700 ease-in-out" data-carousel-item>
           <img
             src="/images/admissions/phd/carousel3.jpg"
             className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            alt="image 3"
+            alt="three carousel"
           />
         </div>
       </div>
-
       <button
         type="button"
         className="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
@@ -41,9 +43,9 @@ export default function Carousell() {
             viewBox="0 0 6 10">
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M5 1 1 5l4 4"
             />
           </svg>
@@ -63,9 +65,9 @@ export default function Carousell() {
             viewBox="0 0 6 10">
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="m1 9 4-4-4-4"
             />
           </svg>
