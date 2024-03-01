@@ -1,10 +1,8 @@
 'use client';
-import BulletPoints from '@/components/admissions/phd/BulletPoints';
-import Carousell from '@/components/admissions/phd/Carousel';
 import ResearchCard from '@/components/admissions/phd/ResearchCard';
-import OnlineCourseCard from '@/components/approved-online-courses/OnlineCourseCard';
+import BulletPoints from '@/components/admissions/phd/bulletPoints';
+import Carousel from '@/components/admissions/phd/carousel';
 import { Button } from '@mui/material';
-import Link from 'next/link';
 import { useState } from 'react';
 
 export default function PhdAdmissions() {
@@ -175,7 +173,7 @@ export default function PhdAdmissions() {
         Explore the possibility of admissions at IIIT Delhi
       </div>
       <div className="page-layout-1">
-        <Carousell />
+        <Carousel />
         <div className="body-small py-6 text-center ">
           The goal of the PhD program at IIIT Delhi is to empower students to
           become part of the global research ecosystem and contribute to
@@ -199,8 +197,8 @@ export default function PhdAdmissions() {
           PhD Shortlist for 2021
         </Button>
 
-        {pointsData.map((data, index) => (
-          <BulletPoints key={index} data={data} />
+        {pointsData.map((data) => (
+          <BulletPoints key={data} data={data} />
         ))}
       </div>
 
@@ -215,17 +213,17 @@ export default function PhdAdmissions() {
         rate that is, Rs. 30,000/- per month.
       </div>
       <div className="page-layout-1">
-        {pointsDataFinancial.map((data, index) => (
-          <BulletPoints key={index} data={data} />
+        {pointsDataFinancial.map((data) => (
+          <BulletPoints key={data} data={data} />
         ))}
       </div>
       <div className="body-2xlarge font-semibold text-primary-dark text-center italic pb-10">
         Research Areas
       </div>
       <div className="flex width-layout-1 flex-wrap pb-10 justify-center gap-6 md:gap-6 md:flex-row">
-        {researchAreas.map((area, index) => (
+        {researchAreas.map((area) => (
           <ResearchCard
-            key={index}
+            key={area.name}
             icon={area.icon}
             name={area.name}></ResearchCard>
         ))}
