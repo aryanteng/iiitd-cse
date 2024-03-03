@@ -1,7 +1,7 @@
 'use client';
 
 import BulletPoints from '@/components/admissions/phd/BulletPoints';
-import Carousell from '@/components/admissions/phd/Carousell';
+import CustomCarousel from '@/components/admissions/phd/CustomCarousel';
 import ResearchCard from '@/components/admissions/phd/ResearchCard';
 import { Button } from '@mui/material';
 import { useState } from 'react';
@@ -174,7 +174,7 @@ export default function PhdAdmissions() {
         Explore the possibility of admissions at IIIT Delhi
       </div>
       <div className="page-layout-1">
-        <Carousell />
+        <CustomCarousel />
         <div className="body-small py-6 text-center ">
           The goal of the PhD program at IIIT Delhi is to empower students to
           become part of the global research ecosystem and contribute to

@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { Carousel } from 'flowbite-react';
-export default function Carousell() {
+
+export default function CustomCarousel() {
   return (
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel>
