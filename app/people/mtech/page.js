@@ -61,6 +61,9 @@ let columns = [
           </a>
         );
       },
+      customHeadLabelRender: (value) => {
+        return <span className="body-small">{value.name}</span>;
+      },
     },
   },
 ];
