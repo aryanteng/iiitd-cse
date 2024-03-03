@@ -10,12 +10,29 @@ function DataTable({ data, columns, initialRows }) {
           fontFamily: ['Montserrat'],
         },
         components: {
+          MuiInputBase: {
+            styleOverrides: {
+              input: {
+                color: 'white',
+              },
+            },
+          },
+          MUIDataTable: {
+            styleOverrides: {
+              paper: {
+                width: '65vw',
+                margin: 'auto',
+              },
+            },
+          },
           MUIDataTableToolbar: {
             styleOverrides: {
               root: {
                 backgroundColor: '#39AEA8',
-                minHeight: 32,
-                height: 48,
+                minHeight: 0,
+              },
+              actions: {
+                color: 'white',
               },
             },
           },
@@ -27,7 +44,7 @@ function DataTable({ data, columns, initialRows }) {
                 justifyContent: 'center',
                 textAlign: 'center',
                 fontSize: '1.1rem',
-                width: 200,
+                width: 150,
                 color: 'white',
               },
             },
@@ -37,15 +54,6 @@ function DataTable({ data, columns, initialRows }) {
               root: {
                 justifyContent: 'center',
                 textAlign: 'center',
-              },
-            },
-          },
-          MUIDataTableFilterList: {
-            styleOverrides: {
-              root: {
-                backgroundColor: '#39AEA8',
-                margin: 0,
-                padding: 5,
               },
             },
           },
