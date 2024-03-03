@@ -27,35 +27,31 @@ export default function BulletPoints({ data }) {
         </div>
       ))}
       {/* points with subPoints */}
-      {data?.subPoints &&
-        data?.subPoints?.map((subpointPoint, index) => (
-          <div key={index} className="py-2 flex flex-col gap-4">
-            <div className="flex flex-row gap-4">
-              <div className="lg:mt-0.5">
-                <AddBox className="text-primary-dark"></AddBox>
-              </div>
-              <div className="body-normal text-left">{subpointPoint.point}</div>
+      {data?.subPoints?.map((subpointPoint) => (
+        <div key={subpointPoint} className="py-2 flex flex-col gap-4">
+          <div className="flex flex-row gap-4">
+            <div className="lg:mt-0.5">
+              <AddBox className="text-primary-dark"></AddBox>
             </div>
-            {subpointPoint?.subPoint?.map((subP, index) => (
-              <div className="flex ml-10 flex-row gap-4" key={subP}>
-                <RemoveCircle className="text-primary-dark h-5 w-5 lg:mt-0.5"></RemoveCircle>
-                <div className="body-small text-left">{subP}</div>
-              </div>
-            ))}
+            <div className="body-normal text-left">{subpointPoint.point}</div>
           </div>
-        ))}
+          {subpointPoint?.subPoint?.map((subP, index) => (
+            <div className="flex ml-10 flex-row gap-4" key={subP}>
+              <RemoveCircle className="text-primary-dark h-5 w-5 lg:mt-0.5"></RemoveCircle>
+              <div className="body-small text-left">{subP}</div>
+            </div>
+          ))}
+        </div>
+      ))}
       {/* if points have a button */}
-
       {/* if points have a closing remarks  */}
-      {data?.footer &&
-        data?.footer.map((f) => (
-          <div
-            className="body-small p-4 font-semibold text-primary-dark text-left"
-            key={f}>
-            {f}
-          </div>
-        ))}
-
+      {data?.footer?.map((f) => (
+        <div
+          className="body-small p-4 font-semibold text-primary-dark text-left"
+          key={f}>
+          {f}
+        </div>
+      ))}
       {data?.button && (
         <Button
           variant="contained"
