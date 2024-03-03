@@ -128,4 +128,15 @@ html::-webkit-scrollbar-thumb {
   input::placeholder {
     @apply whitespace-pre-wrap;
   }
+
+  .points {
+    @apply body-small flex items-center md:gap-6 mb-2.5 gap-3;
+  }
+  .points-indent {
+    @apply body-small flex items-center md:gap-6 mb-2.5 gap-3 ml-6;
+  }
+
+  .bullet-point {
+    @apply md:w-2 md:h-2 md:p-2 w-1 h-1 p-1 bg-primary-dark rounded-full;
+  }
 }
