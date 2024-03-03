@@ -27,7 +27,7 @@ function DataTable({ data, columns, initialRows }) {
           MUIDataTableToolbar: {
             styleOverrides: {
               root: {
-                backgroundColor: '#39AEA8',
+                backgroundColor: '#007065',
                 minHeight: 0,
               },
               actions: {
@@ -38,7 +38,7 @@ function DataTable({ data, columns, initialRows }) {
           MUIDataTableHeadCell: {
             styleOverrides: {
               root: {
-                backgroundColor: '#39AEA8',
+                backgroundColor: '#007065',
                 padding: '0.5rem',
                 justifyContent: 'center',
                 textAlign: 'center',
