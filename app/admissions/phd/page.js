@@ -1,10 +1,8 @@
 'use client';
 import BulletPoints from '@/components/admissions/phd/BulletPoints';
-import Carousell from '@/components/admissions/phd/Carousel';
+import Carousell from '@/components/admissions/phd/Carousell';
 import ResearchCard from '@/components/admissions/phd/ResearchCard';
-import OnlineCourseCard from '@/components/approved-online-courses/OnlineCourseCard';
 import { Button } from '@mui/material';
-import Link from 'next/link';
 import { useState } from 'react';
 
 export default function PhdAdmissions() {
@@ -168,7 +166,7 @@ export default function PhdAdmissions() {
 
   return (
     <div>
-      <div className="body-2xlarge font-semibold text-primary-dark text-center mt-4 italic p-4">
+      <div className="body-2xlarge font-semibold text-primary-dark text-center mt-4 p-4">
         PhD Admissions
       </div>
       <div className="body-small font-semibold text-primary-dark text-center ">
@@ -204,7 +202,7 @@ export default function PhdAdmissions() {
         ))}
       </div>
 
-      <div className="body-2xlarge font-semibold text-primary-dark text-center mt-4 italic p-4">
+      <div className="body-2xlarge font-semibold text-primary-dark text-center mt-4 p-4">
         Financial Aid
       </div>
       <div className="body-small width-layout-1 font-semibold text-primary-dark text-center ">
@@ -219,7 +217,7 @@ export default function PhdAdmissions() {
           <BulletPoints key={index} data={data} />
         ))}
       </div>
-      <div className="body-2xlarge font-semibold text-primary-dark text-center italic pb-10">
+      <div className="body-2xlarge font-semibold text-primary-dark text-center pb-10">
         Research Areas
       </div>
       <div className="flex width-layout-1 flex-wrap pb-10 justify-center gap-6 md:gap-6 md:flex-row">

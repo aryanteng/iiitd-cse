@@ -1,4 +1,4 @@
-import { Carousel } from 'flowbite';
+import 'flowbite-react';
 export default function Carousell() {
   return (
     <div id="default-carousel" class="relative w-full" data-carousel="slide">
