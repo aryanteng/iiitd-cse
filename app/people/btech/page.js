@@ -1,11 +1,6 @@
 'use client';
-import { ThemeProvider } from '@mui/material';
-import DataTable from '@/components/common/DataTable';
-import LinkedIn from '@mui/icons-material/LinkedIn';
 
-function createData(serialNumber, rollNumber, name, joiningYear) {
-  return { serialNumber, rollNumber, name, joiningYear };
-}
+import DataTable from '@/components/common/DataTable';
 
 let columns = [
   {

@@ -20,7 +20,6 @@ function DataTable({ data, columns, initialRows }) {
           MUIDataTable: {
             styleOverrides: {
               paper: {
-                width: '65vw',
                 margin: 'auto',
               },
             },

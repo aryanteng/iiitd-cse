@@ -57,7 +57,7 @@ let columns = [
       customBodyRender: (value) => {
         return (
           <a href={value} target="_blank" rel="noreferrer">
-            <LinkedIn sx={{ color: '#009D95' }} />
+            <LinkedIn className="text-primary-dark body-2xlarge" />
           </a>
         );
       },
