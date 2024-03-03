@@ -32,7 +32,9 @@ export default function BulletPoints({ data }) {
         data?.subPoints?.map((subpointPoint, index) => (
           <div key={index} className="py-2 flex flex-col gap-4">
             <div className="flex flex-row gap-4">
-              <AddBox className="text-primary-dark"></AddBox>
+              <div className="">
+                <AddBox className="text-primary-dark"></AddBox>
+              </div>
               <div className="body-normal text-left">{subpointPoint.point}</div>
             </div>
             {subpointPoint?.subPoint?.map((subP, index) => (
