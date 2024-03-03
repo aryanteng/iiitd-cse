@@ -299,24 +299,6 @@ function createData(
   };
 }
 
-const HeaderCell = ({ children }) => {
-  return (
-    <TableCell
-      className="body-small font-semibold border border-black text-white"
-      style={{ background: 'var(--primary-color)' }}>
-      {children}
-    </TableCell>
-  );
-};
-
-const ModifiedTableCell = ({ children }) => {
-  return (
-    <TableCell className="body-xsmall border border-black">
-      {children}
-    </TableCell>
-  );
-};
-
 const properties = [
   'code',
   'name',
@@ -338,28 +320,32 @@ const headers = [
 
 export default function BasicTable() {
   return (
-    <Paper elevation={0} sx={{ width: '100%', overflow: 'hidden' }}>
+    <Paper elevation={0} sx={{ overflow: 'hidden' }} className="width-layout-1">
       <TableContainer sx={{ maxHeight: '100vh' }}>
         <Table
           stickyHeader
-          className="width-layout-1 border border-black"
+          style={{ border: '1px solid #e9e9e9' }}
           aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {headers.map((header) => (
-                <HeaderCell key={header}>{header}</HeaderCell>
+              {headers.map((header, index) => (
+                <TableCell
+                  key={index}
+                  className="body-small font-semibold text-white bg-primary-light">
+                  {header}
+                </TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row, index) => (
               <TableRow
-                key={row.name}
+                key={index}
                 style={{ background: index % 2 ? '#e9e9e9' : 'white' }}>
-                {properties.map((property) => (
-                  <ModifiedTableCell key={property}>
+                {properties.map((property, index) => (
+                  <TableCell key={index} className="body-xsmall">
                     {row[property]}
-                  </ModifiedTableCell>
+                  </TableCell>
                 ))}
               </TableRow>
             ))}
