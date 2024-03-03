@@ -44,6 +44,14 @@ export default function BulletPoints({ data }) {
 
       {/* if points have a button */}
 
+      {/* if points have a closing remarks  */}
+      {data?.footer &&
+        data?.footer.map((f, index) => (
+          <div className="body-small p-4 font-semibold text-primary-dark text-left ">
+            {f}
+          </div>
+        ))}
+
       {data?.button && (
         <Button
           variant="contained"
@@ -53,14 +61,6 @@ export default function BulletPoints({ data }) {
           {data?.button?.text}
         </Button>
       )}
-
-      {/* if points have a closing remarks  */}
-      {data?.footer &&
-        data?.footer.map((f, index) => (
-          <div className="body-small p-4 width-layout-1 font-semibold text-primary-dark text-left ">
-            {f}
-          </div>
-        ))}
     </div>
   );
 }
