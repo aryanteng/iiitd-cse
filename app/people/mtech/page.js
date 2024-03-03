@@ -2,10 +2,6 @@
 import DataTable from '@/components/common/DataTable';
 import LinkedIn from '@mui/icons-material/LinkedIn';
 
-function createData(serialNumber, name, email, researchInterests, linkedin) {
-  return { serialNumber, name, email, researchInterests, linkedin };
-}
-
 let columns = [
   {
     name: 'Serial Number',
