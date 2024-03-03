@@ -20,7 +20,7 @@ export default function BulletPoints({ data }) {
       {/* Normal points */}
       {data?.points.map((point) => (
         <div className="py-2 flex flex-row gap-4">
-          <div className="">
+          <div className="lg:mt-0.5">
             <AddBox className="text-primary-dark"></AddBox>
           </div>
           <div className="body-normal text-left">{point}</div>
@@ -31,14 +31,14 @@ export default function BulletPoints({ data }) {
         data?.subPoints?.map((subpointPoint, index) => (
           <div key={index} className="py-2 flex flex-col gap-4">
             <div className="flex flex-row gap-4">
-              <div className="">
+              <div className="lg:mt-0.5">
                 <AddBox className="text-primary-dark"></AddBox>
               </div>
               <div className="body-normal text-left">{subpointPoint.point}</div>
             </div>
             {subpointPoint?.subPoint?.map((subP, index) => (
               <div className="flex ml-10 flex-row gap-4">
-                <RemoveCircle className="text-primary-dark h-5 w-5 lg:mt-2"></RemoveCircle>
+                <RemoveCircle className="text-primary-dark h-5 w-5 lg:mt-0.5"></RemoveCircle>
                 <div className="body-small text-left">{subP}</div>
               </div>
             ))}

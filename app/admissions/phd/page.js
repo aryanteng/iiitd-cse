@@ -1,6 +1,6 @@
 'use client';
 
-import BulletPoints from '@/components/admissions/phd/bulletPoints';
+import BulletPoints from '@/components/admissions/phd/BulletPoints';
 import Carousell from '@/components/admissions/phd/Carousell';
 import ResearchCard from '@/components/admissions/phd/ResearchCard';
 import { Button } from '@mui/material';
