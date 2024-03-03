@@ -1,13 +1,14 @@
 import AddBox from '@mui/icons-material/AddBox';
 import RemoveCircle from '@mui/icons-material/RemoveCircle';
 import { Button } from '@mui/material';
+import PropTypes from 'prop-types';
+
 export default function BulletPoints({ data }) {
   return (
     <div className="py-10">
       <div className="body-large font-semibold text-primary-dark text-left ">
         {data?.heading}
       </div>
-
       {/* if points have a heading description  */}
       {data?.desc && (
         <div
@@ -16,7 +17,6 @@ export default function BulletPoints({ data }) {
           {data?.desc}
         </div>
       )}
-
       {/* Normal points */}
       {data?.points.map((point) => (
         <div className="py-2 flex flex-row gap-4">
@@ -26,7 +26,6 @@ export default function BulletPoints({ data }) {
           <div className="body-normal text-left">{point}</div>
         </div>
       ))}
-
       {/* points with subPoints */}
       {data?.subPoints &&
         data?.subPoints?.map((subpointPoint, index) => (
@@ -39,13 +38,12 @@ export default function BulletPoints({ data }) {
             </div>
             {subpointPoint?.subPoint?.map((subP, index) => (
               <div className="flex ml-10 flex-row gap-4">
-                <RemoveCircle className="text-primary-dark h-5 w-5"></RemoveCircle>
+                <RemoveCircle className="text-primary-dark h-5 w-5 lg:mt-2"></RemoveCircle>
                 <div className="body-small text-left">{subP}</div>
               </div>
             ))}
           </div>
         ))}
-
       {/* if points have a button */}
 
       {/* if points have a closing remarks  */}
@@ -68,3 +66,22 @@ export default function BulletPoints({ data }) {
     </div>
   );
 }
+
+BulletPoints.propTypes = {
+  data: PropTypes.shape({
+    heading: PropTypes.string,
+    desc: PropTypes.string,
+    points: PropTypes.arrayOf(PropTypes.string),
+    subPoints: PropTypes.arrayOf(
+      PropTypes.shape({
+        point: PropTypes.string,
+        subPoint: PropTypes.arrayOf(PropTypes.string),
+      }),
+    ),
+    button: PropTypes.shape({
+      href: PropTypes.string,
+      text: PropTypes.string,
+    }),
+    footer: PropTypes.arrayOf(PropTypes.string),
+  }),
+};

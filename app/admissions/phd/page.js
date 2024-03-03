@@ -1,5 +1,6 @@
 'use client';
-import BulletPoints from '@/components/admissions/phd/BulletPoints';
+
+import BulletPoints from '@/components/admissions/phd/bulletPoints';
 import Carousell from '@/components/admissions/phd/Carousell';
 import ResearchCard from '@/components/admissions/phd/ResearchCard';
 import { Button } from '@mui/material';
@@ -197,8 +198,8 @@ export default function PhdAdmissions() {
           PhD Shortlist for 2021
         </Button>
 
-        {pointsData.map((data, index) => (
-          <BulletPoints key={index} data={data} />
+        {pointsData.map((data) => (
+          <BulletPoints key={data} data={data} />
         ))}
       </div>
 
@@ -213,17 +214,17 @@ export default function PhdAdmissions() {
         rate that is, Rs. 30,000/- per month.
       </div>
       <div className="page-layout-1">
-        {pointsDataFinancial.map((data, index) => (
-          <BulletPoints key={index} data={data} />
+        {pointsDataFinancial.map((data) => (
+          <BulletPoints key={data} data={data} />
         ))}
       </div>
       <div className="body-2xlarge font-semibold text-primary-dark text-center pb-10">
         Research Areas
       </div>
       <div className="flex width-layout-1 flex-wrap pb-10 justify-center gap-6 md:gap-6 md:flex-row">
-        {researchAreas.map((area, index) => (
+        {researchAreas.map((area) => (
           <ResearchCard
-            key={index}
+            key={area.name}
             icon={area.icon}
             name={area.name}></ResearchCard>
         ))}
