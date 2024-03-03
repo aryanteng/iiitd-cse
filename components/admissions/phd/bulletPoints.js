@@ -20,7 +20,9 @@ export default function BulletPoints({ data }) {
       {/* Normal points */}
       {data?.points.map((point) => (
         <div className="py-2 flex flex-row gap-4">
-          <AddBox className="text-primary-dark"></AddBox>
+          <div className="">
+            <AddBox className="text-primary-dark"></AddBox>
+          </div>
           <div className="body-normal text-left">{point}</div>
         </div>
       ))}
@@ -57,7 +59,7 @@ export default function BulletPoints({ data }) {
           variant="contained"
           target="_blank"
           href={data?.button?.href}
-          className="bg-primary-light mt-6 text-white">
+          className="bg-primary-dark mt-6 text-white">
           {data?.button?.text}
         </Button>
       )}
