@@ -65,6 +65,8 @@ export default function BulletPoints({ data }) {
   );
 }
 
+//check check
+
 BulletPoints.propTypes = {
   data: PropTypes.shape({
     heading: PropTypes.string,
