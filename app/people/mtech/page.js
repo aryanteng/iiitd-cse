@@ -1,8 +1,5 @@
 'use client';
-import StyledTable from '@/components/people/students/mtechTable.js';
-import { ThemeProvider } from '@mui/material';
-import { theme } from '@/theme/theme.js';
-import { useRef } from 'react';
+import DataTable from '@/components/common/DataTable';
 
 function createData(serialNumber, name, email, researchInterests, linkedin) {
   return { serialNumber, name, email, researchInterests, linkedin };
@@ -151,14 +148,13 @@ const rows = [
   ),
 ];
 
-export default function BtechStudents() {
-  let tableRef = useRef(null);
+export default function MtechStudents() {
   return (
     <div className="page-layout-2">
       <h1 className="body-2xlarge font-semibold text-primary-dark text-center p-4">
         M.Tech. Students
       </h1>
-      <StyledTable list={rows} ref={tableRef} />
+      <DataTable data={rows} />
     </div>
   );
 }
