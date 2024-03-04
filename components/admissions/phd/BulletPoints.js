@@ -18,14 +18,15 @@ export default function BulletPoints({ data }) {
         </div>
       )}
       {/* Normal points */}
-      {data?.points.map((point) => (
-        <div className="py-2 flex flex-row gap-4" key={point}>
-          <div className="lg:mt-0.5">
-            <AddBox className="text-primary-dark"></AddBox>
+      {data?.points &&
+        data?.points?.map((point) => (
+          <div className="py-2 flex flex-row gap-4" key={point}>
+            <div className="lg:mt-0.5">
+              <AddBox className="text-primary-dark"></AddBox>
+            </div>
+            <div className="body-normal text-left">{point}</div>
           </div>
-          <div className="body-normal text-left">{point}</div>
-        </div>
-      ))}
+        ))}
       {/* points with subPoints */}
       {data?.subPoints?.map((subpointPoint) => (
         <div key={subpointPoint} className="py-2 flex flex-col gap-4">
@@ -65,13 +66,18 @@ export default function BulletPoints({ data }) {
   );
 }
 
-//check check
-
 BulletPoints.propTypes = {
   data: PropTypes.shape({
     heading: PropTypes.string,
     desc: PropTypes.string,
-    points: PropTypes.arrayOf(PropTypes.string),
+    points: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.shape({
+          text: PropTypes.string,
+        }),
+      ]),
+    ),
     subPoints: PropTypes.arrayOf(
       PropTypes.shape({
         point: PropTypes.string,

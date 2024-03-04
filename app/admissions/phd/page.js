@@ -42,7 +42,7 @@ export default function PhdAdmissions() {
         },
       ],
       button: {
-        href: 'https://iiitd.ac.in/admission/phd/dec2021',
+        href: 'https://iiitd.ac.in/admission/phd/dec2023',
         text: 'Apply now',
       },
       footer: [
@@ -166,7 +166,7 @@ export default function PhdAdmissions() {
   ]);
 
   return (
-    <div>
+    <>
       <div className="body-2xlarge font-semibold text-primary-dark text-center mt-4 p-4">
         PhD Admissions
       </div>
@@ -229,6 +229,6 @@ export default function PhdAdmissions() {
             name={area.name}></ResearchCard>
         ))}
       </div>
-    </div>
+    </>
   );
 }
