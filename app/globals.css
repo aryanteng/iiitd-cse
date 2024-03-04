@@ -63,7 +63,7 @@ html::-webkit-scrollbar-thumb {
   }
 
   .padding-layout-1 {
-    @apply px-4 sm:px-8 md:px-0 py-8 md:py-12 lg:py-16 xl:py-20;
+    @apply px-4 sm:px-4 md:px-0 py-8 md:py-12 lg:py-16 xl:py-20;
   }
 
   .padding-layout-2 {
@@ -76,6 +76,10 @@ html::-webkit-scrollbar-thumb {
 
   .page-layout-1 {
     @apply padding-layout-1 width-layout-1;
+  }
+
+  .page-layout-2 {
+    @apply padding-layout-2 width-layout-1;
   }
 
   .title {
