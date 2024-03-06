@@ -4,9 +4,10 @@ import LocationMap from '@/components/contact/LocationMap';
 
 export default function ContactPage() {
   return (
-    <div className="container flex flex-col gap-10 width-layout-1 text-center text-primary-dark">
-      <h1 className="title">Contact Us</h1>
-      <div className="flex flex-wrap justify-between padding-layout-2 items-start">
+    // Use the page-layout-1 class for overall padding and width as per the globals.css
+    <div className="page-layout-1 text-center text-primary-dark">
+      <h1 className="heading-1">Contact Us</h1>
+      <div className="flex flex-wrap justify-between items-start gap-10">
         <ContactInfo
           phone="+91 11 2690 7476"
           email="hod-cse@iiitd.ac.in"

@@ -1,18 +1,31 @@
 function LocationMap({ src }) {
+  const mapStyles = {
+    border: 0,
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  };
+
+  const containerStyles = {
+    paddingTop: '30%',
+    position: 'relative',
+    width: '100%',
+  };
+
   return (
-    <div
-      className="w-full mx-auto relative mb-0"
-      style={{ paddingTop: '25.00%' }}>
+    <div style={containerStyles}>
       <iframe
         src={src}
-        style={{ border: 0 }}
-        allowFullScreen=""
+        style={mapStyles}
+        allowFullScreen
         aria-hidden="false"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        className="absolute top-0 left-0 w-full h-full"
       />
     </div>
   );
 }
+
 export default LocationMap;
