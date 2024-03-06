@@ -44,7 +44,7 @@ const PlacementsPage = () => {
       {
         label: 'Median',
         data: [22, 19], // Replace these numbers with your actual data
-        backgroundColor: themeConstants.primary.darkblue,
+        backgroundColor: ['#003465'],
         borderColor: themeConstants.primary.light,
       },
       {
@@ -62,50 +62,32 @@ const PlacementsPage = () => {
     // Fetch new data for the selected batch or update the state to be added later
   };
   return (
-    <div className="container mx-auto p-4">
-      {/* Page Title */}
-      <h1 className="text-4xl font-body mt-5 mb-5 text-primary-dark font-bold text-center mb-8">
-        Placements
-      </h1>
+    <div className="page-layout-1 text-primary-dark text-center">
+      <h1 className="heading-1">Placements</h1>
       <BatchSelect batches={batches} onBatchChange={handleBatchChange} />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-12">
-        {/* Wrap the chart and heading in a div */}
-        <div className="flex flex-col items-center">
-          <h2 className="text-4xl text-center font-body mt-4 mb-6 text-primary-dark font-bold">
-            Career Paths of Students
-          </h2>
-          {/* Chart container with restricted size */}
-          <div className="w-full max-w-sm">
-            {' '}
-            {/* Adjust the max-w to fit the chart size */}
-            <div className="aspect-w-1 aspect-h-1">
-              <CareerPathChart chartData={careerPathData} />
-            </div>
+      <div className="flex flex-wrap justify-between items-start gap-10">
+        <div className="flex flex-col items-center w-full lg:w-2/5 px-2">
+          <h2 className="heading-2">Career Paths of Students</h2>
+          <div className="w-full" style={{ maxWidth: 'calc(100% - 7rem)' }}>
+            <CareerPathChart chartData={careerPathData} />
           </div>
         </div>
-        <div className="aspect-w-1 aspect-h-1 max-w-50">
-          {' '}
-          {/* 1:1 aspect ratio */}
-          <h2 className="text-4xl text-center font-body mt-4 mb-6 text-primary-dark font-bold font-underline">
-            Placement Stats
-          </h2>
-          <div className="relative w-full h-full">
+        <div className="flex flex-col items-center w-full lg:w-1/2 px-2">
+          <h2 className="heading-2">Placement Stats</h2>
+          <div className="w-full">
             <PlacementStatsChart chartData={placementStatsData} />
           </div>
         </div>
       </div>
-      {/* Our Recruiters Section */}
-      <div className="mb-8">
-        <h2 className="text-4xl font-body text-center text-primary-dark font-bold mb-4">
-          Our Recruiters
-        </h2>
+      <div className="padding-layout-2">
+        <h2 className="heading-2">Our Recruiters</h2>
         <Marquee gradient={false} speed={100}>
           {logos.map((image, index) => (
             <img
               key={index}
               src={image.src}
               alt={image.alt}
-              style={{ height: '500px' }}
+              className="mx-auto h-48 md:h-64"
             />
           ))}
         </Marquee>

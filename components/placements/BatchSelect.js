@@ -9,24 +9,22 @@ const BatchSelect = ({ batches, onBatchChange }) => {
   };
 
   return (
-    <div className="flex flex-col items-end mb-4">
+    <div className="flex justify-end mb-4">
       <select
         id="batch-select"
         value={selectedBatch}
         onChange={handleChange}
-        className="w-40 pl-3 pr-10 py-3 text-lg border border-gray-300 bg-[#4AC7C0] text-white text-center font-bold focus:outline-none focus:ring-2 focus:ring-gray focus:border-gray rounded-md"
-        style={{
-          // Inline styles for properties that aren't covered by Tailwind
-          borderRadius: '20px',
-          // Other styles as needed
-        }}>
+        className="w-1/4 md:w-1/6 lg:w-1/8 pl-3 pr-10 py-3 text-center border border-gray-300 bg-primary-main text-white font-bold focus:outline-none focus:ring-2 focus:ring-primary-dark focus:border-primary-dark rounded-full">
         {batches.map((batch) => (
-          <option key={batch} value={batch} className="bg-[#4AC7C0] text-white">
+          <option
+            key={batch}
+            value={batch}
+            className="bg-primary-color text-white">
             {batch}
           </option>
         ))}
       </select>
-      {/* Custom arrow styling will go here */}
+      {/* Assuming custom arrow styling is handled globally */}
     </div>
   );
 };

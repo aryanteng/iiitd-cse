@@ -20,17 +20,16 @@ ChartJS.register(
 );
 
 const PlacementStatsChart = ({ chartData }) => {
-  // The options object defines various settings for the chart
   const options = {
     plugins: {
       legend: {
-        position: 'top', // Places the legend at the top of the chart
+        position: 'top',
       },
     },
-    responsive: true, // Makes the chart responsive
+    responsive: true,
     scales: {
       y: {
-        beginAtZero: true, // Starts the scale at zero
+        beginAtZero: true,
       },
     },
   };
