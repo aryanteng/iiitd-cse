@@ -101,15 +101,15 @@ export default function useBottomBarLinks() {
         menuItems: [
           {
             name: 'B.Tech. Admissions',
-            link: 'https://www.iiitd.ac.in/admission/btech/2021',
+            link: 'https://www.iiitd.ac.in/admission/btech/2023',
           },
           {
             name: 'M.Tech. Admissions',
-            link: 'https://www.iiitd.ac.in/admission/mtech/2021',
+            link: 'https://www.iiitd.ac.in/admission/mtech/2023',
           },
           {
             name: 'Ph.D. Admissions',
-            link: 'https://www.iiitd.ac.in/admission/phd/2021',
+            link: 'https://www.iiitd.ac.in/admission/phd',
           },
         ],
       },

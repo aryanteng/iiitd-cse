@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import HourGlass from '@mui/icons-material/HourglassBottomTwoTone';
 import ScholarHat from '@mui/icons-material/School';
 import { Button } from '@mui/material';
