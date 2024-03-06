@@ -2,10 +2,10 @@ import { google } from 'googleapis';
 
 const sheets = google.sheets({ version: 'v4' });
 
-const googleSheetsPrivateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY.replace(
-  /\\n/g,
-  '\n',
-);
+const googleSheetsPrivateKey = Buffer.from(
+  process.env.GOOGLE_SHEETS_PRIVATE_KEY_BASE64,
+  'base64',
+).toString('utf-8');
 
 export async function getSheetData(spreadsheetId, range) {
   try {
