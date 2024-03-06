@@ -4,11 +4,9 @@ import LocationMap from '@/components/contact/LocationMap';
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto mb-0">
-      <h1 className="text-4xl font-body font-bold text-center mt-12 mb-10 text-primary-dark">
-        Contact Us
-      </h1>
-      <div className="flex flex-wrap justify-between mb-10 items-start">
+    <div className="container flex flex-col gap-10 width-layout-1 text-center text-primary-dark">
+      <h1 className="title">Contact Us</h1>
+      <div className="flex flex-wrap justify-between padding-layout-2 items-start">
         <ContactInfo
           phone="+91 11 2690 7476"
           email="hod-cse@iiitd.ac.in"
