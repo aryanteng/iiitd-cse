@@ -8,7 +8,6 @@ export default async function Labs() {
 
   const data = await getSheetData(spreadsheetId, range);
   const labs = normalizeSheetData(data);
-  console.log(labs);
 
   return (
     <div className="grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-5 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 w-11/12 max-w-screen-2xl">

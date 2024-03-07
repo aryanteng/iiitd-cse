@@ -8,10 +8,10 @@ export default function LabCard({ name, description, image, link }) {
       rel="noopener noreferrer"
       className="block w-full h-full">
       <div className="w-full h-full shadow-md hover:shadow-xl bg-white border-solid cursor-pointer duration-500 overflow-hidden">
-        <div className="relative w-full overflow-hidden h-1/3">
+        <div className="relative w-full overflow-hidden h-72 border-b-2">
           <img
             src={image}
-            className="absolute top-0 left-0 w-full h-full object-cover"
+            className="absolute top-0 left-0 w-full h-full object-contain"
             loading="lazy"
             alt="Lab Logo"
           />
