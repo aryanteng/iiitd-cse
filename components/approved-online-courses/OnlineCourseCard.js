@@ -3,7 +3,19 @@ import HourGlass from '@mui/icons-material/HourglassBottomTwoTone';
 import ScholarHat from '@mui/icons-material/School';
 import { Button } from '@mui/material';
 
-function OnlineCourseCard({ title, description }) {
+function OnlineCourseCard({
+  id,
+  title,
+  link,
+  faculty,
+  description,
+  credits,
+  weeks,
+  term,
+  registrations,
+  facultyimage,
+  platform,
+}) {
   return (
     <div className="shadow-md hover:shadow-xl bg-white border-solid duration-500 overflow-hidden flex flex-col">
       <div className="flex-grow">
@@ -16,12 +28,10 @@ function OnlineCourseCard({ title, description }) {
           />
           {/* Overlay Button */}
           <div className="absolute cursor-default bottom-2 right-2 bg-primary-dark text-white py-1 px-3 font-semibold rounded-xl text-sm">
-            NPTEL
+            {platform}
           </div>
           <h1 className="absolute top-1/3 left-2 text-white font-bold text-3xl">
-            Internet of
-            <br />
-            things
+            {title}
           </h1>
         </div>
         <div className="flex flex-col gap-2 px-4 py-2">
@@ -32,23 +42,23 @@ function OnlineCourseCard({ title, description }) {
               className="text-primary-dark py-2 font-semibold body-normal">
               <div className="flex gap-2 items-center">
                 <img
-                  src="images/people/faculty.png"
+                  src={facultyimage}
                   className="rounded-full cursor-pointer w-1/6"
                 />
-                <div className="cursor-pointer text-xs">A V Subramanyam</div>
+                <div className="cursor-pointer text-xs">{faculty}</div>
               </div>
             </div>
             <div className="flex gap-2 flex-col">
               <div className="flex flex-row">
                 <HourGlass className="text-primary-dark body-normal" />
                 <span className="text-xs flex items-center whitespace-nowrap">
-                  12 weeks
+                  {weeks} weeks
                 </span>
               </div>
               <div className="flex flex-row">
                 <ScholarHat className="text-primary-dark body-normal" />
                 <span className="text-xs ml-1 flex items-center whitespace-nowrap">
-                  17852
+                  {registrations}
                 </span>
               </div>
             </div>
@@ -57,8 +67,10 @@ function OnlineCourseCard({ title, description }) {
       </div>
       {/* Start Button at the bottom */}
       <Button
-        variant="contained"
-        className="w-full text-center bg-primary-dark text-white font-semibold">
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full hover:bg-primary-dark text-center bg-primary-dark text-white font-semibold">
         Start
       </Button>
     </div>

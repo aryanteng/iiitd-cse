@@ -1,53 +1,42 @@
-'use client';
 import OnlineCourseCard from '@/components/approved-online-courses/OnlineCourseCard';
 import { Button } from '@mui/material';
 import React from 'react';
+import { getSheetData } from '@/app/api/sheets';
+import { normalizeSheetData } from '@/utils/normaliseSheetData';
+import ApprovedOnlineCoursesClient from '@/components/approved-online-courses/ApprovedOnlineCoursesClient';
+import { Key } from '@mui/icons-material';
 
-export default function ApprovedOnlineCourses() {
-  const [courses, setCourses] = React.useState([
-    {
-      id: 'w23',
-      hidden: false,
-      term: 'winter 2023',
-      courseList: [
-        {
-          id: 1,
-          title: 'Course 2',
-          description: 'mollit anim id est laborum.',
-        },
-        {
-          id: 2,
-          title: 'Course 2',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        },
-        {
-          id: 3,
-          title: 'Course 2',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        },
-        {
-          id: 4,
-          title: 'Course 2',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        },
-        {
-          id: 5,
-          title: 'Course 2',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        },
-        {
-          id: 6,
-          title: 'Course 2',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        },
-      ],
-    },
-  ]);
+export default async function ApprovedOnlineCourses() {
+  const spreadsheetId = '1cYPbswNr4ZvvQhzkfIOaM9Q75cSDP1CSl_JELvmA4iQ';
+  const range = 'Online-Courses';
+
+  const data = await getSheetData(spreadsheetId, range);
+  const labs = normalizeSheetData(data);
+
+  // console.log(labs);
+
+  const structuredCourses = Object.values(
+    labs.reduce((acc, course) => {
+      const { term } = course;
+      const id = term.split(' ').join('').toLowerCase();
+      const hidden = false;
+
+      if (!acc[id]) {
+        acc[id] = {
+          id,
+          hidden,
+          term,
+          courseList: [course],
+        };
+      } else {
+        acc[id].courseList.push(course);
+      }
+
+      return acc;
+    }, {}),
+  );
+
+  // console.log(structuredCourses);
 
   const toggleTerm = (termId) => {
     setCourses((prevCourses) =>
@@ -58,38 +47,9 @@ export default function ApprovedOnlineCourses() {
   };
 
   return (
-    <div>
-      <div className="body-2xlarge font-semibold text-primary-dark text-center p-4">
-        Approved Online Courses
-      </div>
-
-      <div>
-        {courses.map((term) => (
-          <div className="padding-layout-2" key={term.id}>
-            <div className="w-11/12 max-w-screen-2xl mx-auto">
-              <Button
-                variant="contained"
-                onClick={() => {
-                  toggleTerm(term.id);
-                }}
-                className="bg-primary-dark text-white font-semibold text-sm">
-                {term.term}
-              </Button>
-            </div>
-            {!term.hidden && (
-              <div className="padding-layout-2 grid grid-cols-2 mx-auto gap-2 sm:gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-11/12 max-w-screen-2xl">
-                {term?.courseList.map((course) => (
-                  <OnlineCourseCard
-                    key={course.id}
-                    title={course.title}
-                    description={course.description}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
+    <ApprovedOnlineCoursesClient
+      Key="OnlineCourceClient"
+      Courses={structuredCourses}
+    />
   );
 }
