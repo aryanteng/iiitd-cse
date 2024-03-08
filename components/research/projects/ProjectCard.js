@@ -29,7 +29,7 @@ export default function ProjectCard({
             ))}
           </div>
           <div className="font-normal py-2 body-xsmall">
-            Total Sanction Amount Rs. : {sanctionAmount}
+            Total Sanction Amount Rs. : {sanctionAmount} INR
           </div>
         </div>
       </div>
