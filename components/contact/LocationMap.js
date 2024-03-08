@@ -1,29 +1,20 @@
 function LocationMap({ src }) {
-  const mapStyles = {
-    border: 0,
-    height: '100%',
-    width: '100%',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  };
-
-  const containerStyles = {
-    paddingTop: '30%',
-    position: 'relative',
-    width: '100%',
-  };
-
   return (
-    <div style={containerStyles}>
+    <div
+      className="relative w-full"
+      style={{
+        marginLeft: '1rem',
+        marginRight: '1rem',
+        marginBottom: '1rem',
+        marginTop: '1rem',
+      }}>
       <iframe
         src={src}
-        style={mapStyles}
+        className="absolute top-0 left-0 w-full h-96"
         allowFullScreen
-        aria-hidden="false"
         loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      />
+        aria-hidden="false"
+        referrerPolicy="no-referrer-when-downgrade"></iframe>
     </div>
   );
 }
