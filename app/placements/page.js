@@ -62,32 +62,45 @@ const PlacementsPage = () => {
     // Fetch new data for the selected batch or update the state to be added later
   };
   return (
-    <div className="page-layout-1 text-primary-dark text-center">
-      <h1 className="heading-1">Placements</h1>
-      <BatchSelect batches={batches} onBatchChange={handleBatchChange} />
-      <div className="flex flex-wrap justify-between items-start gap-10">
-        <div className="flex flex-col items-center w-full lg:w-2/5 px-2">
-          <h2 className="heading-2">Career Paths of Students</h2>
-          <div className="w-full" style={{ maxWidth: 'calc(100% - 7rem)' }}>
+    <div>
+      <div className="body-2xlarge font-bold text-primary-dark text-center p-4">
+        Placements
+      </div>
+      {/* Position BatchSelect at the top right above the charts */}
+      <div className="flex justify-end p-4">
+        <BatchSelect batches={batches} onBatchChange={handleBatchChange} />
+      </div>
+      <div className="flex flex-wrap justify-between items-start w-full">
+        <div className="flex flex-col gap-2 items-center justify-center w-full md:w-1/2 p-4">
+          <div className="body-large font-bold text-primary-dark">
+            Career Paths of Students
+          </div>
+          <div
+            className="w-full justify-center"
+            style={{ height: '400px', width: '400px', maxWidth: '100%' }}>
             <CareerPathChart chartData={careerPathData} />
           </div>
         </div>
-        <div className="flex flex-col items-center w-full lg:w-1/2 px-2">
-          <h2 className="heading-2">Placement Stats</h2>
-          <div className="w-full">
+        <div className="flex flex-col gap-2 items-center justify-center w-full md:w-1/2 p-4">
+          <div className="body-large font-bold text-primary-dark">
+            Placement Stats
+          </div>
+          <div className="w-full" style={{ maxWidth: '100%', height: '400px' }}>
             <PlacementStatsChart chartData={placementStatsData} />
           </div>
         </div>
       </div>
-      <div className="padding-layout-2">
-        <h2 className="heading-2">Our Recruiters</h2>
-        <Marquee gradient={false} speed={100}>
+      <div className="flex flex-col items-center w-full p-10">
+        <div className="body-xlarge font-bold text-primary-dark">
+          Our Recruiters
+        </div>
+        <Marquee gradient={false} speed={100} className="mt-4">
           {logos.map((image, index) => (
             <img
               key={index}
               src={image.src}
               alt={image.alt}
-              className="mx-auto h-48 md:h-64"
+              className="mx-auto h-64 md:h-72"
             />
           ))}
         </Marquee>

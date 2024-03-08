@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import themeConstants from '@/theme/themeConstants';
+
 const BatchSelect = ({ batches, onBatchChange }) => {
   const [selectedBatch, setSelectedBatch] = useState(batches[0]);
 
@@ -9,23 +12,42 @@ const BatchSelect = ({ batches, onBatchChange }) => {
   };
 
   return (
-    <div className="flex justify-end mb-4">
-      <select
+    <FormControl size="small" sx={{ minWidth: 120, width: 'auto', m: 1 }}>
+      <Select
         id="batch-select"
         value={selectedBatch}
         onChange={handleChange}
-        className="w-1/4 md:w-1/6 lg:w-1/8 pl-3 pr-10 py-3 text-center border border-gray-300 bg-primary-main text-white font-bold focus:outline-none focus:ring-2 focus:ring-primary-dark focus:border-primary-dark rounded-full">
+        sx={{
+          color: 'white',
+          backgroundColor: themeConstants.primary.main,
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'white',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: 'white',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: themeConstants.primary.dark,
+          },
+          '& .MuiSvgIcon-root': {
+            color: 'white',
+          },
+          borderRadius: '20px', // Rounded corners
+        }}>
         {batches.map((batch) => (
-          <option
+          <MenuItem
             key={batch}
             value={batch}
-            className="bg-primary-color text-white">
+            sx={{
+              color: themeConstants.primary.main,
+              '&:hover': { backgroundColor: themeConstants.primary.dark },
+            }}>
             {batch}
-          </option>
+          </MenuItem>
         ))}
-      </select>
-      {/* Assuming custom arrow styling is handled globally */}
-    </div>
+      </Select>
+    </FormControl>
   );
 };
+
 export default BatchSelect;

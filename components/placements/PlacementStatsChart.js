@@ -8,6 +8,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import themeConstants from '@/theme/themeConstants';
 
 // Register the required components
 ChartJS.register(
@@ -24,8 +25,15 @@ const PlacementStatsChart = ({ chartData }) => {
     plugins: {
       legend: {
         position: 'top',
+        labels: {
+          font: {
+            size: 14,
+            family: themeConstants.font.body,
+          },
+        },
       },
     },
+    maintainAspectRatio: false,
     responsive: true,
     scales: {
       y: {
