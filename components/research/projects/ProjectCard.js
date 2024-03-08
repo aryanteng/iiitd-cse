@@ -4,7 +4,6 @@ export default function ProjectCard({
   title,
   faculty,
   link,
-  year,
   fundedBy,
   sanctionAmount,
 }) {
@@ -23,14 +22,14 @@ export default function ProjectCard({
           <div className="font-normal py-2 body-small">
             Funded By :{' '}
             {fundedBy?.map((org, index) => (
-              <span key={index}>
+              <span key={org}>
                 {index > 0 && ', '}
                 {org}
               </span>
             ))}
           </div>
           <div className="font-normal py-2 body-xsmall">
-            Total anction Amount Rs. : {sanctionAmount}
+            Total Sanction Amount Rs. : {sanctionAmount}
           </div>
         </div>
       </div>
