@@ -22,7 +22,7 @@ export default function NotFound() {
         <Button
           variant="contained"
           href="/"
-          className="text-base md:text-lg lg:text-xl xl:text-2xl mt-2"
+          className="text-sm md:text-base lg:text-lg xl:text-xl mt-2"
           style={{ backgroundColor: 'var(--primary-dark)' }}>
           Return Home
         </Button>
