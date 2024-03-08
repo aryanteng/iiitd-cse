@@ -19,7 +19,19 @@ export default function ProjectCard({
           <div className="text-primary-dark font-semibold body-large">
             {title}
           </div>
-          <div className="body-xsmall">{title}</div>
+          <div className="font-semibold py-2 body-normal">{faculty}</div>
+          <div className="font-normal py-2 body-small">
+            Funded By :{' '}
+            {fundedBy?.map((org, index) => (
+              <span key={index}>
+                {index > 0 && ', '}
+                {org}
+              </span>
+            ))}
+          </div>
+          <div className="font-normal py-2 body-xsmall">
+            Total anction Amount Rs. : {sanctionAmount}
+          </div>
         </div>
       </div>
     </a>

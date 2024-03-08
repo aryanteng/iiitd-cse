@@ -16,7 +16,61 @@ export default async function Labs() {
       faculty: 'Dr. Jainendra Shukla',
       link: '#',
       year: '2019-20',
+      fundedBy: ['CAI', 'SPARC', 'MHRD'],
+      sanctionAmount: '960000',
+    },
+    {
+      title:
+        'Adaptive VR driving based on physiological signals of the subject.',
+      faculty: 'Dr. Jainendra Shukla',
+      link: '#',
+      year: '2019-20',
       fundedBy: ['CAI'],
+      sanctionAmount: '960000',
+    },
+    {
+      title:
+        'Adaptive VR driving based on physiological signals of the subject.',
+      faculty: 'Dr. Jainendra Shukla',
+      link: '#',
+      year: '2019-20',
+      fundedBy: ['CAI'],
+      sanctionAmount: '960000',
+    },
+    {
+      title:
+        'Adaptive VR driving based on physiological signals of the subject.',
+      faculty: 'Dr. Jainendra Shukla',
+      link: '#',
+      year: '2019-20',
+      fundedBy: ['CAI'],
+      sanctionAmount: '960000',
+    },
+    {
+      title:
+        'Adaptive VR driving based on physiological signals of the subject.',
+      faculty: 'Dr. Jainendra Shukla',
+      link: '#',
+      year: '2019-20',
+      fundedBy: ['CAIII', 'SPARC', 'MHRD'],
+      sanctionAmount: '960000',
+    },
+    {
+      title:
+        'Adaptive VR driving based on physiological signals of the subject.',
+      faculty: 'Dr. Jainendra Shukla',
+      link: '#',
+      year: '2019-20',
+      fundedBy: ['CAI'],
+      sanctionAmount: '960000',
+    },
+    {
+      title:
+        'Adaptive VR driving based on physiological signals of the subject.',
+      faculty: 'Dr. Jainendra Shukla',
+      link: '#',
+      year: '2019-20',
+      fundedBy: ['CAI', 'SPARC', 'MHRD'],
       sanctionAmount: '960000',
     },
   ];
