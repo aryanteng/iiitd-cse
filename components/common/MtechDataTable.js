@@ -1,8 +1,76 @@
+'use client';
 import React, { useCallback } from 'react';
 import MUIDataTable from 'mui-datatables';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import LinkedIn from '@mui/icons-material/LinkedIn';
 
-function DataTable({ data, columns, initialRows }) {
+function DataTable({ data, initialRows }) {
+  const getColumns = useCallback(() => {
+    let columns = [
+      {
+        name: 'Serial Number',
+        options: {
+          customBodyRender: (value) => {
+            return <span className="body-xsmall">{value}</span>;
+          },
+          customHeadLabelRender: (value) => {
+            return <span className="body-small">{value.name}</span>;
+          },
+        },
+      },
+      {
+        name: 'Name',
+        options: {
+          customBodyRender: (value) => {
+            return <span className="body-xsmall">{value}</span>;
+          },
+          customHeadLabelRender: (value) => {
+            return <span className="body-small">{value.name}</span>;
+          },
+        },
+      },
+      {
+        name: 'Email',
+        options: {
+          customBodyRender: (value) => {
+            return <span className="body-xsmall">{value}</span>;
+          },
+          customHeadLabelRender: (value) => {
+            return <span className="body-small">{value.name}</span>;
+          },
+        },
+      },
+      {
+        name: 'Research Interests',
+        options: {
+          customBodyRender: (value) => {
+            return (
+              <span className="body-xsmall">
+                {value == null ? 'Not Available' : value}
+              </span>
+            );
+          },
+          customHeadLabelRender: (value) => {
+            return <span className="body-small">{value.name}</span>;
+          },
+        },
+      },
+      {
+        name: 'LinkedIn',
+        options: {
+          customBodyRender: (value) => {
+            return (
+              <a href={value} target="_blank" rel="noreferrer">
+                <LinkedIn className="text-primary-dark body-2xlarge" />
+              </a>
+            );
+          },
+        },
+      },
+    ];
+    return columns;
+  }, []);
+
   const getMuiTheme = useCallback(
     () =>
       createTheme({
@@ -10,12 +78,26 @@ function DataTable({ data, columns, initialRows }) {
           fontFamily: ['Montserrat'],
         },
         components: {
+          MuiPaper: {
+            styleOverrides: {
+              root: {
+                width: '75%',
+                margin: 'auto',
+              },
+            },
+          },
           MuiInputBase: {
             styleOverrides: {
               input: {
+                backgroundColor: 'transparent !important',
+                '&:focus': {
+                  outline: 'none !important',
+                  boxShadow: 'none !important',
+                },
                 color: 'white', // Keeps the search input text white
                 '&.Mui-focused': {
-                  color: 'black', // Ensures the text stays black when input is focused
+                  color: 'white', // Ensures the text stays black when input is focused
+                  backgroundColor: 'transparent',
                 },
               },
               root: {
@@ -33,9 +115,6 @@ function DataTable({ data, columns, initialRows }) {
               root: {
                 backgroundColor: '#007065',
                 minHeight: 0,
-              },
-              actions: {
-                color: 'white',
               },
             },
           },
@@ -77,7 +156,7 @@ function DataTable({ data, columns, initialRows }) {
           MuiSvgIcon: {
             styleOverrides: {
               root: {
-                color: 'white', // Changes default color for icons to white
+                color: 'black', // Changes default color for icons to white
               },
             },
           },
@@ -87,7 +166,7 @@ function DataTable({ data, columns, initialRows }) {
               select: {
                 color: 'black', // Text color for the select
                 '&.Mui-focused': {
-                  backgroundColor: 'white', // Background color when select is focused
+                  backgroundColor: 'black', // Background color when select is focused
                 },
               },
               icon: {
@@ -112,7 +191,7 @@ function DataTable({ data, columns, initialRows }) {
     <ThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
         data={data}
-        columns={columns}
+        columns={getColumns()}
         options={{
           selectableRows: 'none',
           pagination: true,

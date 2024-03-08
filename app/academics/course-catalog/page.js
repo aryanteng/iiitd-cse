@@ -1,5 +1,5 @@
 'use client';
-import DataTable from '@/components/common/DataTable';
+import DataTable from '@/components/common/BtechDataTable';
 import Chip from '@mui/material/Chip';
 
 const colors = [
