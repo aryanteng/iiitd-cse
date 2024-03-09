@@ -54,22 +54,6 @@ export default function BtechDataTable({ data, initialRows }) {
   });
 
   return (
-    <DataTable
-      data={data}
-      columns={getColumns()}
-      initialRows={initialRows}
-      options={{
-        selectableRows: 'none',
-        pagination: true,
-        sort: false,
-        download: false,
-        print: false,
-        viewColumns: false,
-        filterTable: false,
-        filter: false,
-        rowsPerPage: initialRows,
-        rowsPerPageOptions: [5, 10, 15],
-      }}
-    />
+    <DataTable data={data} columns={getColumns()} initialRows={initialRows} />
   );
 }
