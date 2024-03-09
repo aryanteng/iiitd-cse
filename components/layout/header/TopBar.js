@@ -2,9 +2,10 @@
 'use client';
 
 import { Menu } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { Avatar, IconButton } from '@mui/material';
 import { useCallback, useMemo, useState } from 'react';
 import CustomDrawer from './CustomDrawer';
+import Link from 'next/link';
 
 export default function TopBar() {
   const linkStyle = useMemo(
@@ -45,14 +46,14 @@ export default function TopBar() {
   }, []);
 
   return (
-    <div className="flex justify-between items-center px-5 py-1 border-b-2 md:border-none">
-      <a href="/">
-        <img
-          src="/images/iiitd-cse-logo.png"
+    <div className="flex justify-between items-center px-5 py-1 md:border-none">
+      <Link href="/">
+        <Avatar
+          src="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
           alt="Logo"
-          className="w-28 md:w-32 lg:w-36"
+          className="w-12 "
         />
-      </a>
+      </Link>
       <div className="hidden md:flex gap-4">
         {links.map((link, index) => (
           <div key={link.name} className="flex gap-4 items-center">

@@ -10,7 +10,7 @@ export default function Banner() {
           <span className="text-primary-main">E</span>ngineering
         </div>
         <img
-          src="/images/iiitd-logo.png"
+          src="https://www.iiitd.ac.in/sites/default/files/images/logo/style3colorlarge.png"
           alt="Logo"
           className="w-3/4 sm:w-1/2 md:w-3/4 lg:w-2/3"
         />
