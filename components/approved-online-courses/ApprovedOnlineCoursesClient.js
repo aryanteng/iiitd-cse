@@ -31,7 +31,7 @@ export default function ApprovedOnlineCoursesClient({ key, Courses }) {
                 onClick={() => {
                   toggleTerm(term.id);
                 }}
-                className="bg-primary-dark text-white w-1/4 font-semibold text-sm">
+                className="bg-primary-dark text-white w-1/23 font-semibold text-sm">
                 {term.term}
               </Button>
             </div>
