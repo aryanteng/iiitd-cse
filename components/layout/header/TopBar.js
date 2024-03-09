@@ -19,10 +19,6 @@ export default function TopBar() {
         link: '/academics/course-catalog',
       },
       {
-        name: 'Prospective Students',
-        link: '/prospective-students',
-      },
-      {
         name: 'Labs',
         link: '/research/labs',
       },
