@@ -8,7 +8,7 @@ function ContactInfo({ phone, email, phonedept, emaildept, fax }) {
   ];
 
   return (
-    <div className="flex flex-col gap-2 p-4 text-primary-dark w-full md:w-1/2">
+    <div className="flex flex-col gap-2 text-primary-dark">
       <div className="body-large font-bold text-primary-dark">Contact</div>
       {contactDetails.map((detail, index) => (
         <p key={index} className="body-small">
