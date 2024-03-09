@@ -1,17 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import HourGlass from '@mui/icons-material/HourglassBottomTwoTone';
 import ScholarHat from '@mui/icons-material/School';
-import { Button } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 
 function OnlineCourseCard({
-  id,
   title,
   link,
   faculty,
   description,
-  credits,
   weeks,
-  term,
   registrations,
   facultyimage,
   platform,
@@ -44,10 +41,7 @@ function OnlineCourseCard({
               id="faculty"
               className="text-primary-dark py-2 font-semibold body-normal">
               <div className="flex gap-2 items-center">
-                <img
-                  src={facultyimage}
-                  className="rounded-full cursor-pointer w-1/6"
-                />
+                <Avatar src={facultyimage} />
                 <div className="cursor-pointer text-xs">{faculty}</div>
               </div>
             </div>
@@ -71,9 +65,10 @@ function OnlineCourseCard({
       {/* Start Button at the bottom */}
       <Button
         href={link}
+        variant="contained"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full hover:bg-primary-dark text-center bg-primary-dark text-white font-semibold">
+        className="w-full bg-primary-dark text-white font-semibold">
         Start
       </Button>
     </div>
