@@ -21,7 +21,7 @@ export default function ProjectCard({
         <div className="text-primary-dark h-2/5 font-semibold body-normal">
           {title}
         </div>
-        <div className="text-primary-dark font-semibold text-right body-small">
+        <div className="text-primary-dark font-semibold text-right body-xsmall">
           {year}
         </div>
         <div
@@ -51,7 +51,7 @@ export default function ProjectCard({
           Sanction Amount :{' '}
           <Chip
             label={sanction_amount + ' INR'}
-            className="body-xsmall font-semibold bg-primary-dark text-white text-left"
+            className="text-xs font-semibold bg-primary-dark text-white text-left"
           />
         </div>
       </div>
