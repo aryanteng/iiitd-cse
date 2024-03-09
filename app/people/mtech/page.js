@@ -1,9 +1,9 @@
-import DataTable from '@/components/common/MtechDataTable';
+import MtechDataTable from '@/components/people/mtech/MtechDataTable';
 import { getSheetData } from '@/app/api/sheets';
 
 export default async function MtechStudents() {
   const spreadsheetId = '1cYPbswNr4ZvvQhzkfIOaM9Q75cSDP1CSl_JELvmA4iQ';
-  const range = 'M-Tech!A2:G1000';
+  const range = 'M-Tech';
   const data = await getSheetData(spreadsheetId, range);
   return (
     <div className="page-layout-2">
@@ -11,7 +11,7 @@ export default async function MtechStudents() {
         M.Tech. Students
       </h1>
       <div className="table-container mb-8">
-        <DataTable data={data} initialRows={5} />
+        <MtechDataTable data={data} initialRows={10} />
       </div>
     </div>
   );
