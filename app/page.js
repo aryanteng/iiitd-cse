@@ -1,11 +1,7 @@
 import Banner from '@/components/landing/Banner';
 import MissionAndVision from '@/components/landing/MissionAndVision';
-import { getSheetData } from './api/sheets';
 
 export default async function Home() {
-  const spreadsheetId = '1cYPbswNr4ZvvQhzkfIOaM9Q75cSDP1CSl_JELvmA4iQ';
-  const range = 'Sheet1!A1:B10';
-
   return (
     <main className="flex flex-col items-center justify-center gap-4">
       <div className="[&>*:nth-child(even)]:bg-gg w-full">
