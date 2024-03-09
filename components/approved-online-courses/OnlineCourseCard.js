@@ -16,12 +16,15 @@ function OnlineCourseCard({
   facultyimage,
   platform,
 }) {
+  const x = Math.floor(Math.random() * 11) + 1;
+  const imageSrc = `/images/approved-online-courses/onlineCourses_${x}.jpg`;
+
   return (
     <div className="shadow-md hover:shadow-xl bg-white border-solid duration-500 overflow-hidden flex flex-col">
       <div className="flex-grow">
         <div className="relative h-auto">
           <img
-            src="/images/approved-online-courses/internetOfThings.jpg"
+            src={imageSrc}
             className="object-cover h-48 border-b-1 w-full opacity-90 brightness-50"
             loading="lazy"
             alt="IOT"
