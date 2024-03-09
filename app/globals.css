@@ -141,3 +141,11 @@ html::-webkit-scrollbar-thumb {
     @apply w-1 h-1 p-1 bg-primary-dark rounded-full;
   }
 }
+
+.tss-qbo1l6-MUIDataTableToolbar-actions .css-ombgrz-MuiSvgIcon-root {
+  color: white !important;
+}
+
+.MuiTablePagination-actions .css-ombgrz-MuiSvgIcon-root {
+  color: black !important;
+}

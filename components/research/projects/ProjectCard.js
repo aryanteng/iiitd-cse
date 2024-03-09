@@ -1,39 +1,54 @@
 /* eslint-disable @next/next/no-img-element */
+import { Avatar, Chip } from '@mui/material';
 
 export default function ProjectCard({
   title,
   faculty,
-  link,
+  faculty_image,
+  funded_by,
   year,
-  fundedBy,
-  sanctionAmount,
+  sanction_amount,
 }) {
   return (
-    <a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block w-full h-full">
-      <div className="w-full h-full shadow-md hover:shadow-xl bg-white border-solid cursor-pointer duration-500 overflow-hidden">
-        <div className="flex flex-col gap-2 px-2 py-4">
-          <div className="text-primary-dark font-semibold body-large">
-            {title}
-          </div>
-          <div className="font-semibold py-2 body-normal">{faculty}</div>
-          <div className="font-normal py-2 body-small">
-            Funded By :{' '}
-            {fundedBy?.map((org, index) => (
-              <span key={index}>
-                {index > 0 && ', '}
-                {org}
-              </span>
+    <div className="w-full h-full shadow-md bg-white border-solid duration-500 overflow-hidden flex flex-col gap-2 py-2 px-2">
+      <div className="text-primary-dark h-2/5 font-semibold body-normal">
+        {title}
+      </div>
+      <div className="text-primary-dark font-semibold text-right body-xsmall">
+        {year}
+      </div>
+      <div className="flex gap-2 items-center pt-2">
+        <Avatar
+          src={faculty_image}
+          alt="Faculty Image"
+          className="w-8 h-8 sm:w-10 sm:h-10"
+        />
+        <div className="font-semibold body-xsmall">{faculty}</div>
+      </div>
+      <div className="flex flex-col gap-2 py-2 px-2">
+        <div className="body-xsmall">
+          Funded By :{' '}
+          <div className="flex flex-row gap-2 py-1">
+            {funded_by?.map((org) => (
+              <Chip
+                key={org}
+                label={org}
+                title={org}
+                className="font-semibold"
+              />
             ))}
           </div>
-          <div className="font-normal py-2 body-xsmall">
-            Total anction Amount Rs. : {sanctionAmount}
+        </div>
+        <div className="body-xsmall flex items-center gap-2">
+          Sanction Amount:{' '}
+          <div>
+            <Chip
+              label={sanction_amount + ' INR'}
+              className="bg-primary-dark text-white font-semibold"
+            />
           </div>
         </div>
       </div>
-    </a>
+    </div>
   );
 }
