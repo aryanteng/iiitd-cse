@@ -4,12 +4,13 @@ import Button from '@mui/material/Button';
 export default function NotFound() {
   return (
     <div className="relative h-screen">
+      <div className="absolute inset-0 bg-black opacity-50"></div>
       <img
-        src="/images/404-page/background.png"
+        src="https://iiitd.ac.in/sites/default/files/images/iiitdrndblock.jpeg"
         alt="404"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover opacity-50"
       />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white flex flex-col items-center gap-4">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white flex flex-col items-center gap-4 z-10">
         <div>
           <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold text-white">
             404
