@@ -72,7 +72,7 @@ export default function TopBar() {
         aria-label="open drawer"
         edge="start"
         onClick={handleDrawerToggle}>
-        <Menu className="text-2xl text-primary-dark" />
+        <Menu className="text-2xl text-primary-main" />
       </IconButton>
       <CustomDrawer
         open={isDrawerOpen}

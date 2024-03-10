@@ -33,7 +33,7 @@ img {
 }
 
 html::-webkit-scrollbar {
-  width: 0.4rem;
+  width: 0.25rem;
 }
 
 html::-webkit-scrollbar-track {
@@ -42,7 +42,6 @@ html::-webkit-scrollbar-track {
 
 html::-webkit-scrollbar-thumb {
   background: var(--primary-color);
-  border-radius: 0.25rem;
 }
 
 @layer components {
