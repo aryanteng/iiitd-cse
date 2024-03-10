@@ -1,33 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 
-export default function LabCard() {
+export default function LabCard({ name, description, image, link }) {
   return (
     <a
-      href="https://sites.google.com/view/vinayakabrol/cross-caps-laboratory"
+      href={link}
       target="_blank"
-      rel="noopener noreferrer">
-      <div className="w-full shadow-md hover:shadow-xl bg-white border-solid cursor-pointer duration-500 overflow-hidden">
-        <img
-          src="/images/labs/cross-caps-lab.png"
-          className="object-cover border-b-1 w-full relative aspect-w-16 aspect-h-9"
-          loading="lazy"
-          alt="Lab Logo"
-        />
+      rel="noopener noreferrer"
+      className="block w-full h-full">
+      <div className="w-full h-full shadow-md hover:shadow-xl bg-white border-solid cursor-pointer duration-500 overflow-hidden">
+        <div className="relative w-full overflow-hidden h-72 border-b-2">
+          <img
+            src={image}
+            className="absolute top-0 left-0 w-full h-full object-contain"
+            loading="lazy"
+            alt="Lab Logo"
+          />
+        </div>
         <div className="flex flex-col gap-2 px-2 py-4">
-          <div className="text-primary-dark font-semibold body-large">
-            Cross Caps Lab
+          <div className="text-primary-main font-semibold body-large">
+            {name}
           </div>
-          <div className="body-xsmall">
-            Cross-Caps Laboratory as a part of the Infosys Centre for Artificial
-            Intelligence focuses on design, and analysis of numerical algorithms
-            for information inspired applications in signal processing and
-            machine learning. Members of our research lab are associated with
-            one of the sub-groups namely Sound Cube Group: Inverse problems in
-            speech and audio processing; Information Intelligence Group:
-            Developing efficient and scalable machine learning algorithms;
-            Healthcare Informatics Group: Building acute and critical care
-            solutions.
-          </div>
+          <div className="body-xsmall">{description}</div>
         </div>
       </div>
     </a>

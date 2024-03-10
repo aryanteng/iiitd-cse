@@ -2,9 +2,10 @@
 'use client';
 
 import { Menu } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { Avatar, IconButton } from '@mui/material';
 import { useCallback, useMemo, useState } from 'react';
 import CustomDrawer from './CustomDrawer';
+import Link from 'next/link';
 
 export default function TopBar() {
   const linkStyle = useMemo(
@@ -17,10 +18,6 @@ export default function TopBar() {
       {
         name: 'Course Catalog',
         link: '/academics/course-catalog',
-      },
-      {
-        name: 'Prospective Students',
-        link: '/prospective-students',
       },
       {
         name: 'Labs',
@@ -49,22 +46,22 @@ export default function TopBar() {
   }, []);
 
   return (
-    <div className="flex justify-between items-center px-5 py-1 border-b-2 md:border-none">
-      <a href="/">
-        <img
-          src="/images/iiitd-cse-logo.png"
+    <div className="flex justify-between items-center px-5 md:border-none md:shadow-none shadow-lg">
+      <Link href="/">
+        <Avatar
+          src="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
           alt="Logo"
-          className="w-28 md:w-32 lg:w-36"
+          className="w-10"
         />
-      </a>
-      <div className="hidden md:flex gap-4">
+      </Link>
+      <div className="hidden md:flex gap-5">
         {links.map((link, index) => (
           <div key={link.name} className="flex gap-4 items-center">
             <a key={link.name} href={link.link} className={linkStyle}>
               {link.name}
             </a>
             {index !== links.length - 1 && (
-              <span className="bg-primary-main h-4 w-0.5"></span>
+              <span className="bg-primary-main h-3.5 w-0.5"></span>
             )}
           </div>
         ))}
@@ -75,7 +72,7 @@ export default function TopBar() {
         aria-label="open drawer"
         edge="start"
         onClick={handleDrawerToggle}>
-        <Menu className="text-2xl text-primary-dark" />
+        <Menu className="text-2xl text-primary-main" />
       </IconButton>
       <CustomDrawer
         open={isDrawerOpen}

@@ -213,13 +213,11 @@ export default function page() {
 
   const renderSection = (section) => (
     <section>
-      <h1 className="heading-2 padding-layout-2 text-primary-dark">
-        {section.title}
-      </h1>
+      <h1 className="heading-2 text-primary-main mb-4">{section.title}</h1>
       <p className="body-small mb-2">{section.heading}</p>
-      {section.items.map((item, index) => (
+      {section.items.map((item) => (
         <div
-          key={index}
+          key={item.content}
           className={`points ${item.type === 'indent' ? 'points-indent' : ''}`}>
           <div className="flex items-start gap-3 md:gap-6">
             <div className="bullet-point mt-1.5 md:mt-3" />
@@ -231,7 +229,7 @@ export default function page() {
   );
 
   return (
-    <main className="page-layout-1">
+    <main className="width-layout-1 padding-layout-1 flex flex-col gap-10">
       {Sections.map((section) => renderSection(section))}
     </main>
   );

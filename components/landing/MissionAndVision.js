@@ -10,9 +10,13 @@ export default function MissionAndVision({ name, description, isReverse }) {
           (isReverse ? ' md:flex-row-reverse' : '')
         }>
         <img
-          src={`/images/landing/${name}.png`}
+          src={
+            isReverse
+              ? 'https://upload.wikimedia.org/wikipedia/commons/2/20/Iiitdelhi-building.jpg'
+              : 'https://iiitd.ac.in/sites/default/files/images/iiitdrndblock.jpeg'
+          }
           alt="Vision&Mission"
-          className="flex self-center w-full md:w-1/2 relative"
+          className="flex self-center w-full md:w-1/2 aspect-[5/3] relative"
         />
         <div className="flex flex-col gap-4">
           <div className="body-2xlarge font-semibold">{name}</div>

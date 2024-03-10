@@ -10,7 +10,8 @@ const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'IIITD CSE',
-  description: 'IIITD CSE',
+  description:
+    'This is the official website of the Department of Computer Science and Engineering at IIIT Delhi.',
 };
 
 export default function RootLayout({ children }) {
@@ -20,6 +21,11 @@ export default function RootLayout({ children }) {
         <StyledEngineProvider injectFirst>
           <CustomThemeProvider>
             <Header />
+            <link
+              rel="icon"
+              href="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
+              sizes="any"
+            />
             <main className="min-h-screen">{children}</main>
             <Footer />
           </CustomThemeProvider>

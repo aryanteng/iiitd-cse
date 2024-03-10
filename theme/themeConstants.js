@@ -6,7 +6,7 @@ const themeConstants = {
   },
   fg: { main: '#212121', dark: '#757575' },
   background: {
-    default: '#f3f2ef',
+    default: '#fafafa',
     paper: '#ffffff',
   },
   breakpoints: {

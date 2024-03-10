@@ -62,7 +62,7 @@ export default function PhdAdmissions() {
           <a
             href="https://iiitd.ac.in/admission/phd/rolling"
             target="_blank"
-            className="text-primary-dark underline">
+            className="text-primary-main underline">
             here
           </a>{' '}
           for more details.
@@ -167,10 +167,10 @@ export default function PhdAdmissions() {
 
   return (
     <>
-      <div className="body-2xlarge font-semibold text-primary-dark text-center mt-4 p-4">
+      <div className="body-2xlarge font-semibold text-primary-main text-center mt-4 p-4">
         PhD Admissions
       </div>
-      <div className="body-small font-semibold text-primary-dark text-center ">
+      <div className="body-small font-semibold text-primary-main text-center ">
         Explore the possibility of admissions at IIIT Delhi
       </div>
       <div className="page-layout-1">
@@ -203,10 +203,10 @@ export default function PhdAdmissions() {
         ))}
       </div>
 
-      <div className="body-2xlarge font-semibold text-primary-dark text-center mt-4 p-4">
+      <div className="body-2xlarge font-semibold text-primary-main text-center mt-4 p-4">
         Financial Aid
       </div>
-      <div className="body-small width-layout-1 font-semibold text-primary-dark text-center ">
+      <div className="body-small width-layout-1 font-semibold text-primary-main text-center ">
         Students joining the Ph.D. program as regular student will be considered
         for Institute Fellowship. Presently institute is offering fellowship at
         the rate of Rs.31,000/- per month in the 1st & 2nd year and Rs.35,000/-
@@ -218,7 +218,7 @@ export default function PhdAdmissions() {
           <BulletPoints key={data} data={data} />
         ))}
       </div>
-      <div className="body-2xlarge font-semibold text-primary-dark text-center pb-10">
+      <div className="body-2xlarge font-semibold text-primary-main text-center pb-10">
         Research Areas
       </div>
       <div className="flex width-layout-1 flex-wrap pb-10 justify-center gap-6 md:gap-6 md:flex-row">
