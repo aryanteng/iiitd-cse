@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Button from '@mui/material/Button';
 
 export default function NotFound() {
@@ -5,7 +6,7 @@ export default function NotFound() {
     <div className="relative h-screen">
       <img
         src="/images/404-page/background.png"
-        alt="404 background image"
+        alt="404"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
