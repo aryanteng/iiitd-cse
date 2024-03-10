@@ -1,6 +1,5 @@
 'use client';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import DataTable from '@/components/common/DataTable';
 import LinkedIn from '@mui/icons-material/LinkedIn';
 
@@ -68,7 +67,7 @@ export default function MtechDataTable({ data, initialRows }) {
         },
       },
     ];
-  });
+  }, []);
 
   return (
     <DataTable data={data} columns={getColumns()} initialRows={initialRows} />

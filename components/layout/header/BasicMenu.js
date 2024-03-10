@@ -23,13 +23,13 @@ export default function BasicMenu({ name, menuItems }) {
     <>
       <button
         type="button"
-        className="body-small font-medium hover:text-primary-main"
+        className="body-xsmall hover:text-primary-main"
         onClick={handleClick}
         aria-haspopup="true"
         aria-controls="basic-menu"
         aria-expanded={open ? 'true' : undefined}>
         {name}
-        <KeyboardArrowDownIcon className="body-normal" />
+        <KeyboardArrowDownIcon className="body-normal text-gray-500 hover:text-primary-main" />
       </button>
       <Menu
         id="basic-menu"

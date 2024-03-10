@@ -6,11 +6,11 @@ export default async function BtechStudents() {
   const range = 'B-Tech';
   const data = await getSheetData(spreadsheetId, range);
   return (
-    <div className="page-layout-2">
-      <h1 className="body-2xlarge font-semibold text-primary-dark text-center p-8">
+    <div className="padding-layout-2 flex flex-col gap-5">
+      <h1 className="body-2xlarge font-semibold text-primary-dark text-center">
         B.Tech. Students
       </h1>
-      <div className="table-container mb-8">
+      <div className="table-container">
         <BtechDataTable data={data.slice(1)} initialRows={10} />
       </div>
     </div>
