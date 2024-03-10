@@ -40,7 +40,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
+  background: var(--primary-main);
 }
 
 @layer components {
