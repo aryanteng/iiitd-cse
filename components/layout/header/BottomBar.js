@@ -5,7 +5,7 @@ export default function BottomBar() {
   const links = useBottomBarLinks();
 
   return (
-    <div className="hidden md:flex gap-12 justify-center border-t-2 py-1.5 shadow-md">
+    <div className="hidden md:flex gap-12 justify-center border-t-2 py-1 shadow-md">
       {links.map((link) => (
         <BasicMenu
           key={link.name}

@@ -51,7 +51,7 @@ export default function TopBar() {
         <Avatar
           src="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
           alt="Logo"
-          className="w-12 "
+          className="w-10"
         />
       </Link>
       <div className="hidden md:flex gap-5">
