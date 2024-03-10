@@ -23,6 +23,14 @@ export default function useBottomBarLinks() {
             link: 'https://www.iiitd.ac.in/academics/phd',
           },
           {
+            name: 'Course Catalog',
+            link: '/course-catalog',
+          },
+          {
+            name: 'PEOs, POs & PSOs',
+            link: '/objectives',
+          },
+          {
             name: 'Guidelines',
             link: 'https://www.iiitd.ac.in/academics/resources',
           },
