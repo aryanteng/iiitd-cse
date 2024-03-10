@@ -27,7 +27,7 @@ function OnlineCourseCard({
             alt="IOT"
           />
           {/* Overlay Button */}
-          <div className="absolute cursor-default bottom-2 right-2 bg-primary-dark text-white py-1 px-3 font-semibold rounded-xl text-sm">
+          <div className="absolute cursor-default bottom-2 right-2 bg-primary-main text-white py-1 px-3 font-semibold rounded-xl text-sm">
             {platform}
           </div>
           <h1 className="absolute top-1/3 left-2 text-white font-bold text-3xl">
@@ -39,7 +39,7 @@ function OnlineCourseCard({
           <div className="flex gap-4 items-center justify-between">
             <div
               id="faculty"
-              className="text-primary-dark py-2 font-semibold body-normal">
+              className="text-primary-main py-2 font-semibold body-normal">
               <div className="flex gap-2 items-center">
                 <Avatar src={facultyimage} />
                 <div className="cursor-pointer text-xs">{faculty}</div>
@@ -47,13 +47,13 @@ function OnlineCourseCard({
             </div>
             <div className="flex gap-2 flex-col">
               <div className="flex flex-row">
-                <HourGlass className="text-primary-dark body-normal" />
+                <HourGlass className="text-primary-main body-normal" />
                 <span className="text-xs flex items-center whitespace-nowrap">
                   {weeks} weeks
                 </span>
               </div>
               <div className="flex flex-row">
-                <ScholarHat className="text-primary-dark body-normal" />
+                <ScholarHat className="text-primary-main body-normal" />
                 <span className="text-xs ml-1 flex items-center whitespace-nowrap">
                   {registrations}
                 </span>
@@ -68,7 +68,7 @@ function OnlineCourseCard({
         variant="contained"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full bg-primary-dark text-white font-semibold">
+        className="w-full bg-primary-main text-white font-semibold">
         Start
       </Button>
     </div>

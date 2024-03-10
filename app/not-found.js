@@ -9,22 +9,21 @@ export default function NotFound() {
         alt="404"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-        <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-body font-bold mb-2 text-white">
-          404
-        </h1>
-        <h2 className="heading-2 font-semibold" style={{ color: 'white' }}>
-          Page Not Found
-        </h2>
-        <h3 className="body-xlarge font-semibold" style={{ color: 'white' }}>
-          Oops! The page you are looking for does not exist
-        </h3>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white flex flex-col items-center gap-4">
+        <div>
+          <h1 className="text-5xl md:text-6xl lg:text-8xl font-bold text-white">
+            404
+          </h1>
+          <h2 className="heading-2 font-semibold">Page Not Found</h2>
+          <h3 className="body-large font-semibold">
+            Oops! The page you are looking for does not exist.
+          </h3>
+        </div>
         <Button
           variant="contained"
           href="/"
-          className="text-sm md:text-base lg:text-lg xl:text-xl mt-3"
-          style={{ backgroundColor: 'var(--primary-dark)' }}>
-          Return to Home
+          className="w-fit body-large bg-primary-main">
+          Return to Home Page
         </Button>
       </div>
     </div>

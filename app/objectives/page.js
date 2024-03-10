@@ -213,7 +213,7 @@ export default function page() {
 
   const renderSection = (section) => (
     <section>
-      <h1 className="heading-2 text-primary-dark mb-4">{section.title}</h1>
+      <h1 className="heading-2 text-primary-main mb-4">{section.title}</h1>
       <p className="body-small mb-2">{section.heading}</p>
       {section.items.map((item) => (
         <div

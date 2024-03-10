@@ -23,14 +23,14 @@ export default function Publications() {
       <h1 className="heading-1">Publications</h1>
 
       <div className="text-center">
-        <h2 className="heading-2 text-primary-dark">Statistics</h2>
+        <h2 className="heading-2 text-primary-main">Statistics</h2>
         <div className="font-medium">
           <p>
-            <span className="text-primary-dark">Total Conference Papers:</span>{' '}
+            <span className="text-primary-main">Total Conference Papers:</span>{' '}
             {ConferencePapers}
           </p>
           <p>
-            <span className="text-primary-dark">Total Journal Articles:</span>{' '}
+            <span className="text-primary-main">Total Journal Articles:</span>{' '}
             {JournalArticles}
           </p>
         </div>

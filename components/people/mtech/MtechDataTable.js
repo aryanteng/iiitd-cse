@@ -60,7 +60,7 @@ export default function MtechDataTable({ data, initialRows }) {
           customBodyRender: (value) => {
             return (
               <a href={value} target="_blank" rel="noreferrer">
-                <LinkedIn className="text-primary-dark body-2xlarge" />
+                <LinkedIn className="text-primary-main body-2xlarge" />
               </a>
             );
           },

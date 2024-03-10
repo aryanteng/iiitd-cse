@@ -1,3 +1,4 @@
+import { theme } from '@/theme/theme';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MUIDataTable from 'mui-datatables';
 
@@ -41,7 +42,7 @@ const MuiTheme = createTheme({
     MUIDataTableToolbar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#007065',
+          backgroundColor: theme.palette.primary.main,
           minHeight: 0,
         },
       },
@@ -49,7 +50,7 @@ const MuiTheme = createTheme({
     MUIDataTableHeadCell: {
       styleOverrides: {
         root: {
-          backgroundColor: '#007065',
+          backgroundColor: theme.palette.primary.main,
           padding: '0.5rem',
           justifyContent: 'center',
           textAlign: 'center',

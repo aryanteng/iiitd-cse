@@ -1,7 +1,6 @@
 'use client';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import DataTable from '@/components/common/DataTable';
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 
 export default function BtechDataTable({ data, initialRows }) {
   const getColumns = useCallback(() => {
@@ -51,7 +50,7 @@ export default function BtechDataTable({ data, initialRows }) {
         },
       },
     ];
-  });
+  }, []);
 
   return (
     <DataTable data={data} columns={getColumns()} initialRows={initialRows} />

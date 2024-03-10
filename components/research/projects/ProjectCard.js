@@ -11,10 +11,10 @@ export default function ProjectCard({
 }) {
   return (
     <div className="w-full h-full shadow-md bg-white border-solid duration-500 overflow-hidden flex flex-col gap-2 py-2 px-2">
-      <div className="text-primary-dark h-2/5 font-semibold body-normal">
+      <div className="text-primary-main h-2/5 font-semibold body-normal">
         {title}
       </div>
-      <div className="text-primary-dark font-semibold text-right body-xsmall">
+      <div className="text-primary-main font-semibold text-right body-xsmall">
         {year}
       </div>
       <div className="flex gap-2 items-center pt-2">
@@ -44,7 +44,7 @@ export default function ProjectCard({
           <div>
             <Chip
               label={sanction_amount + ' INR'}
-              className="bg-primary-dark text-white font-semibold"
+              className="bg-primary-main text-white font-semibold"
             />
           </div>
         </div>

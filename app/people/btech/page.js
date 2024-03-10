@@ -7,7 +7,7 @@ export default async function BtechStudents() {
   const data = await getSheetData(spreadsheetId, range);
   return (
     <div className="padding-layout-2 flex flex-col gap-5">
-      <h1 className="body-2xlarge font-semibold text-primary-dark text-center">
+      <h1 className="body-2xlarge font-semibold text-primary-main text-center">
         B.Tech. Students
       </h1>
       <div className="table-container">

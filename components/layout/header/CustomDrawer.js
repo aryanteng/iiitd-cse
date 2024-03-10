@@ -31,9 +31,9 @@ export default function CustomDrawer({ open, anchor, toggleDrawer }) {
                 className="w-full">
                 <ListItemText primary={link.name} />
                 {openStates[link.name] ? (
-                  <ExpandLess className="text-primary-dark" />
+                  <ExpandLess className="text-primary-main" />
                 ) : (
-                  <ExpandMore className="text-primary-dark" />
+                  <ExpandMore className="text-primary-main" />
                 )}
               </ListItemButton>
               <Collapse

@@ -7,7 +7,7 @@ export default async function CourseCatalog() {
   const data = await getSheetData(spreadsheetId, range);
   return (
     <div className="page-layout-2">
-      <h1 className="body-2xlarge font-semibold text-primary-dark text-center p-8">
+      <h1 className="body-2xlarge font-semibold text-primary-main text-center p-8">
         Course Catalog
       </h1>
       <div className="table-container mb-8">

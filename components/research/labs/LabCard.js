@@ -17,7 +17,7 @@ export default function LabCard({ name, description, image, link }) {
           />
         </div>
         <div className="flex flex-col gap-2 px-2 py-4">
-          <div className="text-primary-dark font-semibold body-large">
+          <div className="text-primary-main font-semibold body-large">
             {name}
           </div>
           <div className="body-xsmall">{description}</div>
