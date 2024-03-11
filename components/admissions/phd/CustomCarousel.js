@@ -1,18 +1,74 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { Carousel } from 'flowbite-react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-export default function CustomCarousel() {
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
+export default function App() {
   return (
-    <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
-      <Carousel>
-        <img src="/images/admissions/phd/carousel3.jpg" alt="..." />
-        <img src="/images/admissions/phd/carousel2.jpg" alt="..." />
-        <img src="/images/admissions/phd/carousel1.jpg" alt="..." />
-        {/* <img src="/images/admissions/phd/carousel4.jpg" alt="..." /> */}
-        {/* <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." /> */}
-      </Carousel>
-    </div>
+    <Swiper
+      spaceBetween={30}
+      autoHeight={true}
+      centeredSlides={true}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      modules={[Autoplay, Pagination, Navigation]}
+      className="mySwiper">
+      <SwiperSlide>
+        <div className=" h-80 flex justify-center items-center">
+          <img
+            src="/images/admissions/phd/carousel2.jpg"
+            alt="..."
+            className="object-cover"
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="h-80 flex justify-center items-center">
+          <img
+            src="/images/admissions/phd/carousel1.jpg"
+            alt="..."
+            className="object-cover"
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="h-80 flex justify-center items-center">
+          <img
+            src="/images/admissions/phd/carousel3.jpg"
+            alt="..."
+            className="object-cover"
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="h-80 flex justify-center items-center">
+          <img
+            src="/images/admissions/phd/carousel4.jpg"
+            alt="..."
+            className="object-cover"
+          />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className="h-80 flex justify-center items-center">
+          <img
+            src="/images/admissions/phd/carousel5.jpg"
+            alt="..."
+            className="object-cover"
+          />
+        </div>
+      </SwiperSlide>
+    </Swiper>
   );
 }
