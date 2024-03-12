@@ -10,14 +10,29 @@ export default function FacultyCard({
   'google scholar': googleScholar,
   linkedin,
 }) {
+  // Check if the name includes "(On Leave)"
+  const onLeave = name.includes('On Leave');
+  // variable to store if faculty is on leave
+  const status = onLeave ? 'On Leave' : '';
+  // If faculty is on leave, remove "(On Leave)" from the name
+  if (onLeave) {
+    name = name.replace('(On Leave)', '');
+  }
   return (
     <div className="w-full shadow-md hover:shadow-xl bg-white border-solid cursor-pointer duration-500 overflow-hidden">
-      <img
-        src={image || '/images/people/faculty.png'}
-        className="object-cover border-b-1 w-full relative aspect-w-16 aspect-h-9"
-        loading="lazy"
-        alt="Faculty"
-      />
+      <div className="relative h-auto">
+        <img
+          src={image || '/images/people/faculty.png'}
+          className="object-cover border-b-1 w-full relative aspect-w-16 aspect-h-9"
+          loading="lazy"
+          alt="Faculty"
+        />
+        {onLeave ? (
+          <div className="absolute cursor-default bottom-2 right-2 bg-primary-main text-white py-1 px-3 font-semibold rounded-xl text-sm">
+            {status}
+          </div>
+        ) : null}
+      </div>
       <div className="flex flex-col gap-2 px-2 py-4">
         <div className="flex items-center justify-between">
           <div className="text-primary-main font-semibold body-normal">
