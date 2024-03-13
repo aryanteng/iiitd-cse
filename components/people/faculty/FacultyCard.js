@@ -19,7 +19,7 @@ export default function FacultyCard({
     name = name.replace('(On Leave)', '');
   }
   return (
-    <div className="w-full shadow-md hover:shadow-xl bg-white border-solid cursor-pointer duration-500 overflow-hidden">
+    <div className="w-full shadow-md bg-white border-solid overflow-hidden">
       <div className="relative h-auto">
         <img
           src={image || '/images/people/faculty.png'}
