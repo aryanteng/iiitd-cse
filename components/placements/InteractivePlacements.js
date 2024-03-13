@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import BatchSelect from './BatchSelect';
 import CareerPathChart from './CareerPathChart';
 import PlacementStatsChart from './PlacementStatsChart';
@@ -27,7 +28,7 @@ const InteractivePlacements = ({ placementsData }) => {
   // Prepare the chart data for CareerPathChart
   const careerPathData = {
     labels: [
-      'Placed in Companies/Govt Organizations',
+      'Placed in Companies/Govt Orgs',
       'Higher Studies',
       'Entrepreneurship',
       'Unplaced',
@@ -60,7 +61,7 @@ const InteractivePlacements = ({ placementsData }) => {
           parseFloat(selectedBatchData['b.tech_average']) || 0,
           parseFloat(selectedBatchData['m.tech_average']) || 0,
         ],
-        backgroundColor: themeConstants.primary.dark,
+        backgroundColor: themeConstants.primary.main,
         borderColor: themeConstants.primary.light,
       },
       {
@@ -85,48 +86,39 @@ const InteractivePlacements = ({ placementsData }) => {
   };
 
   return (
-    <div>
-      <div className="body-2xlarge font-bold text-primary-dark text-center p-4">
+    <div className="width-layout-2 padding-layout-2 flex flex-col items-center gap-5">
+      <div className="body-2xlarge font-bold text-primary-main text-center flex items-center">
         Placements
-      </div>
-
-      <div className="flex justify-end p-4">
         <BatchSelect
           batches={placementsData.map((data) => data.batch)}
           currentBatch={currentBatch}
           onBatchChange={setCurrentBatch}
         />
       </div>
-
-      <div className="flex flex-wrap justify-between items-start w-full">
-        <div className="flex flex-col gap-2 items-center justify-center w-full md:w-1/2 p-4">
-          <div className="body-large font-bold text-primary-dark">
+      <div className="flex flex-wrap justify-center items-center gap-10 mt-10">
+        <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="body-large font-bold text-primary-main">
             Career Path of Students
           </div>
-          <div
-            className="w-full justify-center"
-            style={{ height: '400px', width: '400px', maxWidth: '100%' }}>
+          <div className="h-80">
             <CareerPathChart chartData={careerPathData} />
           </div>
         </div>
-        <div className="flex flex-col gap-2 items-center justify-center w-full md:w-1/2 p-4">
-          <div className="body-large font-bold text-primary-dark">
+        <div className="flex flex-col gap-2 items-center justify-center">
+          <div className="body-large font-bold text-primary-main">
             Placement Stats
           </div>
-          <div className="w-full" style={{ maxWidth: '100%', height: '400px' }}>
+          <div className="h-80">
             <PlacementStatsChart chartData={placementStatsData} />
           </div>
         </div>
       </div>
-
-      <div className="flex flex-col items-center w-full p-10">
-        <div className="body-xlarge font-bold text-primary-dark">
-          Our Recruiters
-        </div>
+      <div className="body-xlarge font-bold text-primary-main flex flex-col items-center p-5">
+        Our Recruiters
         <Marquee gradient={false} speed={100} className="mt-4">
-          {logos.map((image, index) => (
+          {logos.map((image) => (
             <img
-              key={index}
+              key={image.src}
               src={image.src}
               alt={image.alt}
               className="mx-auto h-64 md:h-72"

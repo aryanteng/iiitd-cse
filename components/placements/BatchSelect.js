@@ -23,16 +23,10 @@ const BatchSelect = ({ batches, onBatchChange }) => {
           '& .MuiOutlinedInput-notchedOutline': {
             borderColor: 'white',
           },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: 'white',
-          },
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: themeConstants.primary.dark,
-          },
           '& .MuiSvgIcon-root': {
             color: 'white',
           },
-          borderRadius: '20px', // Rounded corners
+          borderRadius: '20px',
         }}>
         {batches.map((batch) => (
           <MenuItem
@@ -40,7 +34,6 @@ const BatchSelect = ({ batches, onBatchChange }) => {
             value={batch}
             sx={{
               color: themeConstants.primary.main,
-              '&:hover': { backgroundColor: themeConstants.primary.dark },
             }}>
             {batch}
           </MenuItem>
