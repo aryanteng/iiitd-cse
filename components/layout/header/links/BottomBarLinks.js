@@ -24,7 +24,7 @@ export default function useBottomBarLinks() {
           },
           {
             name: 'Course Catalog',
-            link: '/course-catalog',
+            link: '/academics/course-catalog',
           },
           {
             name: 'PEOs, POs & PSOs',
