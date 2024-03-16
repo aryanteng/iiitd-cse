@@ -1,5 +1,5 @@
 export const metadata = {
-    title: 'Phd Students | IIITD CSE',
+    title: 'Ph.D. Students | IIITD CSE',
   };
   
   export default function Layout({ children }) {

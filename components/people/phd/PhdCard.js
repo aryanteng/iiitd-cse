@@ -2,7 +2,7 @@
 
 
 export default function PhdCard({
-  'phd image': image,
+  'image': image,
   name,
   'research area': researchArea,
   'advisor name': advisorName,
@@ -12,7 +12,7 @@ export default function PhdCard({
     <div className="w-full shadow-md bg-white border-solid overflow-hidden">
       <div className="relative h-auto">
         <img
-          src={image || '/images/people/phd.png'}
+          src={image ?? '/images/people/phd.png'}
           className="object-cover border-b-1 w-full relative aspect-w-16 aspect-h-9"
           loading="lazy"
           alt="Phd"
