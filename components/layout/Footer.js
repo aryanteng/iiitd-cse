@@ -25,7 +25,7 @@ export default function Footer() {
       {
         name: 'LinkedIn',
         icon: <LinkedInIcon className={iconStyle} />,
-        link: 'https://www.linkedin.com/company/cse-iiitd/',
+        link: 'https://www.linkedin.com/company/cseiiitd/',
       },
       {
         name: 'Twitter',
