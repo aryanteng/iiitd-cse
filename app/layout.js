@@ -28,15 +28,19 @@ export default function RootLayout({ children }) {
             />
             <meta
               property="og:image"
-              content="/public/images/cseiiitd_logo.jpeg"
+              content="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
             />
             <meta
               name="twitter:image"
-              content="/public/images/cseiiitd_logo.jpeg"
+              content="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
             />
             <meta
               name="keywords"
               content="CSE, IIITD, Computer Science, Indraprashta Institute of Information Technology, Engineering, Computer Science & Engineering, Delhi, New Delhi, Software Development, Machine Learning, Artificial Intelligence, Professors, Faculty, Ph.D., Admission, B.Tech, M.Tech, Course"
+            />
+            <meta
+              itemProp="thumbnailUrl"
+              href="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
             />
             <main className="min-h-screen">{children}</main>
             <Footer />
