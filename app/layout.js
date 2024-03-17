@@ -17,10 +17,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <meta
-        name="description"
-        content="This is the official website of the Department of Computer Science and Engineering at IIIT Delhi."
-      />
       {/* Standard meta tags */}
       <meta
         property="og:title"
@@ -32,6 +28,7 @@ export default function RootLayout({ children }) {
       />
       <meta
         property="og:image"
+        itemProp="image"
         content="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
       />
       <meta property="og:url" content="https://cse-iiitd.vercel.app/" />
@@ -54,10 +51,6 @@ export default function RootLayout({ children }) {
       <meta
         name="keywords"
         content="CSE, IIITD, Computer Science, Indraprashta Institute of Information Technology, Engineering, Computer Science & Engineering, Delhi, New Delhi, Software Development, Machine Learning, Artificial Intelligence, Professors, Faculty, Ph.D., Admission, B.Tech, M.Tech, Course"
-      />
-      <meta
-        itemProp="thumbnailUrl"
-        href="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
       />
       <link
         rel="icon"
