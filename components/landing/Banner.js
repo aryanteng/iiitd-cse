@@ -16,7 +16,7 @@ export default function Banner() {
         />
       </div>
       <img
-        src="https://media.licdn.com/dms/image/C4D1BAQFDIT0g1QnclQ/company-background_10000/0/1607790960972/cseiiitd_cover?e=1710615600&v=beta&t=vfmC8FrCflSS--jHSexTNI_CKDZ9pjYuUGGwfolpi5A"
+        src="https://pbs.twimg.com/media/ElarDWgU4AAu4a7.jpg"
         alt="Ranking"
         className="flex self-center w-full md:w-1/2 relative"
       />
