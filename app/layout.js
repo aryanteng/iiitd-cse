@@ -26,6 +26,10 @@ export default function RootLayout({ children }) {
               href="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
               sizes="any"
             />
+            <meta
+              property="og:image"
+              content="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
+            />
             <main className="min-h-screen">{children}</main>
             <Footer />
           </CustomThemeProvider>
