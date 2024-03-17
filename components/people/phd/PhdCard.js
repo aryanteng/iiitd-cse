@@ -1,18 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 
-
 export default function PhdCard({
-  'image': image,
+  image,
   name,
   'research area': researchArea,
-  'advisor name': advisorName,
-  email
+  advisor,
+  email,
 }) {
   return (
     <div className="w-full shadow-md bg-white border-solid overflow-hidden">
       <div className="relative h-auto">
         <img
-          src={image ?? '/images/people/phd.png'}
+          src={image}
           className="object-cover border-b-1 w-full relative aspect-w-16 aspect-h-9"
           loading="lazy"
           alt="Phd"
@@ -25,7 +24,7 @@ export default function PhdCard({
           </div>
         </div>
         <div className="body-small font-semibold">{researchArea}</div>
-        <div className="body-xsmall">Advisor : {advisorName}</div>
+        <div className="body-xsmall">Advisor : {advisor}</div>
         <div className="body-xsmall">Email: {email}</div>
       </div>
     </div>
