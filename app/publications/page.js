@@ -30,7 +30,7 @@ const ParsePublicationData = (pubData) => {
         return author._text;
       }),
       date: pubType._attributes.mdate,
-      link: pubType.ee?._text,
+      link: pubType.ee._text,
     };
     parsedData.push(parsedEntry);
   });
