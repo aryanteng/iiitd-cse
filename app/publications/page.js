@@ -1,9 +1,64 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PubCard from '@/components/publications/PubCard';
 import { publications } from '@/components/publications/mockdata';
+import axios from 'axios';
+import { Professors } from '@/components/publications/ProfessorIds';
+
+const parserOptions = {
+  compact: true,
+  spaces: 4,
+  ignoreComment: true,
+  ignoreDeclaration: true,
+  ignoreInstruction: true,
+};
+
+const ParsePublicationData = (pubData) => {
+  let pubType;
+  const parsedData = [];
+  pubData.forEach((item) => {
+    if ('article' in item) {
+      pubType = item.article;
+    } else if ('inproceedings' in item) {
+      pubType = item.inproceedings;
+    }
+    if (pubType === undefined) return;
+    else if (pubType.author.map === undefined) return;
+    let parsedEntry = {
+      title: pubType.title._text,
+      authors: pubType.author?.map((author) => {
+        return author._text;
+      }),
+      date: pubType._attributes.mdate,
+      link: pubType.ee?._text,
+    };
+    parsedData.push(parsedEntry);
+  });
+  return parsedData.slice(0, 20);
+};
 
 export default function Publications() {
+  let [Publications, setPublications] = useState([]);
+  useEffect(() => {
+    const parser = require('xml-js');
+    Professors.forEach((prof) => {
+      if (prof['DBLP'] === '') return;
+      axios
+        .get('https://dblp.org/pid/' + prof['DBLP'] + '.xml')
+        .then((response) => {
+          const parsedData = parser.xml2js(response.data, parserOptions);
+          const parsedPublications = ParsePublicationData(
+            parsedData.dblpperson.r,
+          );
+          setPublications((prev) => {
+            return [...prev, ...parsedPublications];
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+  }, []);
   const ConferencePapers = 200;
   const JournalArticles = 300;
 
@@ -17,6 +72,8 @@ export default function Publications() {
   const handleYearClick = (year) => {
     setSelectedYear(year);
   };
+
+  console.log(Publications);
 
   return (
     <main className="padding-layout-2 px-2 md:px-10">
