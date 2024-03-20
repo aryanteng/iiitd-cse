@@ -41,12 +41,12 @@ export default function FacultyCard({
           <div className="flex gap-1">
             {googleScholar && (
               <a href={googleScholar} target="_blank" rel="noopener noreferrer">
-                <GoogleIcon className="text-primary-main body-normal" />
+                <GoogleIcon className="text-primary-main body-xlarge" />
               </a>
             )}
             {linkedin && (
               <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                <LinkedInIcon className="text-primary-main body-normal" />
+                <LinkedInIcon className="text-primary-main body-xlarge" />
               </a>
             )}
           </div>
