@@ -11,7 +11,14 @@ import {
   ArrowForwardIosRounded,
 } from '@mui/icons-material';
 
-export default function App() {
+export default function CustomCarousel() {
+  const carouselImages = [
+    '/images/admissions/phd/carousel2.jpg',
+    '/images/admissions/phd/carousel1.jpg',
+    '/images/admissions/phd/carousel3.jpg',
+    '/images/admissions/phd/carousel4.jpg',
+    '/images/admissions/phd/carousel5.jpg',
+  ];
   return (
     <div className="relative">
       <Swiper
@@ -29,59 +36,21 @@ export default function App() {
         navigation={{ nextEl: '.arrow-left', prevEl: '.arrow-right' }}
         modules={[Autoplay, Navigation]}
         className="mySwiper">
-        <SwiperSlide>
-          <div className=" h-80 flex justify-center items-center">
-            <img
-              src="/images/admissions/phd/carousel2.jpg"
-              alt="..."
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="h-80 flex justify-center items-center">
-            <img
-              src="/images/admissions/phd/carousel1.jpg"
-              alt="..."
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="h-80 flex justify-center items-center">
-            <img
-              src="/images/admissions/phd/carousel3.jpg"
-              alt="..."
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="h-80 flex justify-center items-center">
-            <img
-              src="/images/admissions/phd/carousel4.jpg"
-              alt="..."
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="h-80 flex justify-center items-center">
-            <img
-              src="/images/admissions/phd/carousel5.jpg"
-              alt="..."
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
+        {carouselImages.map((path, index) => (
+          <SwiperSlide>
+            <div className=" h-80 flex justify-center items-center">
+              <img src={path} alt="..." className="object-cover" />
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
 
-      <div className="absolute left-0 z-10 top-1/2 transform ml-2 px-3 py-2 rounded-full bg-primary-dark opacity-60 hover:opacity-100 -translate-y-1/2">
+      <div className="absolute left-0 z-10 top-1/2 transform ml-2 px-2 py-2 rounded-full bg-primary-dark opacity-60 hover:opacity-100 -translate-y-1/2">
         <button className="arrow-right arrow">
           <ArrowBackIosNewRounded className="text-white" />
         </button>
       </div>
-      <div className="absolute right-0 z-10 top-1/2 px-3 py-2 mr-2 rounded-full bg-primary-dark transform opacity-60 hover:opacity-100 -translate-y-1/2">
+      <div className="absolute right-0 z-10 top-1/2 px-2 py-2 mr-2 rounded-full bg-primary-dark transform opacity-60 hover:opacity-100 -translate-y-1/2">
         <button className="arrow-left arrow ">
           <ArrowForwardIosRounded className="text-white" />
         </button>
