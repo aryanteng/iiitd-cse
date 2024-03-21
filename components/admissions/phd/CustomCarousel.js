@@ -37,7 +37,7 @@ export default function CustomCarousel() {
         modules={[Autoplay, Navigation]}
         className="mySwiper">
         {carouselImages.map((path, index) => (
-          <SwiperSlide>
+          <SwiperSlide key={index}>
             <div className=" h-80 flex justify-center items-center">
               <img src={path} alt="..." className="object-cover" />
             </div>
