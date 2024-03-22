@@ -1,8 +1,10 @@
 'use client';
-import { useState, useEffect } from 'react';
-import PubCard from '@/components/publications/PubCard';
-import { publications } from '@/components/publications/mockdata';
+import React, { useState, useEffect } from 'react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
 import axios from 'axios';
+import PubCard from '@/components/publications/PubCard';
 import { Professors } from '@/components/publications/ProfessorIds';
 
 const parserOptions = {
@@ -22,13 +24,10 @@ const ParsePublicationData = (pubData) => {
     } else if ('inproceedings' in item) {
       pubType = item.inproceedings;
     }
-    if (pubType === undefined) return;
-    else if (pubType.author.map === undefined) return;
+    if (pubType === undefined || pubType.author === undefined) return;
     let parsedEntry = {
       title: pubType.title._text,
-      authors: pubType.author?.map((author) => {
-        return author._text;
-      }),
+      authors: pubType.author?.map((author) => author._text),
       date: pubType._attributes.mdate,
       link: pubType.ee._text,
     };
@@ -38,88 +37,119 @@ const ParsePublicationData = (pubData) => {
 };
 
 export default function Publications() {
-  let [Publications, setPublications] = useState([]);
+  const [publications, setPublications] = useState([]);
+  const [selectedYear, setSelectedYear] = useState(
+    new Date().getFullYear().toString(),
+  );
+
+  // useEffect(() => {
+  //   const parser = require('xml-js');
+  //   Professors.forEach((prof) => {
+  //     if (prof['DBLP'] === '') return;
+  //     axios
+  //       .get('https://dblp.org/pid/' + prof['DBLP'] + '.xml')
+  //       .then((response) => {
+  //         const parsedData = parser.xml2js(response.data, parserOptions);
+  //         const parsedPublications = ParsePublicationData(
+  //           parsedData.dblpperson.r,
+  //         );
+  //         setPublications((prev) => [...prev, ...parsedPublications]);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   });
+
+  // }, []);
+
   useEffect(() => {
     const parser = require('xml-js');
-    Professors.forEach((prof) => {
-      if (prof['DBLP'] === '') return;
-      axios
+
+    const requests = Professors.map((prof) => {
+      if (prof['DBLP'] === '') return Promise.resolve([]);
+
+      return axios
         .get('https://dblp.org/pid/' + prof['DBLP'] + '.xml')
         .then((response) => {
           const parsedData = parser.xml2js(response.data, parserOptions);
-          const parsedPublications = ParsePublicationData(
-            parsedData.dblpperson.r,
-          );
-          setPublications((prev) => {
-            return [...prev, ...parsedPublications];
-          });
+          return ParsePublicationData(parsedData.dblpperson.r);
         })
         .catch((error) => {
           console.log(error);
+          return []; // returning empty if error
         });
     });
+
+    // waiting for all requests to finish
+    Promise.all(requests).then((results) => {
+      // resolving duplicates
+      const allPublications = [...new Set(results.flat())];
+      setPublications(allPublications);
+    });
   }, []);
-  const ConferencePapers = 200;
-  const JournalArticles = 300;
 
-  const uniqueYears = Array.from(
-    new Set(publications.map((pub) => pub.year)),
-  ).sort((a, b) => b - a);
+  const years = [
+    ...new Set(publications.map((pub) => pub.date.slice(0, 4))),
+  ].sort((a, b) => b - a);
 
-  // State to keep track of the selected year
-  const [selectedYear, setSelectedYear] = useState(uniqueYears[0]);
-
-  const handleYearClick = (year) => {
-    setSelectedYear(year);
+  const handleYearChange = (event, newValue) => {
+    setSelectedYear(newValue);
   };
 
   console.log(Publications);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  };
 
   return (
     <main className="padding-layout-2 px-2 md:px-10">
       <h1 className="heading-1">Publications</h1>
 
-      <div className="text-center">
-        <h2 className="heading-2 text-primary-main">Statistics</h2>
-        <div className="font-medium">
-          <p>
-            <span className="text-primary-main">Total Conference Papers:</span>{' '}
-            {ConferencePapers}
-          </p>
-          <p>
-            <span className="text-primary-main">Total Journal Articles:</span>{' '}
-            {JournalArticles}
-          </p>
-        </div>
-      </div>
-
-      <hr className="mt-4 border-b-2" />
-
-      <div className="flex justify-center items-center overflow-auto">
-        <ul className="flex space-x-2 overflow-auto py-6 px-3">
-          {uniqueYears.map((year) => (
-            <li key={year} className="list-none">
-              <button
-                onClick={() => handleYearClick(year)}
-                className="px-4 py-2 border rounded-md transition-all duration-100 hover:shadow-md shadow focus:outline-none focus:ring-2 focus:ring-primary-light focus:ring-opacity-50 focus:text-primary-light">
-                {year}
-              </button>
-            </li>
+      {/* <div className="flex justify-center items-center overflow-auto">
+        <Tabs
+          value={selectedYear}
+          onChange={handleYearChange}
+          indicatorColor="primary"
+          textColor="primary"
+          centered>
+          {years.map((year) => (
+            <Tab key={year} value={year} label={year} />
           ))}
-        </ul>
-      </div>
+        </Tabs>
+      </div> */}
 
-      <hr className="border-b-2" />
+      <Box className="w-full overflow-x-auto">
+        <Box className="flex justify-center items-center overflow-x-auto min-w-max">
+          <Tabs
+            value={selectedYear}
+            onChange={handleYearChange}
+            className="border-b border-gray-300">
+            {years.map((year) => (
+              <Tab key={year} label={year} value={year} />
+            ))}
+          </Tabs>
+        </Box>
+      </Box>
+
       <div className="grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-5 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 w-11/12 max-w-screen-2xl">
         {publications
-          .filter((pub) => pub.year === selectedYear)
+          .filter(
+            (pub) => selectedYear === '' || pub.date.startsWith(selectedYear),
+          )
+          .sort((a, b) => new Date(b.date) - new Date(a.date)) // Sort by date
           .map((pub, id) => (
             <PubCard
               key={id}
               title={pub.title}
-              description={pub.description}
-              year={pub.year}
+              date={formatDate(pub.date)}
               authors={pub.authors}
+              link={pub.link}
             />
           ))}
       </div>
