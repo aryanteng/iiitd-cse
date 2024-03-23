@@ -26,7 +26,8 @@
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.4",
     "react-router-dom": "^6.21.3",
-    "react-virtuoso": "^4.7.1"
+    "react-virtuoso": "^4.7.1",
+    "swiper": "^11.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
