@@ -29,7 +29,7 @@ export default function TopBar() {
       },
       {
         name: 'Events',
-        link: 'news-and-events/events',
+        link: '/news-and-events/events',
       },
       {
         name: 'Contact',
