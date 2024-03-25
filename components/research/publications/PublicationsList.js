@@ -91,7 +91,7 @@ export default function PublicationsList({ dblpIds }) {
   }, [publications, selectedYear]);
 
   const optimizedPublications = filteredPublications
-    .toSorted((a, b) => new Date(b.date) - new Date(a.date))
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
     .map((pub) => {
       const formattedDate = format(new Date(pub.date), 'dd MMMM yyyy');
       return (
