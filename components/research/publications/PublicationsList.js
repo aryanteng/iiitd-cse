@@ -53,7 +53,6 @@ export default function PublicationsList({ dblpIds }) {
         .get('https://dblp.org/pid/' + dplpId + '.xml')
         .then((response) => {
           const parsedData = parser.xml2js(response.data, parserOptions);
-          console.log(parsedData);
           return ParsePublicationData(parsedData.dblpperson.r);
         })
         .catch((error) => {
