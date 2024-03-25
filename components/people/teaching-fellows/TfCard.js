@@ -1,14 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 
-
-export default function TfCard({
-    image,
-    name,
-    designation,
-    email
-  }) {
-    return (
-      <div className="w-full shadow-md bg-white border-solid overflow-hidden">
+export default function TfCard({ image, name, designation, email }) {
+  return (
+    <div className="w-full shadow-md bg-white border-solid overflow-hidden">
       <div className="relative h-auto">
         <img
           src={image ?? '/images/people/phd.png'}
@@ -17,16 +11,15 @@ export default function TfCard({
           alt="Phd"
         />
       </div>
-        <div className="flex flex-col gap-2 px-2 py-4">
-          <div className="flex items-center justify-between">
-            <div className="text-primary-main font-semibold body-normal">
-              {name}
-            </div>
+      <div className="flex flex-col gap-2 px-2 py-4">
+        <div className="flex items-center justify-between">
+          <div className="text-primary-main font-semibold body-normal">
+            {name}
           </div>
-          <div className="body-xsmall">Email: {email}</div>
-          <div className="body-xsmall">Email: {designation}</div>
         </div>
+        <div className="body-xsmall">Email: {email}</div>
+        <div className="body-xsmall">Email: {designation}</div>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}
