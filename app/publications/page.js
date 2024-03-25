@@ -16,12 +16,10 @@ export default async function Publications() {
     }
   });
 
-  console.log('publications', publications);
-  console.log('dblpIds', dblpIds);
   return (
     <main className="padding-layout-2 px-2 md:px-10">
       <h1 className="heading-1 text-primary-main">Publications</h1>
-      <PublicationsList dplpIds={dblpIds} />
+      <PublicationsList dblpIds={dblpIds} />
     </main>
   );
 }
