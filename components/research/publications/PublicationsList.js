@@ -1,11 +1,12 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import PubCard from '@/components/research/publications/PubCard';
 import { format } from 'date-fns';
+import { v4 as uuidv4 } from 'uuid';
 
 const parserOptions = {
   compact: true,
@@ -30,11 +31,11 @@ const ParsePublicationData = (pubData) => {
       authors: pubType.author?.map((author) => author._text),
       date: pubType._attributes.mdate,
       link: pubType.ee._text,
-      key: pubType._attributes.key,
+      uuid: uuidv4(),
     };
     parsedData.push(parsedEntry);
   });
-  return parsedData.slice(0, 20);
+  return parsedData.slice(0, 40);
 };
 
 export default function PublicationsList({ dblpIds }) {
@@ -52,6 +53,7 @@ export default function PublicationsList({ dblpIds }) {
         .get('https://dblp.org/pid/' + dplpId + '.xml')
         .then((response) => {
           const parsedData = parser.xml2js(response.data, parserOptions);
+          console.log(parsedData);
           return ParsePublicationData(parsedData.dblpperson.r);
         })
         .catch((error) => {
@@ -80,14 +82,21 @@ export default function PublicationsList({ dblpIds }) {
     setSelectedYear(newValue);
   }, []);
 
-  const optimizedPublications = publications
-    .filter((pub) => selectedYear === '' || pub.date.startsWith(selectedYear))
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  const filteredPublications = useMemo(() => {
+    return publications.filter(
+      (pub) =>
+        selectedYear === '' ||
+        format(new Date(pub.date), 'yyyy') === selectedYear,
+    );
+  }, [publications, selectedYear]);
+
+  const optimizedPublications = filteredPublications
+    .toSorted((a, b) => new Date(b.date) - new Date(a.date))
     .map((pub) => {
       const formattedDate = format(new Date(pub.date), 'dd MMMM yyyy');
       return (
         <PubCard
-          key={`${pub.title}-${pub.date}-${pub.authors}-${pub.key}-${pub.link}`}
+          key={pub.uuid}
           title={pub.title}
           date={formattedDate}
           authors={pub.authors}
