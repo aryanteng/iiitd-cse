@@ -1,7 +1,8 @@
 import { theme } from '@/theme/theme';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MUIDataTable from 'mui-datatables';
-
+import { Chart } from 'chart.js';
+// set other global options as needed
 const MuiTheme = createTheme({
   typography: {
     fontFamily: ['Montserrat'],
@@ -130,7 +131,7 @@ function DataTable({ data, columns, initialRows }) {
           filterTable: false,
           filter: false,
           rowsPerPage: initialRows,
-          rowsPerPageOptions: [5, 10, 15],
+          rowsPerPageOptions: [5, 10, 15, 25, 50, 100, 250, 500, 1000],
         }}
       />
     </ThemeProvider>
