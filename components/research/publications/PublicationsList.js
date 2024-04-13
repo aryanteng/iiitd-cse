@@ -7,6 +7,8 @@ import axios from 'axios';
 import PubCard from '@/components/research/publications/PubCard';
 import { format } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
+import { InputAdornment, TextField } from '@mui/material';
+import { SearchOutlined } from '@mui/icons-material';
 
 const parserOptions = {
   compact: true,
@@ -44,6 +46,11 @@ export default function PublicationsList({ dblpIds }) {
     new Date().getFullYear().toString(),
   );
   const parser = require('xml-js');
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const handleSearchQueryChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
   const fetchPubs = useCallback(() => {
     const safeDblpIds = Array.isArray(dblpIds) ? dblpIds : [];
@@ -84,10 +91,13 @@ export default function PublicationsList({ dblpIds }) {
   const filteredPublications = useMemo(() => {
     return publications.filter(
       (pub) =>
-        selectedYear === '' ||
-        format(new Date(pub.date), 'yyyy') === selectedYear,
+        pub.authors.some((author) =>
+          author.toLowerCase().includes(searchQuery.toLowerCase()),
+        ) &&
+        (selectedYear === '' ||
+          format(new Date(pub.date), 'yyyy') === selectedYear),
     );
-  }, [publications, selectedYear]);
+  }, [publications, selectedYear, searchQuery]);
 
   const optimizedPublications = filteredPublications
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -107,6 +117,21 @@ export default function PublicationsList({ dblpIds }) {
   return (
     <>
       <Box className="w-full overflow-x-auto">
+        <Box className="flex width-layout-1 justify-center items-center pb-4">
+          <TextField
+            value={searchQuery}
+            onChange={handleSearchQueryChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchOutlined />
+                </InputAdornment>
+              ),
+            }}
+            placeholder="Search by author"
+            className="flex-1 min-w-[300px]"
+          />
+        </Box>
         <Box className="flex justify-center items-center overflow-x-auto min-w-max">
           <Tabs
             value={selectedYear}
