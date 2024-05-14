@@ -40,13 +40,17 @@ export default function ProjectCard({
           </div>
         </div>
         <div className="body-xsmall flex items-center gap-2">
-          Sanction Amount:{' '}
-          <div>
-            <Chip
-              label={sanction_amount + ' INR'}
-              className="bg-primary-main text-white font-semibold"
-            />
-          </div>
+          {sanction_amount && (
+            <>
+              Sanction Amount:{' '}
+              <div>
+                <Chip
+                  label={sanction_amount + ' INR'}
+                  className="bg-primary-main text-white font-semibold"
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
