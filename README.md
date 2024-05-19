@@ -25,7 +25,7 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 2. Define a React Component: Each page in Next.js is a React Component. Define a new React Component in the file you created (page.js). For example:
 
 export default function About() {
-    return <h1>About Us</h1>
+    return <>About Us</>
 }
 
 3. Use the Link Component for Navigation: Routing new pages through navigation components (Navbar) is not automated. You must manually add the <Link> component for each new page you create.
