@@ -22,11 +22,7 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 1. Create a New File: In the /app directory of your Next.js project, create a new folder with the name of the required page. The name of this folder will be used as the route for your new page. For example, if you create a folder named about, the route for this page will be /about. Within the folder, create a page.js and layout.js file.
 
-2. Define a React Component: Each page in Next.js is a React Component. Define a new React Component in the file you created (page.js). For example:
-
-export default function About() {
-    return <>About Us</>
-}
+2. Define a React Component: Each page in Next.js is a React Component. Define a new React Component in the file you created (page.js). For example: export default function About() {return <>About Us</> }
 
 3. Use the Link Component for Navigation: Routing new pages through navigation components (Navbar) is not automated. You must manually add the <Link> component for each new page you create.
 
