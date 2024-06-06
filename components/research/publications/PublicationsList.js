@@ -7,7 +7,7 @@ import axios from 'axios';
 import PubCard from '@/components/research/publications/PubCard';
 import { format } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
-import { InputAdornment, TextField } from '@mui/material';
+import { InputAdornment, TextField, CircularProgress } from '@mui/material';
 import { SearchOutlined } from '@mui/icons-material';
 
 const parserOptions = {
@@ -41,6 +41,7 @@ const ParsePublicationData = (pubData) => {
 };
 
 export default function PublicationsList({ dblpIds }) {
+  const [loading, setLoading] = useState(true);
   const [publications, setPublications] = useState([]);
   const [selectedYear, setSelectedYear] = useState(
     new Date().getFullYear().toString(),
@@ -53,6 +54,7 @@ export default function PublicationsList({ dblpIds }) {
   };
 
   const fetchPubs = useCallback(() => {
+    setLoading(true);
     const safeDblpIds = Array.isArray(dblpIds) ? dblpIds : [];
 
     const requests = safeDblpIds.map(async (dplpId) => {
@@ -70,9 +72,11 @@ export default function PublicationsList({ dblpIds }) {
       Promise.all(requests).then((results) => {
         const allPublications = [...new Set(results.flat())];
         setPublications(allPublications);
+        setLoading(false);
       });
     } else {
       setPublications([]);
+      setLoading(false);
     }
   }, [dblpIds, parser]);
 
@@ -143,9 +147,15 @@ export default function PublicationsList({ dblpIds }) {
           </Tabs>
         </Box>
       </Box>
-      <div className="grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-5 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 w-11/12 max-w-screen-2xl">
-        {optimizedPublications}
-      </div>
+      {loading ? (
+        <Box className="flex justify-center items-center py-4">
+          <CircularProgress />
+        </Box>
+      ) : (
+        <div className="grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-5 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 w-11/12 max-w-screen-2xl">
+          {optimizedPublications}
+        </div>
+      )}
     </>
   );
 }

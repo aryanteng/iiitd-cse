@@ -38,11 +38,13 @@ export default function Footer() {
 
   return (
     <div className="mt-auto border-t-2 px-5 py-2.5 flex justify-between items-center">
-      <img
-        src="https://www.iiitd.ac.in/sites/default/files/images/logo/style3colorlarge.png"
-        alt="Logo"
-        className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
-      />
+      <a href="https://iiitd.ac.in/" rel="noopenner noreferrer" target="_blank">
+        <img
+          src="https://www.iiitd.ac.in/sites/default/files/images/logo/style3colorlarge.png"
+          alt="Logo"
+          className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
+        />
+      </a>
       <div className="flex gap-2.5">
         {socials.map((social) => (
           <a
