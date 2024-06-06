@@ -5,10 +5,14 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import PubCard from '@/components/research/publications/PubCard';
-import { format } from 'date-fns';
+import { format, set } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
 import { InputAdornment, TextField } from '@mui/material';
 import { SearchOutlined } from '@mui/icons-material';
+import { Checkbox, FormControlLabel } from '@mui/material';
+import { Typography } from '@mui/material';
+import { Pagination } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const parserOptions = {
   compact: true,
@@ -28,12 +32,28 @@ const ParsePublicationData = (pubData) => {
       pubType = item.inproceedings;
     }
     if (pubType === undefined || pubType.author === undefined) return;
+    let venue, category;
+    if (
+      pubType._attributes.key.includes('journals/corr/') &&
+      pubType._attributes.publtype === 'informal'
+    ) {
+      category = 'arXiv';
+      venue = pubType.journal._text + ' ' + pubType.year._text;
+    } else if (pubType._attributes.key.includes('journals/')) {
+      category = 'Journal';
+      venue = pubType.journal._text + ' ' + pubType.year._text;
+    } else if (pubType._attributes.key.includes('conf/')) {
+      category = 'Conference';
+      venue = pubType.booktitle._text + ' ' + pubType.year._text;
+    }
     let parsedEntry = {
       title: pubType.title._text,
       authors: pubType.author?.map((author) => author._text),
       date: pubType._attributes.mdate,
       link: pubType.ee._text,
       uuid: uuidv4(),
+      category: category,
+      venue: venue,
     };
     parsedData.push(parsedEntry);
   });
@@ -52,7 +72,22 @@ export default function PublicationsList({ dblpIds }) {
     setSearchQuery(event.target.value);
   };
 
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const handleCategoryChange = useCallback((event) => {
+    setSelectedCategories((prevCategories) => {
+      if (event.target.checked) {
+        return [...prevCategories, event.target.name];
+      } else {
+        return prevCategories.filter(
+          (category) => category !== event.target.name,
+        );
+      }
+    });
+  }, []);
+
+  const [loading, setLoading] = useState(false);
   const fetchPubs = useCallback(() => {
+    setLoading(true);
     const safeDblpIds = Array.isArray(dblpIds) ? dblpIds : [];
 
     const requests = safeDblpIds.map(async (dplpId) => {
@@ -64,6 +99,9 @@ export default function PublicationsList({ dblpIds }) {
         })
         .catch((error) => {
           return [];
+        })
+        .finally(() => {
+          setLoading(false);
         });
     });
     if (requests.length > 0) {
@@ -84,8 +122,13 @@ export default function PublicationsList({ dblpIds }) {
     ...new Set(publications.map((pub) => pub.date.slice(0, 4))),
   ].sort((a, b) => b - a);
 
+  const matches = useMediaQuery('(min-width:600px)');
+  const itemsPerPage = matches ? 12 : 8; // 12 items for larger screens, 8 for smaller screens
+  const [page, setPage] = useState(1);
+
   const handleYearChange = useCallback((_, newValue) => {
     setSelectedYear(newValue);
+    setPage(1);
   }, []);
 
   const filteredPublications = useMemo(() => {
@@ -95,19 +138,34 @@ export default function PublicationsList({ dblpIds }) {
           author.toLowerCase().includes(searchQuery.toLowerCase()),
         ) &&
         (selectedYear === '' ||
-          format(new Date(pub.date), 'yyyy') === selectedYear),
+          format(new Date(pub.date), 'yyyy') === selectedYear) &&
+        (selectedCategories.length === 0 ||
+          selectedCategories.includes(pub.category)),
     );
-  }, [publications, selectedYear, searchQuery]);
+  }, [publications, selectedYear, searchQuery, selectedCategories]);
 
+  const noOfPages = Math.ceil(filteredPublications.length / itemsPerPage);
+
+  const colors = [
+    '#B8D0EA',
+    '#D4BACD',
+    '#EEEECD',
+    '#9CD1CE',
+    '#E1BEBE',
+    '#BFB3D7',
+  ];
+  let clr = 0;
   const optimizedPublications = filteredPublications
     .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .map((pub) => {
-      const formattedDate = format(new Date(pub.date), 'dd MMMM yyyy');
+    .slice((page - 1) * itemsPerPage, page * itemsPerPage)
+    .map((pub, index) => {
+      const color = colors[index % colors.length];
       return (
         <PubCard
           key={pub.uuid}
           title={pub.title}
-          date={formattedDate}
+          venue={pub.venue}
+          color={color}
           authors={pub.authors}
           link={pub.link}
         />
@@ -132,7 +190,7 @@ export default function PublicationsList({ dblpIds }) {
             className="flex-1 min-w-[300px]"
           />
         </Box>
-        <Box className="flex justify-center items-center overflow-x-auto min-w-max">
+        <Box className="flex justify-center items-center overflow-x-auto min-w-max mb-2">
           <Tabs
             value={selectedYear}
             onChange={handleYearChange}
@@ -142,9 +200,68 @@ export default function PublicationsList({ dblpIds }) {
             ))}
           </Tabs>
         </Box>
+        <Box className="flex justify-center items-center overflow-x-auto min-w-max">
+          <FormControlLabel
+            control={
+              <Checkbox
+                onChange={handleCategoryChange}
+                name="Journal"
+                size="small"
+              />
+            }
+            label={
+              <Typography
+                className="body-xsmall"
+                style={{ fontFamily: 'Roboto', color: '#757575' }}>
+                Journal
+              </Typography>
+            }
+            className="ml-1"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                onChange={handleCategoryChange}
+                name="Conference"
+                size="small"
+              />
+            }
+            label={
+              <Typography
+                className="body-xsmall"
+                style={{ fontFamily: 'Roboto', color: '#757575' }}>
+                Conference
+              </Typography>
+            }
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                onChange={handleCategoryChange}
+                name="arXiv"
+                size="small"
+              />
+            }
+            label={
+              <Typography
+                className="body-xsmall"
+                style={{ fontFamily: 'Roboto', color: '#757575' }}>
+                arXiv
+              </Typography>
+            }
+          />
+        </Box>
       </Box>
       <div className="grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-5 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 w-11/12 max-w-screen-2xl">
-        {optimizedPublications}
+        {loading ? <></> : optimizedPublications}
+      </div>
+      <div className="flex justify-center">
+        <Pagination
+          shape="rounded"
+          count={noOfPages}
+          page={page}
+          onChange={(event, value) => setPage(value)}
+        />
       </div>
     </>
   );
