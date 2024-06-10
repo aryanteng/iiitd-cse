@@ -36,6 +36,7 @@ export default function BasicMenu({ name, menuItems }) {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
+        disableScrollLock={true}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}>
