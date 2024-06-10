@@ -74,16 +74,16 @@ export default function useBottomBarLinks() {
             link: '/people/staff',
           },
           {
-            name: 'B.Tech. Students',
-            link: '/people/btech',
+            name: 'Ph.D. Students',
+            link: '/people/phd',
           },
           {
             name: 'M.Tech. Students',
             link: '/people/mtech',
           },
           {
-            name: 'Ph.D. Students',
-            link: '/people/phd',
+            name: 'B.Tech. Students',
+            link: '/people/btech',
           },
         ],
       },
