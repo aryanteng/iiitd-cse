@@ -66,6 +66,21 @@ export default function MtechDataTable({ data, initialRows }) {
           },
         },
       },
+      {
+        name: 'Thesis',
+        options: {
+          customBodyRender: (value) => {
+            return (
+              <span className="body-xsmall">
+                {value == null ? 'Not Available' : value}
+              </span>
+            );
+          },
+          customHeadLabelRender: (value) => {
+            return <span className="body-small">{value.name}</span>;
+          },
+        },
+      },
     ];
   }, []);
 
