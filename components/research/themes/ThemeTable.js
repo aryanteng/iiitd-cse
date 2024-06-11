@@ -17,7 +17,7 @@ export default function CourseCatalogTable({ data, initialRows }) {
 
     return [
       {
-        name: 'Theme',
+        name: 'Focus Areas',
         options: {
           customBodyRender: (value) => {
             return <span className="body-xsmall">{value}</span>;
@@ -54,7 +54,7 @@ export default function CourseCatalogTable({ data, initialRows }) {
         },
       },
       {
-        name: 'Focus Areas',
+        name: 'Research Areas',
         options: {
           customBodyRender: (value) => {
             return <span className="body-xsmall">{value}</span>;

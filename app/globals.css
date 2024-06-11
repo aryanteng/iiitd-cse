@@ -92,31 +92,31 @@ html::-webkit-scrollbar-thumb {
   }
 
   .body-3xlarge {
-    @apply text-3xl md:text-4xl 2xl:text-5xl;
+    @apply text-3xl md:text-4xl 2xl:text-5xl text-justify;
   }
 
   .body-2xlarge {
-    @apply text-2xl md:text-3xl 2xl:text-4xl;
+    @apply text-2xl md:text-3xl 2xl:text-4xl text-justify;
   }
 
   .body-xlarge {
-    @apply text-xl md:text-2xl 2xl:text-3xl;
+    @apply text-xl md:text-2xl 2xl:text-3xl text-justify;
   }
 
   .body-large {
-    @apply text-lg lg:text-xl 2xl:text-2xl;
+    @apply text-lg lg:text-xl 2xl:text-2xl text-justify;
   }
 
   .body-normal {
-    @apply text-base lg:text-lg 2xl:text-xl;
+    @apply text-base lg:text-lg 2xl:text-xl text-justify;
   }
 
   .body-small {
-    @apply text-sm lg:text-base 2xl:text-lg;
+    @apply text-sm lg:text-base 2xl:text-lg text-justify;
   }
 
   .body-xsmall {
-    @apply text-xs lg:text-sm 2xl:text-base;
+    @apply text-xs lg:text-sm 2xl:text-base text-justify;
   }
 
   .link {

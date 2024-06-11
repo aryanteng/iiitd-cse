@@ -66,12 +66,8 @@ export default function useBottomBarLinks() {
             link: '/people/faculty',
           },
           {
-            name: 'Teaching Fellows',
-            link: '/people/teaching-fellows',
-          },
-          {
-            name: 'Staff',
-            link: '/people/staff',
+            name: 'Staff / Teaching Fellows',
+            link: '/people/staff-tf',
           },
           {
             name: 'B.Tech. Students',

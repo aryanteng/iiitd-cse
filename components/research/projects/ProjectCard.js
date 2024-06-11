@@ -10,7 +10,7 @@ export default function ProjectCard({
   sanction_amount,
 }) {
   return (
-    <div className="w-full h-full shadow-md bg-white border-solid duration-500 overflow-hidden flex flex-col gap-2 py-2 px-2">
+    <div className="w-full h-full shadow-md bg-white border-solid duration-500 overflow-hidden flex flex-col gap-2 py-2 px-2 hover:scale-105 hover:bg-gray-200 hover:shadow-xl">
       <div className="text-primary-main h-2/5 font-semibold body-normal">
         {title}
       </div>
