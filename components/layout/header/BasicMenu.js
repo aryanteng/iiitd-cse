@@ -21,47 +21,57 @@ export default function BasicMenu({ name, menuItems }) {
 
   return (
     <>
-      <button
-        type="button"
-        className="body-xsmall hover:text-primary-main"
-        onClick={handleClick}
-        aria-haspopup="true"
-        aria-controls="basic-menu"
-        aria-expanded={open ? 'true' : undefined}>
-        {name}
-        <KeyboardArrowDownIcon className="body-normal text-gray-500 hover:text-primary-main" />
-      </button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        disableScrollLock={true}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}>
-        {menuItems?.map((item) => (
-          <div key={item.link}>
-            {item.link.includes('https') ? (
-              <a href={item.link} target="_blank" rel="noopener noreferrer">
-                <MenuItem
-                  className="body-xsmall hover:text-primary-main hover:cursor-pointer"
-                  key={item.link}>
-                  {item.name}
-                </MenuItem>
-              </a>
-            ) : (
-              <Link href={item.link}>
-                <MenuItem
-                  className="body-xsmall hover:text-primary-main hover:cursor-pointer"
-                  key={item.link}>
-                  {item.name}
-                </MenuItem>
-              </Link>
-            )}
-          </div>
-        ))}
-      </Menu>
+      {name === 'Home' ? (
+        <Link href="/">
+          <button type="button" className="body-xsmall hover:text-primary-main">
+            {name}
+          </button>
+        </Link>
+      ) : (
+        <>
+          <button
+            type="button"
+            className="body-xsmall hover:text-primary-main"
+            onClick={handleClick}
+            aria-haspopup="true"
+            aria-controls="basic-menu"
+            aria-expanded={open ? 'true' : undefined}>
+            {name}
+            <KeyboardArrowDownIcon className="body-normal text-gray-500 hover:text-primary-main" />
+          </button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            disableScrollLock={true}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}>
+            {menuItems?.map((item) => (
+              <div key={item.link}>
+                {item.link.includes('https') ? (
+                  <a href={item.link} target="_blank" rel="noopener noreferrer">
+                    <MenuItem
+                      className="body-xsmall hover:text-primary-main hover:cursor-pointer"
+                      key={item.link}>
+                      {item.name}
+                    </MenuItem>
+                  </a>
+                ) : (
+                  <Link href={item.link}>
+                    <MenuItem
+                      className="body-xsmall hover:text-primary-main hover:cursor-pointer"
+                      key={item.link}>
+                      {item.name}
+                    </MenuItem>
+                  </Link>
+                )}
+              </div>
+            ))}
+          </Menu>
+        </>
+      )}
     </>
   );
 }
