@@ -1,11 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
+import { modifyGoogleDriveURL } from '@/helpers/modifyGoogleDriveURL';
 
 export default function TfCard({ image, name, designation, email }) {
+  const imageLink = image
+    ? modifyGoogleDriveURL(image)
+    : '/images/people/phd.png';
+
   return (
     <div className="w-full shadow-md bg-white border-solid overflow-hidden">
       <div className="relative h-auto">
         <img
-          src={image ?? '/images/people/phd.png'}
+          src={imageLink}
           className="object-cover border-b-1 w-full relative aspect-w-16 aspect-h-9"
           loading="lazy"
           alt="Phd"
@@ -17,8 +22,8 @@ export default function TfCard({ image, name, designation, email }) {
             {name}
           </div>
         </div>
+        <div className="body-small font-semibold">{designation}</div>
         <div className="body-xsmall">Email: {email}</div>
-        <div className="body-xsmall">Email: {designation}</div>
       </div>
     </div>
   );

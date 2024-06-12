@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { modifyGoogleDriveURL } from '@/helpers/modifyGoogleDriveURL';
 
 export default function StaffCard({
   name,
@@ -7,10 +8,14 @@ export default function StaffCard({
   image,
   contact,
 }) {
+  const imageLink = image
+    ? modifyGoogleDriveURL(image)
+    : '/images/people/staff.png';
+
   return (
     <div className="w-full shadow-md bg-white border-solid overflow-hidden">
       <img
-        src={image}
+        src={imageLink}
         className="object-cover border-b-1 w-full relative aspect-w-16 aspect-h-9"
         loading="lazy"
         alt="Faculty"
