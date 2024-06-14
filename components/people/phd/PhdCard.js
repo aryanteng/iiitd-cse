@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Chip from '@mui/material/Chip';
 
 export default function PhdCard({
   image,
@@ -6,6 +7,8 @@ export default function PhdCard({
   'research area': researchArea,
   advisor,
   email,
+  'fellow type': fellow_type,
+  funded_by,
 }) {
   return (
     <div className="w-full shadow-md bg-white border-solid overflow-hidden">
@@ -23,9 +26,23 @@ export default function PhdCard({
             {name}
           </div>
         </div>
-        <div className="body-small font-semibold">{researchArea}</div>
+        <div className="body-small font-semibold mb-1">{researchArea}</div>
+        <div className="body-xsmall font-semibold">{fellow_type}</div>
         <div className="body-xsmall">Advisor : {advisor}</div>
         <div className="body-xsmall">Email: {email}</div>
+        <div className="body-xsmall">
+          Funded By :{' '}
+          <div className="flex flex-row gap-2 py-1">
+            {funded_by?.map((org) => (
+              <Chip
+                key={org}
+                label={org}
+                title={org}
+                className="font-semibold"
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
