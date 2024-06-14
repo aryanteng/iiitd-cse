@@ -1,5 +1,6 @@
 import { getSheetData } from '@/app/api/sheets';
 import StaffCard from '@/components/people/staff/StaffCard';
+import TfCard from '@/components/people/teaching-fellows/TfCard';
 import { normalizeSheetData } from '@/utils/normaliseSheetData';
 
 export default async function Staff() {
@@ -20,7 +21,7 @@ export default async function Staff() {
       ))}
 
       {tfs.map((tf) => (
-        <StaffCard key={tf.name} {...tf} />
+        <TfCard key={tf.name} {...tf} />
       ))}
     </div>
   );
