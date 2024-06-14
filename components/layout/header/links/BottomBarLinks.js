@@ -4,6 +4,10 @@ export default function useBottomBarLinks() {
   const links = useMemo(
     () => [
       {
+        name: 'Home',
+        menuItems: [],
+      },
+      {
         name: 'Academics',
         menuItems: [
           {

@@ -16,6 +16,10 @@ export default function TopBar() {
   const links = useMemo(
     () => [
       {
+        name: 'IIIT-Delhi',
+        link: 'https://iiitd.ac.in',
+      },
+      {
         name: 'Directory',
         link: 'https://iiitd.ac.in/directory',
       },
