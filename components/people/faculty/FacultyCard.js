@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GoogleIcon from '@mui/icons-material/Google';
 
 export default function FacultyCard({
   'faculty image': image,
@@ -9,6 +7,9 @@ export default function FacultyCard({
   education,
   'google scholar': googleScholar,
   linkedin,
+  iiitd_page,
+  email,
+  office,
 }) {
   // Check if the name includes "(On Leave)"
   const onLeave = name.includes('On Leave');
@@ -36,23 +37,30 @@ export default function FacultyCard({
       <div className="flex flex-col gap-2 px-2 py-4">
         <div className="flex items-center justify-between">
           <div className="text-primary-main font-semibold body-normal">
-            {name}
+            <a href={iiitd_page}>{name}</a>
           </div>
-          <div className="flex gap-1">
+          <div className="flex items-center gap-1">
             {googleScholar && (
               <a href={googleScholar} target="_blank" rel="noopener noreferrer">
-                <GoogleIcon className="text-primary-main body-xlarge" />
+                <img
+                  src="/images/people/faculty/google-scholar.svg"
+                  alt="google-scholar"
+                />
               </a>
             )}
             {linkedin && (
               <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                <LinkedInIcon className="text-primary-main body-xlarge" />
+                <img src="/images/people/faculty/linkedin.svg" alt="linkedin" />
               </a>
             )}
           </div>
         </div>
         <div className="body-small font-semibold">{designation}</div>
-        <div className="body-xsmall">{education}</div>
+        <div className="body-xsmall mb-1">{education}</div>
+        <div className="body-xsmall">{office}</div>
+        <div className="body-xsmall" style={{ marginTop: '-0.5em' }}>
+          {email}
+        </div>
       </div>
     </div>
   );
