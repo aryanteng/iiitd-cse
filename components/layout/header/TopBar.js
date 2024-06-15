@@ -56,10 +56,10 @@ export default function TopBar() {
   return (
     <div className="flex justify-between items-center px-5 md:border-none md:shadow-none shadow-lg">
       <Link href="/">
-        <Avatar
-          src="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
+        <img
+          style={{ height: '40px', width: 'auto' }}
+          src="/images/layout/header/cseLogo.png"
           alt="Logo"
-          className="w-10"
         />
       </Link>
       <div className="hidden md:flex gap-5">
