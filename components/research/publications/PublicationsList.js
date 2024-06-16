@@ -12,6 +12,7 @@ import { SearchOutlined } from '@mui/icons-material';
 import { Checkbox, FormControlLabel } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Pagination } from '@mui/material';
+import { ThreeDots } from 'react-loader-spinner';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const parserOptions = {
@@ -99,18 +100,17 @@ export default function PublicationsList({ dblpIds }) {
         })
         .catch((error) => {
           return [];
-        })
-        .finally(() => {
-          setLoading(false);
         });
     });
     if (requests.length > 0) {
       Promise.all(requests).then((results) => {
         const allPublications = [...new Set(results.flat())];
         setPublications(allPublications);
+        setLoading(false);
       });
     } else {
       setPublications([]);
+      setLoading(false);
     }
   }, [dblpIds, parser]);
 
@@ -166,7 +166,7 @@ export default function PublicationsList({ dblpIds }) {
           title={pub.title}
           venue={pub.venue}
           color={color}
-          authors={pub.authors}
+          authors={pub.authors.slice(0, 6)}
           link={pub.link}
         />
       );
@@ -252,9 +252,24 @@ export default function PublicationsList({ dblpIds }) {
           />
         </Box>
       </Box>
-      <div className="grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-5 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 w-11/12 max-w-screen-2xl">
-        {loading ? <></> : optimizedPublications}
-      </div>
+      {loading ? (
+        <div className="flex justify-center items-center">
+          <ThreeDots
+            visible={true}
+            height="80"
+            width="80"
+            color="var(--primary-main)"
+            radius="9"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 mx-auto py-4 lg:py-5 gap-2 sm:gap-4 lg:gap-5 sm:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 w-11/12 max-w-screen-2xl">
+          {optimizedPublications}
+        </div>
+      )}
       <div className="flex justify-center">
         <Pagination
           shape="rounded"
