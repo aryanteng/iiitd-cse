@@ -18,30 +18,37 @@ export default function TopBar() {
       {
         name: 'IIIT-Delhi',
         link: 'https://iiitd.ac.in',
+        type: 'external',
       },
       {
         name: 'Directory',
         link: 'https://iiitd.ac.in/directory',
+        type: 'external',
       },
       {
         name: 'Course Catalog',
         link: '/academics/course-catalog',
+        type: 'internal',
       },
       {
         name: 'Labs',
         link: '/research/labs',
+        type: 'internal',
       },
       {
         name: 'PhD Admissions',
         link: '/admissions/phd',
+        type: 'internal',
       },
       {
         name: 'Events',
         link: '/news-and-events/events',
+        type: 'internal',
       },
       {
         name: 'Contact',
         link: '/contact',
+        type: 'internal',
       },
     ],
     [],
@@ -56,18 +63,24 @@ export default function TopBar() {
   return (
     <div className="flex justify-between items-center px-5 md:border-none md:shadow-none shadow-lg">
       <Link href="/">
-        <Avatar
-          src="https://media.licdn.com/dms/image/C4D0BAQHB2H7RAmPh5A/company-logo_200_200/0/1630546171538/cseiiitd_logo?e=1718236800&v=beta&t=MAQckcmOYWT1bihrf7FAcQKTnYUu2KDimYxlDhfpcrk"
+        <img
+          style={{ height: '40px', width: 'auto' }}
+          src="/images/layout/header/cseLogo.png"
           alt="Logo"
-          className="w-10"
         />
       </Link>
       <div className="hidden md:flex gap-5">
         {links.map((link, index) => (
           <div key={link.name} className="flex gap-4 items-center">
-            <a key={link.name} href={link.link} className={linkStyle}>
-              {link.name}
-            </a>
+            {link.type === 'external' ? (
+              <a key={link.name} href={link.link} className={linkStyle}>
+                {link.name}
+              </a>
+            ) : (
+              <Link key={link.name} href={link.link}>
+                <span className={linkStyle}>{link.name}</span>
+              </Link>
+            )}
             {index !== links.length - 1 && (
               <span className="bg-primary-main h-3.5 w-0.5"></span>
             )}
