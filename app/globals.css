@@ -77,17 +77,17 @@ html::-webkit-scrollbar-thumb {
   }
 
   .title {
-    @apply text-3xl sm:text-4xl xl:text-5xl font-body mb-2 md:mb-3 lg:mb-4 xl:mb-5 font-semibold text-justify;
+    @apply text-3xl sm:text-4xl xl:text-5xl font-body mb-2 md:mb-3 lg:mb-4 xl:mb-5 font-semibold;
     line-height: 1.2;
   }
 
   .heading-1 {
-    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-body text-center mb-6 md:mb-8 lg:mb-10 xl:mb-12 font-medium text-justify;
+    @apply text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-body text-center mb-6 md:mb-8 lg:mb-10 xl:mb-12 font-medium;
     line-height: 1.2;
   }
 
   .heading-2 {
-    @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl font-body font-medium mb-2 text-justify;
+    @apply text-xl md:text-2xl lg:text-3xl xl:text-4xl font-body font-medium mb-2;
     line-height: 1.2;
   }
 
