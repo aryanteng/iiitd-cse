@@ -3,7 +3,7 @@ import DataTable from '@/components/common/DataTable';
 import React, { useCallback } from 'react';
 import Chip from '@mui/material/Chip';
 
-export default function CourseCatalogTable({ data, initialRows }) {
+export default function CourseCatalogTable({ rows, initialRows }) {
   const getColumns = useCallback(() => {
     const colors = [
       '#B8D0EA',
@@ -19,6 +19,26 @@ export default function CourseCatalogTable({ data, initialRows }) {
       {
         name: 'Code',
         options: {
+          filter: true,
+          filterType: 'checkbox',
+          filterOptions: {
+            names: ['1xx', '2xx', '3xx', '4xx', '5xx', '6xx', '7xx'],
+            logic(code, filters) {
+              if (filters.length === 0) return true; // No filter applied
+
+              // Split the code string into individual codes
+              const codes = code.split(/[,/]/).map((c) => c.trim());
+
+              // Check each code for matching filter
+              return codes.some((code) => {
+                const codePrefix = code.match(/^\D*(\d)/)?.[1]; // Extract numeric prefix
+                if (!codePrefix) return false; // No numeric prefix found
+
+                // Check if any selected filter matches the numeric prefix
+                return filters.some((filter) => filter === `${codePrefix}xx`);
+              });
+            },
+          },
           customBodyRender: (value) => {
             let courses = value.split(', ');
             return courses.map((val, index) => {
@@ -134,10 +154,21 @@ export default function CourseCatalogTable({ data, initialRows }) {
           },
         },
       },
+      {
+        name: 'Last offered in',
+        options: {
+          customBodyRender: (value) => {
+            return <span className="body-xsmall">{value}</span>;
+          },
+          customHeadLabelRender: (value) => {
+            return <span className="body-small">{value.name}</span>;
+          },
+        },
+      },
     ];
   });
 
   return (
-    <DataTable data={data} columns={getColumns()} initialRows={initialRows} />
+    <DataTable rows={rows} columns={getColumns()} initialRows={initialRows} />
   );
 }

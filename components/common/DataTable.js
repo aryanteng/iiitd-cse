@@ -124,7 +124,7 @@ function DataTable({ data, columns, initialRows }) {
         options={{
           selectableRows: 'none',
           pagination: true,
-          sort: false,
+          sort: true,
           download: false,
           print: false,
           viewColumns: false,
