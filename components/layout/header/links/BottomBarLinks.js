@@ -32,13 +32,16 @@ export default function useBottomBarLinks() {
           },
           {
             name: 'PEOs, POs & PSOs',
-            link: '/objectives',
+            link: '/academics/objectives',
           },
           {
             name: 'Guidelines',
             link: 'https://www.iiitd.ac.in/academics/resources',
           },
-          { name: 'Approved Online Courses', link: '/approved-online-courses' },
+          {
+            name: 'Approved Online Courses',
+            link: '/academics/approved-online-courses',
+          },
         ],
       },
       {
@@ -54,7 +57,7 @@ export default function useBottomBarLinks() {
           },
           {
             name: 'Publications',
-            link: '/publications',
+            link: '/research/publications',
           },
           {
             name: 'Projects',
@@ -92,7 +95,7 @@ export default function useBottomBarLinks() {
         menuItems: [
           {
             name: 'Placements',
-            link: '/placements',
+            link: '/news-and-events/placements',
           },
           {
             name: 'Media Coverage',
