@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import { modifyGoogleDriveURL } from '@/helpers/modifyGoogleDriveURL';
 
 export default function FacultyCard({
   'faculty image': image,
@@ -19,11 +20,16 @@ export default function FacultyCard({
   if (onLeave) {
     name = name.replace('(On Leave)', '');
   }
+
+  const imageLink = image
+    ? modifyGoogleDriveURL(image)
+    : '/images/people/faculty.png';
+
   return (
     <div className="w-full shadow-md bg-white border-solid overflow-hidden">
       <div className="relative h-auto">
         <img
-          src={image || '/images/people/faculty.png'}
+          src={imageLink}
           className="object-cover border-b-1 w-full relative aspect-w-16 aspect-h-9"
           loading="lazy"
           alt="Faculty"
@@ -50,7 +56,7 @@ export default function FacultyCard({
             )}
             {linkedin && (
               <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                <img src="/images/people/faculty/linkedin.svg" alt="linkedin" />
+                <img src="/images/people/linkedin.svg" alt="linkedin" />
               </a>
             )}
           </div>
