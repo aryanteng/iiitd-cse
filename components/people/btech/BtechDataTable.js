@@ -41,6 +41,19 @@ export default function BtechDataTable({ data, initialRows }) {
       {
         name: 'Joining year',
         options: {
+          filter: false,
+          filterType: 'dropdown',
+          filterOptions: {
+            get names() {
+              const yearsSet = new Set(data.map((row) => row[3]));
+              return Array.from(yearsSet).sort();
+            },
+            logic(year, filters) {
+              if (filters.length === 0) return true;
+              console.log(year, filters, filters.includes(year));
+              return filters.includes(year);
+            },
+          },
           customBodyRender: (value) => {
             return <span className="body-xsmall">{value}</span>;
           },

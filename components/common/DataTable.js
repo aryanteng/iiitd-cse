@@ -1,7 +1,7 @@
 import { theme } from '@/theme/theme';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MUIDataTable from 'mui-datatables';
-import { Chart } from 'chart.js';
+
 // set other global options as needed
 const MuiTheme = createTheme({
   typography: {
@@ -116,20 +116,34 @@ const MuiTheme = createTheme({
 });
 
 function DataTable({ data, columns, initialRows }) {
+  let filter = false;
+  const updatedColumns = columns.map((column) => {
+    if (column.options.filter !== undefined)
+      filter = filter || column.options.filter;
+    return {
+      ...column,
+      options: {
+        ...column.options,
+        filter:
+          column.options.filter !== undefined ? column.options.filter : false,
+        sortThirdClickReset: true,
+      },
+    };
+  });
+
   return (
     <ThemeProvider theme={MuiTheme}>
       <MUIDataTable
         data={data}
-        columns={columns}
+        columns={updatedColumns}
         options={{
           selectableRows: 'none',
           pagination: true,
           sort: true,
+          filter,
           download: false,
           print: false,
           viewColumns: false,
-          filterTable: false,
-          filter: false,
           rowsPerPage: initialRows,
           rowsPerPageOptions: [5, 10, 15, 25, 50, 100, 250, 500, 1000],
         }}
