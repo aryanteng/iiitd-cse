@@ -1,6 +1,6 @@
 'use client';
 
-import OnlineCourseCard from '@/components/approved-online-courses/OnlineCourseCard';
+import OnlineCourseCard from '@/components/academics/approved-online-courses/OnlineCourseCard';
 import { Button } from '@mui/material';
 import { useCallback, useState } from 'react';
 

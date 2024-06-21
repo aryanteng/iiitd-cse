@@ -6,6 +6,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 import { useMemo } from 'react';
+import Link from 'next/link';
 
 export default function Footer() {
   const iconStyle = useMemo(() => 'text-primary-main body-2xlarge', []);
@@ -45,7 +46,15 @@ export default function Footer() {
           className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
         />
       </a>
-      <div className="flex gap-2.5">
+      <div className="flex items-center gap-2.5">
+        <Link href="/dev-team">
+          <span className="body-xsmall text-gray-700 hover:text-primary-main hover:cursor-pointer whitespace-nowrap">
+            Dev team
+          </span>
+        </Link>
+        <span
+          style={{ backgroundColor: '#939598' }}
+          className="h-7 w-0.5"></span>
         {socials.map((social) => (
           <a
             key={social.name}

@@ -1,5 +1,5 @@
 import { normalizeSheetData } from '@/utils/normaliseSheetData';
-import { getSheetData } from '../api/sheets';
+import { getSheetData } from '../../api/sheets';
 import PublicationsList from '@/components/research/publications/PublicationsList';
 
 export default async function Publications() {

@@ -1,6 +1,6 @@
 import { getSheetData } from '@/app/api/sheets';
 import { normalizeSheetData } from '@/utils/normaliseSheetData';
-import ApprovedOnlineCoursesClient from '@/components/approved-online-courses/ApprovedOnlineCoursesClient';
+import ApprovedOnlineCoursesClient from '@/components/academics/approved-online-courses/ApprovedOnlineCoursesClient';
 
 export default async function ApprovedOnlineCourses() {
   const spreadsheetId = '1cYPbswNr4ZvvQhzkfIOaM9Q75cSDP1CSl_JELvmA4iQ';
