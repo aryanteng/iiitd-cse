@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { modifyGoogleDriveURL } from '@/helpers/modifyGoogleDriveURL';
+import { modifyGoogleDriveURL } from '@/utils/modifyGoogleDriveURL';
 
 export default function FacultyCard({
   'faculty image': image,
