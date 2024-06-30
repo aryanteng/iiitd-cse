@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { modifyGoogleDriveURL } from '@/helpers/modifyGoogleDriveURL';
+import { modifyGoogleDriveURL } from '@/utils/modifyGoogleDriveURL';
 import MailIcon from '@mui/icons-material/Mail';
 
 export default function DevCard({ name, linkedin, image, mail }) {

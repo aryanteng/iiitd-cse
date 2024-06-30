@@ -6,15 +6,6 @@ export default async function CourseCatalog() {
   const spreadsheetId = '1cYPbswNr4ZvvQhzkfIOaM9Q75cSDP1CSl_JELvmA4iQ';
   const range = 'Course Catalog';
   const data = await getSheetData(spreadsheetId, range);
-  const headers = data[0];
-  const rows = data.slice(1).map((row, index) => {
-    let obj = { id: index };
-    row.forEach((item, index) => {
-      obj[headers[index]] = item;
-    });
-    return obj;
-  });
-
   return (
     <div className="page-layout-2">
       <div className="flex flex-row justify-center items-center p-8">
@@ -30,7 +21,7 @@ export default async function CourseCatalog() {
         </Button>
       </div>
       <div className="table-container mb-8">
-        <CourseCatalogTable rows={rows} initialRows={10} />
+        <CourseCatalogTable data={data.slice(1)} initialRows={10} />
       </div>
     </div>
   );
