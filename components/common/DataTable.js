@@ -116,31 +116,16 @@ const MuiTheme = createTheme({
 });
 
 function DataTable({ data, columns, initialRows }) {
-  let filter = false;
-  const updatedColumns = columns.map((column) => {
-    if (column.options.filter !== undefined)
-      filter = filter || column.options.filter;
-    return {
-      ...column,
-      options: {
-        ...column.options,
-        filter:
-          column.options.filter !== undefined ? column.options.filter : false,
-        sortThirdClickReset: true,
-      },
-    };
-  });
-
   return (
     <ThemeProvider theme={MuiTheme}>
       <MUIDataTable
         data={data}
-        columns={updatedColumns}
+        columns={columns}
         options={{
           selectableRows: 'none',
           pagination: true,
           sort: true,
-          filter,
+          filter: true,
           download: false,
           print: false,
           viewColumns: false,

@@ -6,6 +6,7 @@ export default async function CourseCatalog() {
   const spreadsheetId = '1cYPbswNr4ZvvQhzkfIOaM9Q75cSDP1CSl_JELvmA4iQ';
   const range = 'Course Catalog';
   const data = await getSheetData(spreadsheetId, range);
+
   return (
     <div className="page-layout-2">
       <div className="flex flex-row justify-center items-center p-8">
@@ -21,7 +22,7 @@ export default async function CourseCatalog() {
         </Button>
       </div>
       <div className="table-container mb-8">
-        <CourseCatalogTable data={data.slice(1)} initialRows={10} />
+        <CourseCatalogTable rows={data.slice(1)} initialRows={10} />
       </div>
     </div>
   );
