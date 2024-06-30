@@ -2,7 +2,7 @@
 import DataTable from '@/components/common/DataTable';
 import { useCallback } from 'react';
 
-export default function BtechDataTable({ data, initialRows }) {
+export default function BtechDataTable({ rows, initialRows }) {
   const getColumns = useCallback(() => {
     return [
       {
@@ -41,17 +41,16 @@ export default function BtechDataTable({ data, initialRows }) {
       {
         name: 'Joining year',
         options: {
-          filter: false,
+          filter: true,
           filterType: 'dropdown',
           filterOptions: {
             get names() {
-              const yearsSet = new Set(data.map((row) => row[3]));
+              const yearsSet = new Set(rows.map((row) => row[3]));
               return Array.from(yearsSet).sort();
             },
             logic(year, filters) {
-              if (filters.length === 0) return true;
-              console.log(year, filters, filters.includes(year));
-              return filters.includes(year);
+              if (filters.length === 0) return false;
+              return !filters.includes(year);
             },
           },
           customBodyRender: (value) => {
@@ -66,6 +65,6 @@ export default function BtechDataTable({ data, initialRows }) {
   }, []);
 
   return (
-    <DataTable data={data} columns={getColumns()} initialRows={initialRows} />
+    <DataTable data={rows} columns={getColumns()} initialRows={initialRows} />
   );
 }

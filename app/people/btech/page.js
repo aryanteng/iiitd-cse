@@ -11,7 +11,7 @@ export default async function BtechStudents() {
         B.Tech. Students
       </h1>
       <div className="table-container">
-        <BtechDataTable data={data.slice(1)} initialRows={10} />
+        <BtechDataTable rows={data.slice(1)} initialRows={10} />
       </div>
     </div>
   );

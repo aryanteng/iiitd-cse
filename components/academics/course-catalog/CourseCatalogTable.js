@@ -60,9 +60,18 @@ export default function CourseCatalogTable({ rows, initialRows }) {
             names: ['1xx', '2xx', '3xx', '4xx', '5xx', '6xx', '7xx'],
             logic(code, filters) {
               if (filters.length === 0) return false;
+              let codes = code.split(',').map((c) => c.trim());
+              const allCodes = [];
+              codes.forEach((c) => {
+                if (c.includes('/')) {
+                  allCodes.push(...c.split('/'));
+                } else {
+                  allCodes.push(c);
+                }
+              });
               return !filters.some((filter) => {
                 const prefix = filter.charAt(0);
-                return code.startsWith(`CSE${prefix}`);
+                return allCodes.some((c) => c.match(/\d/)?.[0] == prefix);
               });
             },
           },
